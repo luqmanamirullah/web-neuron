@@ -6,7 +6,7 @@ type Props = {};
 
 const VisionAndMissions = (props: Props) => {
   return (
-    <div className="flex gap-6">
+    <section className="mx-10 flex gap-6">
       {/* Missions */}
       <div className="max-w-[668px] flex flex-col gap-10">
         <Image
@@ -20,6 +20,7 @@ const VisionAndMissions = (props: Props) => {
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            darkBg={false}
             heading={'Fueling Digital Innovation'}
             subheading={'Our Missions'}
           />
@@ -46,6 +47,7 @@ const VisionAndMissions = (props: Props) => {
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            darkBg={false}
             heading={'Pioneering the Future of Digital Excellence'}
             subheading={'Our Vision'}
           />
@@ -66,7 +68,7 @@ const VisionAndMissions = (props: Props) => {
           alt="Vision Picture"
         />
       </div>
-    </div>
+    </section>
   );
 };
 
