@@ -20,7 +20,7 @@
             <div class="d-flex justify-content-start mb-3">
                 <a href="{{ route('portofolio') }}" class="btn btn-primary mr-2">Portofolio</a>
                 <a href="{{ route('product') }}" class="btn btn-success mr-2">Product</a>
-                <a href="#" class="btn btn-primary">Methodology</a>
+                <a href="{{ route('methadology') }}" class="btn btn-primary">Methodology</a>
             </div>
             <form action="{{ route('show-product') }}" method="GET">
                 @csrf
