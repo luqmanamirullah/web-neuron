@@ -2,26 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  @apply m-0 p-0 box-border;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+[class*='text-desktop-display'] {
+  @apply font-raleway;
+}
+[class*='text-mobile-display'] {
+  @apply font-raleway;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+[class*='text-desktop-headline'] {
+  @apply font-raleway;
+}
+[class*='text-mobile-headline'] {
+  @apply font-raleway;
+}
+
+[class*='text-desktop-title'] {
+  @apply font-raleway;
+}
+[class*='text-mobile-title'] {
+  @apply font-raleway;
+}
+
+[class*='text-desktop-body'] {
+  @apply font-inter;
+}
+[class*='text-mobile-body'] {
+  @apply font-inter;
+}
+
+[class*='text-subtitle'] {
+  @apply font-inter;
+}
+
+[class*='text-hyperlink'] {
+  @apply font-inter underline text-core-primary;
+}
+
+[class*='text-desktop-label'] {
+  @apply font-inter;
+}
+[class*='text-mobile-label'] {
+  @apply font-inter;
+}
+
+[class*='text-button'] {
+  @apply font-raleway;
 }
