@@ -99,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
     // show methadology
     Route::get('/methadology', [MethadologyController::class, 'methadology'])->name('methadology');
     Route::get('/methadology', [MethadologyController::class, 'methadologyshow'])->name('methadology');
-    Route::get('/show-blog', [MethadologyController::class, 'showMethadology'])->name('show-methadology');
+    Route::get('/show-methadology', [MethadologyController::class, 'showMethadology'])->name('show-methadology');
     // delete methadology
     Route::delete('/methadology/{id}', [MethadologyController::class, 'deleteMethadology'])->name('delete-methadology');
     // Add methadology
