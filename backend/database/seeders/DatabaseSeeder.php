@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PortofolioSeeder::class,
             ProductSeeder::class,
-            ArticleSeeder::class,
             ArticleCategorySeeder::class,
+            ArticleSeeder::class,
+            MethadologyCategorySeeder::class,
         ]);
     }
 }
