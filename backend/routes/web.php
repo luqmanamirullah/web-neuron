@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\MethadologyController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\Register\RegisterController;
 
@@ -95,6 +96,18 @@ Route::middleware(['auth'])->group(function () {
     // edit & update blog category
     Route::get('blog-categories/{id}/edit', [BlogCategoryController::class, 'edit'])->name('blog-categories-edit');
     Route::put('blog-categories/{id}/update', [BlogCategoryController::class, 'update'])->name('blog-categories-update');
+    // show methadology
+    Route::get('/methadology', [MethadologyController::class, 'methadology'])->name('methadology');
+    Route::get('/methadology', [MethadologyController::class, 'methadologyshow'])->name('methadology');
+    Route::get('/show-blog', [MethadologyController::class, 'showMethadology'])->name('show-methadology');
+    // delete methadology
+    Route::delete('/methadology/{id}', [MethadologyController::class, 'deleteMethadology'])->name('delete-methadology');
+    // Add methadology
+    Route::get('/methadology/create', [MethadologyController::class, 'create'])->name('create-methadology');
+    Route::post('/methadology/store', [MethadologyController::class, 'store'])->name('store-methadology');
+    // edit & update methadology
+    Route::get('methadology/{id}/edit', [MethadologyController::class, 'edit'])->name('methadology-edit');
+    Route::put('methadology/{id}/update', [MethadologyController::class, 'update'])->name('methadology-update');
 });
 
 // hanya untuk user dengan role superadmin
