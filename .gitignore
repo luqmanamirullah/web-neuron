@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# Temp 
+docker-compose.yml
+docker
+mysql
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,visualstudio,sublimetext,notepadpp
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,visualstudiocode,visualstudio,sublimetext,notepadpp
 
@@ -522,9 +525,3 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,visualstudio,sublimetext,notepadpp
-=======
-# Temp 
-docker-compose.yml
-docker
-mysql
->>>>>>> 6148047c32ad00a9e247df27350b326b059c20bd
