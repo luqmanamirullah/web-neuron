@@ -15,9 +15,10 @@ class CreateMethodologyCategoriesTable extends Migration
     {
         Schema::create('methodology_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_icon');
+            $table->string('category_icon')->nullable();
             $table->string('category_title');
             $table->string('category_name');
+            $table->string('flow_image');
             $table->timestamps();
         });
     }
