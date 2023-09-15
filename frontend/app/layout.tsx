@@ -1,3 +1,4 @@
+import Navbar from '@/components/navbar/navbar';
 import type { Metadata } from 'next';
 import { inter, raleway } from './fonts';
 import './globals.css';
@@ -14,7 +15,10 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en" className={raleway.variable + ' ' + inter.variable}>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <main className="w-full py-40">{children}</main>
+      </body>
     </html>
   );
 }

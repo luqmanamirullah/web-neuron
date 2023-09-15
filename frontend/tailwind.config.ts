@@ -10,7 +10,7 @@ const config: Config = {
     screens: {
       xs: '0px',
       sm: '320px',
-      md: '780px',
+      md: '768px',
       lg: '1000px',
       xl: '1400px',
     },
@@ -99,6 +99,7 @@ const config: Config = {
         lg: '2rem',
       },
       colors: {
+        black: '#0B0E14',
         core: {
           primary: '#FF0000',
           secondary: '#E0DF5E',
@@ -335,6 +336,7 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
     },
   },
   plugins: [],

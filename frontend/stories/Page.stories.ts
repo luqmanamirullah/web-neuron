@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/await-thenable */
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/testing-library';
 
 import { Page } from './Page';
 
