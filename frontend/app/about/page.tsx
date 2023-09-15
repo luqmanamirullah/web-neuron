@@ -7,89 +7,19 @@ import VisionAndMissions from '@/components/about/visionAndMissions';
 import Hero from '@/components/about/hero';
 import Values from '@/components/about/values';
 import StrategicPlan from '@/components/about/strategicPlan';
+import HugeImage from '@/components/about/hugeImage';
 
-type Props = {};
-
-interface Plan {
-  planTitle: string;
-  content: { title: string; desc: string }[];
-}
-
-const planData: Plan[] = [
-  {
-    planTitle: 'Finance',
-    content: [
-      {
-        title: 'Time is Money',
-        desc: 'Maximizing productivity and resource utilization',
-      },
-
-      {
-        title: 'Time is Money',
-        desc: 'Maximizing productivity and resource utilization',
-      },
-    ],
-  },
-
-  {
-    planTitle: 'Work',
-    content: [
-      {
-        title: 'Lean Operation, Mean Savings',
-        desc: 'Maximizing productivity and resource utilization',
-      },
-
-      {
-        title: 'Lean Operation, Mean Savings',
-        desc: 'Maximizing productivity and resource utilization',
-      },
-    ],
-  },
-];
-
-function page({}: Props) {
+function page(): JSX.Element {
   return (
-    <main className="overflow-x-hidden bg-[#F8FAFA]">
+    <main className="overflow-x-hidden bg-sys-light-surface">
       {/* NAVBAR */}
-      <div className="absolute w-full h-48 bg-slate-100"></div>
+      <div className="absolute w-full md:h-48 xs:h-[4.125rem] border-b-4"></div>
 
       {/* Section: HERO */}
       <Hero />
 
       {/* Section: HUGE IMAGE */}
-      <section className="h-screen flex justify-center items-center">
-        <div className="relative overflow-hidden rounded-lg border border-black">
-          <Image
-            className="max-h-[614px] object-cover"
-            width={1164}
-            height={1000}
-            src="/assets/images/3.jpg"
-            alt="Neuron Activity"
-          />
-
-          <div className="absolute bottom-10 left-8">
-            <Image
-              className="object-cover"
-              width={300}
-              height={300}
-              src="/assets/images/Group.svg"
-              alt="Neuron Activity"
-            />
-
-            <h6 className="text-[22px] leading-[28px] text-white absolute left-8 top-[50%] translate-y-[-50%]">
-              Neuron 2023
-            </h6>
-          </div>
-
-          <Image
-            className="max-h-[614px] object-cover px-6 absolute top-8"
-            width={1164}
-            height={1000}
-            src="/assets/images/Group1.svg"
-            alt="Neuron Activity"
-          />
-        </div>
-      </section>
+      <HugeImage imageUrl="/assets/images/3.jpg" />
 
       {/* Section: VISION & MISSIONS */}
       <VisionAndMissions />
@@ -98,7 +28,7 @@ function page({}: Props) {
       <Values />
 
       {/* Section: DIRECTORS */}
-      <section className="h-screen flex flex-col gap-8 mx-10">
+      <section className="md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 md:mx-xl xs:mx-xs">
         <Heading
           darkBg={false}
           heading={'Board of Directors'}
@@ -108,18 +38,14 @@ function page({}: Props) {
       </section>
 
       {/* Section: STRATEGIC PLAN */}
-      <section className="bg-[#101415] w-full p-10 flex flex-col gap-8">
+      <section className="bg-[#101415] w-full md:mt-0 xs:mt-28 md:px-10 xs:px-2 md:py-10 xs:p-6 flex flex-col md:gap-8 xs:gap-4">
         <Heading
           darkBg={true}
           heading={'Navigating the Path to Software Excellence '}
           subheading={'Our Strategic Plan for Management'}
         />
 
-        <div className="flex flex-col gap-4">
-          {planData.map((item) => {
-            return <StrategicPlan planProps={item} />;
-          })}
-        </div>
+        <StrategicPlan />
       </section>
     </main>
   );
