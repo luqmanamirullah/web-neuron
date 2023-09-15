@@ -11,10 +11,7 @@ import HugeImage from '@/components/about/hugeImage';
 
 function page(): JSX.Element {
   return (
-    <main className="overflow-x-hidden bg-sys-light-surface">
-      {/* NAVBAR */}
-      <div className="absolute w-full md:h-48 xs:h-[4.125rem] border-b-4"></div>
-
+    <>
       {/* Section: HERO */}
       <Hero />
 
@@ -47,7 +44,7 @@ function page(): JSX.Element {
 
         <StrategicPlan />
       </section>
-    </main>
+    </>
   );
 }
 

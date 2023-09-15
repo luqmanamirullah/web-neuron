@@ -3,10 +3,7 @@ import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 
 function page(): JSX.Element {
   return (
-    <main className="overflow-x-hidden bg-sys-light-surface">
-      {/* NAVBAR */}
-      <div className="absolute w-full md:h-48 xs:h-[4.125rem] border-b-4"></div>
-
+    <>
       {/* Section: HERO */}
       <section className="h-screen w-full flex items-center md:mx-xl xs:mx-xs">
         <div className="max-w-[48.625rem] mt-[2.12rem]">
@@ -35,7 +32,7 @@ function page(): JSX.Element {
           />
         </div>
       </section>
-    </main>
+    </>
   );
 }
 
