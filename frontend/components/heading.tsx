@@ -9,16 +9,12 @@ type Props = {
 const Heading = (props: Props) => {
   return (
     <div>
-      <h5
-        className={`text-[22px] leading-[28px] font-bold ${
-          props.darkBg ? 'text-[#930100]' : 'text-[#c00100]'
-        }`}
-      >
+      <h5 className="md:text-desktop-title xs:text-mobile-title font-bold text-sys-light-primary">
         {props.subheading}
       </h5>
       <h1
-        className={`text-[37px] leading-[44px] font-bold ${
-          props.darkBg ? 'text-[#c4c7c7]' : 'text-[#000000]'
+        className={`md:text-desktop-headline xs:text-mobile-headline font-bold ${
+          props.darkBg ? 'text-sys-dark-onSurface' : 'text-black'
         }`}
       >
         {props.heading}
