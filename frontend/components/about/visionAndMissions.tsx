@@ -6,15 +6,15 @@ type Props = {};
 
 const VisionAndMissions = (props: Props) => {
   return (
-    <section className="mx-10 flex gap-6">
+    <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
       {/* Missions */}
-      <div className="max-w-[668px] flex flex-col gap-10">
+      <div className="flex flex-col md:gap-10 xs:gap-4">
         <Image
-          className="h-[701px] object-cover"
-          width={668}
-          height={701}
+          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
+          width={700}
+          height={700}
           src="/assets/images/3.jpg"
-          alt="Vision Picture"
+          alt="Neuron Picture"
         />
 
         {/* Content */}
@@ -26,7 +26,7 @@ const VisionAndMissions = (props: Props) => {
           />
 
           {/* Body */}
-          <div className="text-[18px] leading-[26px] font-medium">
+          <div className="md:text-desktop-body-large xs:text-mobile-body font-medium">
             <p>
               Discover our company's core missions that drive us forward. From
               empowering innovation to fostering sustainability, explore how
@@ -43,7 +43,7 @@ const VisionAndMissions = (props: Props) => {
       </div>
 
       {/* Vision */}
-      <div className="max-w-[668px] flex flex-col gap-10">
+      <div className="flex md:flex-col xs:flex-col-reverse md:gap-10 xs:gap-4">
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
@@ -53,7 +53,7 @@ const VisionAndMissions = (props: Props) => {
           />
 
           {/* Body */}
-          <p className="text-[18px] leading-[26px] font-medium">
+          <p className="md:text-desktop-body-large xs:text-mobile-body font-medium">
             Improving customer performance by making improvements. Improvements
             and progress in all corners of the customer's business processes
             through superior and best IT solutions.
@@ -61,11 +61,11 @@ const VisionAndMissions = (props: Props) => {
         </div>
 
         <Image
-          className="h-[701px] object-cover"
+          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
           width={668}
           height={701}
-          src="/assets/images/3.jpg"
-          alt="Vision Picture"
+          src="/assets/images/1.jpg"
+          alt="Neuron Picture"
         />
       </div>
     </section>
