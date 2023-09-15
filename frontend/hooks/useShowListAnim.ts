@@ -58,8 +58,4 @@ function useShowListAnim<T>({
 
   return { size, rest, transitions };
 }
-
-// how to use:
-// const { size, rest, transitions } = useShowListAnim<Type>({activeTrigger, springRef, transRef, list});
-
 export default useShowListAnim;
