@@ -336,6 +336,7 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
     },
   },
   plugins: [],
