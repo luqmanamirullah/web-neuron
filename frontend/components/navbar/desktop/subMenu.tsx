@@ -1,5 +1,5 @@
 import { type Menu } from '@/data/menus';
-import useShowMenuAnim from '@/hooks/useShowMenuAnim';
+import useShowListAnim from '@/hooks/useShowListAnim';
 import cn from '@/utils/cn';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { SvgIcon } from '@mui/material';
@@ -17,7 +17,7 @@ const SubMenu: React.FC<Props> = ({ item, isShow }) => {
   const transRef = useSpringRef();
 
   // use custom hook to animate menu
-  const { size, rest, transitions } = useShowMenuAnim<Menu>({
+  const { size, rest, transitions } = useShowListAnim<Menu>({
     activeTrigger: isShow,
     springRef,
     transRef,

@@ -1,6 +1,6 @@
 import Button from '@/components/button';
 import { type Menu } from '@/data/menus';
-import useShowMenuAnim from '@/hooks/useShowMenuAnim';
+import useShowListAnim from '@/hooks/useShowListAnim';
 import cn from '@/utils/cn';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { animated, useSpringRef } from '@react-spring/web';
@@ -19,7 +19,6 @@ interface Props {
 }
 
 const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
-  console.log(currPath);
   const [mobileMenuActive, setMobileMenuActive] = useState<boolean>(false);
   const [hamburgerAction, setHamburgerAction] = useState<string>('showMenu');
   const [subMenu, setSubMenu] = useState<Menu[]>([]);
@@ -29,7 +28,7 @@ const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
   const data = item;
   const springRef = useSpringRef();
   const transRef = useSpringRef();
-  const { size, rest, transitions } = useShowMenuAnim<Menu>({
+  const { size, rest, transitions } = useShowListAnim<Menu>({
     activeTrigger: mobileMenuActive,
     springRef,
     transRef,

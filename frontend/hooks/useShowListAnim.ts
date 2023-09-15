@@ -29,7 +29,7 @@ interface Animation<T> {
   rest: any;
 }
 
-function useShowMenuAnim<T>({
+function useShowListAnim<T>({
   activeTrigger,
   springRef,
   transRef,
@@ -60,6 +60,6 @@ function useShowMenuAnim<T>({
 }
 
 // how to use:
-// const { size, rest, transitions } = useShowMenuAnim<Type>({activeTrigger, springRef, transRef, list});
+// const { size, rest, transitions } = useShowListAnim<Type>({activeTrigger, springRef, transRef, list});
 
-export default useShowMenuAnim;
+export default useShowListAnim;
