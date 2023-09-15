@@ -1,3 +1,4 @@
+'use client';
 import cn from '@/utils/cn';
 import SvgIcon from '@mui/material/SvgIcon';
 import React from 'react';
@@ -7,8 +8,9 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   withIcon?: boolean;
   icon?: React.ReactNode;
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'full';
   buttonStyle: 'filled' | 'outlined' | 'text';
+  className?: string;
 }
 
 const button = tv({
@@ -18,6 +20,7 @@ const button = tv({
       sm: 'h-10 px-6 text-button-small gap-xs font-medium',
       md: 'h-12 px-8 text-button-medium gap-xs uppercase font-medium',
       lg: 'h-14 px-10 text-button-large gap-s uppercase font-medium',
+      full: 'h-14 w-full px-10 text-button-large gap-s uppercase font-medium',
     },
 
     buttonStyle: {
@@ -40,6 +43,7 @@ const Button: React.FC<Props> = ({
   buttonStyle,
   withIcon = true,
   icon,
+  className,
   ...rest
 }) => {
   return (
@@ -56,6 +60,7 @@ const Button: React.FC<Props> = ({
           : withIcon && size === 'lg'
           ? 'pl-10 pr-8'
           : '',
+        className,
       )}
       {...rest}
     >
