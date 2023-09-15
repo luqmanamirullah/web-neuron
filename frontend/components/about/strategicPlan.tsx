@@ -2,49 +2,45 @@
 
 import React, { useState } from 'react';
 import StrategicPlanList from './strategicPlanList';
+import ArrowDropDownRounded from '@mui/icons-material/ArrowDropDownRounded';
+import SvgIcon from '@mui/material/SvgIcon';
+import { planData } from '@/data/strategicPlan';
 
-interface Plan {
-  planTitle: string;
-  content: Array<{
-    title: string;
-    desc: string;
-  }>;
-}
+interface Props {}
 
-interface Props {
-  planProps: Plan;
-}
-
-const StrategicPlan = (props: Props) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+const StrategicPlan = ({}: Props) => {
+  const [isActive, setIsActive] = useState<number>(0);
 
   return (
-    <div
-      onClick={() => setIsActive(!isActive)}
-      className="w-full border-[0.5px] border-[#C4C7C7] rounded px-6 py-4 flex flex-col transition-all duration-[400ms]"
-    >
-      {/* Plan Title */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-[25px] leading-[32px] font-bold text-white">
-          {props.planProps.planTitle}
-        </h1>
+    <div className="flex flex-col gap-4">
+      {planData.map((item) => {
+        return (
+          <div className="w-full border-[0.5px] border-sys-dark-onSurface rounded md:px-6 xs:px-4 md:py-4 xs:py-2 flex flex-col transition-all duration-[400ms]">
+            {/* Plan Title */}
+            <div
+              onClick={() => setIsActive(item.id)}
+              className="flex items-center justify-between cursor-pointer"
+            >
+              <h1 className="md:text-desktop-headline xs:text-mobile-headline font-bold text-white">
+                {item.planTitle}
+              </h1>
 
-        <svg
-          className={
-            isActive
-              ? 'transition duration-[400ms] -rotate-180'
-              : 'transition duration-[400ms]'
-          }
-          xmlns="http://www.w3.org/2000/svg"
-          height="2.5rem"
-          viewBox="0 0 320 512"
-          fill="#d9d9d9"
-        >
-          <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-        </svg>
-      </div>
+              <SvgIcon
+                fontSize="large"
+                className={
+                  isActive === item.id
+                    ? 'text-white transition duration-[600ms] -rotate-180'
+                    : 'text-white transition duration-[600ms]'
+                }
+              >
+                <ArrowDropDownRounded />
+              </SvgIcon>
+            </div>
 
-      <StrategicPlanList plan={props.planProps} active={isActive} />
+            <StrategicPlanList plan={item} active={isActive} />
+          </div>
+        );
+      })}
     </div>
   );
 };
