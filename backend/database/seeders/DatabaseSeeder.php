@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use Database\Seeders\PortofolioSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
-use Database\Seeders\PortofolioSeeder;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PortofolioSeeder::class,
             ProductSeeder::class,
-            ArticleSeeder::class,
             ArticleCategorySeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }
