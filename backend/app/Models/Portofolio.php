@@ -9,6 +9,26 @@ class Portofolio extends Model
 {
     protected $table = 'portofolios';
     protected $fillable = [
-        'name', 'customer_name', 'desc', 'category', 'image', 'link'
+        'name', 'customer_name', 'desc', 'category', 'image', 'link', 'our_solution', 'details'
     ];
+
+    public function portofolioTechnology()
+    {
+        return $this->hasMany(PortofolioTechnology::class);
+    }
+
+    public function deliverables()
+    {
+        return $this->hasMany(Deliverable::class);
+    }
+
+    public function handles()
+    {
+        return $this->hasMany(Handle::class);
+    }
+
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class, 'portofolio_technologies', 'portofolio_id', 'technologies_id');
+    }
 }

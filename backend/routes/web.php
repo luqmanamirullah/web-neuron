@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\MethadologyController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\Register\RegisterController;
@@ -58,6 +59,18 @@ Route::middleware(['auth'])->group(function () {
     // edit & update portofolio
     Route::get('portofolio/{id}/edit', [PortofolioController::class, 'edit'])->name('portofolio-edit');
     Route::put('portofolio/{id}/update', [PortofolioController::class, 'update'])->name('portofolio-update');
+    // delete technology in portofolio
+    Route::delete('/delete-technology/{portofolio_id}/{technology_id}', [PortofolioController::class, 'deleteTechnology'])->name('delete-technology');
+    // add technology already exist blade edit
+    Route::post('/portofolio/{id}/add-technology', [PortofolioController::class, 'addTechnology'])->name('portofolio-add-technology');
+    // delete deliverable in portofolio
+    Route::delete('/portofolio/{portofolio_id}/deliverable/{deliverable_id}', [PortofolioController::class, 'deleteDeliverable'])->name('delete-deliverable');
+    // delete handle in portofolio
+    Route::delete('/portofolio/{portofolio_id}/handle/{handle_id}', [PortofolioController::class, 'deleteHandle'])->name('delete-handle');
+    // add delivery blade edit
+    Route::post('/portofolio/{portofolio_id}/add-deliverable', [PortofolioController::class, 'addDeliverableEdit'])->name('portofolio.add-deliverable');
+    // add handle blade edit
+    Route::post('/portofolio/{portofolio_id}/add-handle', [PortofolioController::class, 'addHandleEdit'])->name('portofolio.add-handle');
     // show produk
     Route::get('/product', [ProductController::class, 'product'])->name('product');
     Route::get('/product', [ProductController::class, 'showproduct'])->name('product');
@@ -108,6 +121,12 @@ Route::middleware(['auth'])->group(function () {
     // edit & update methadology
     Route::get('methadology/{id}/edit', [MethadologyController::class, 'edit'])->name('methadology-edit');
     Route::put('methadology/{id}/update', [MethadologyController::class, 'update'])->name('methadology-update');
+    // add technology
+    Route::post('/technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+    // show technology
+    Route::get('/technology', [TechnologyController::class, 'technology'])->name('technology');
+    Route::get('/technology', [TechnologyController::class, 'technologyshow'])->name('technology');
+    Route::get('/show-technology', [TechnologyController::class, 'showTechnology'])->name('show-technology');
 });
 
 // hanya untuk user dengan role superadmin

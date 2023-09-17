@@ -22,6 +22,8 @@ class CreatePortofoliosTable extends Migration
             $table->string('link');
             $table->date('date');
             $table->string('image');
+            $table->text('our_solution');
+            $table->text('details');
             $table->timestamps();
         });
     }

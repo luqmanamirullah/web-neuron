@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             ArticleCategorySeeder::class,
             ArticleSeeder::class,
             MethadologyCategorySeeder::class,
+            TechnologySeeder::class,
+            PortofolioTechnologySeeder::class,
+            DeliverableSeeder::class,
         ]);
     }
 }
