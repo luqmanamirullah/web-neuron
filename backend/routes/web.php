@@ -127,6 +127,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/technology', [TechnologyController::class, 'technology'])->name('technology');
     Route::get('/technology', [TechnologyController::class, 'technologyshow'])->name('technology');
     Route::get('/show-technology', [TechnologyController::class, 'showTechnology'])->name('show-technology');
+    // edit & update blog category
+    Route::get('technology/{id}/edit', [TechnologyController::class, 'edit'])->name('technology-edit');
+    Route::put('technology/{id}/update', [TechnologyController::class, 'update'])->name('technology-update');
 });
 
 // hanya untuk user dengan role superadmin

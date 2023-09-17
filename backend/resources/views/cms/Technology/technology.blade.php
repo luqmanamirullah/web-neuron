@@ -61,7 +61,7 @@
                         <td><img src="{{ $technology->icon }}" alt="{{ $technology->name }}"></td>
                         <td>{{ $technology->name }}</td>
                         <td>
-                            <a href="#" class="btn btn-success">Edit</a>
+                            <a href="{{ route('technology-edit', $technology->id) }}" class="btn btn-success">Edit</a>
                         </td>
                     </tr>
                     @endforeach
