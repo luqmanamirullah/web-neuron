@@ -24,9 +24,12 @@ class DatabaseSeeder extends Seeder
             ArticleCategorySeeder::class,
             ArticleSeeder::class,
             MethadologyCategorySeeder::class,
+            ServiceSeeder::class,
             TechnologySeeder::class,
             PortofolioTechnologySeeder::class,
             DeliverableSeeder::class,
+            ServiceTechnologySeeder::class,
+            ServiceKeySeeder::class,
         ]);
     }
 }

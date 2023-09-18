@@ -18,4 +18,9 @@ class Technology extends Model
     {
         return $this->hasMany(PortofolioTechnology::class);
     }
+
+    public function ServiceTechnology()
+    {
+        return $this->hasMany(ServiceTechnology::class);
+    }
 }

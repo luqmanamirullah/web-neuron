@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TechnologyController;
@@ -130,6 +131,26 @@ Route::middleware(['auth'])->group(function () {
     // edit & update blog category
     Route::get('technology/{id}/edit', [TechnologyController::class, 'edit'])->name('technology-edit');
     Route::put('technology/{id}/update', [TechnologyController::class, 'update'])->name('technology-update');
+    // show service
+    Route::get('/service', [ServiceController::class, 'service'])->name('service');
+    Route::get('/service', [ServiceController::class, 'showservice'])->name('service');
+    Route::get('/show-service', [ServiceController::class, 'showService'])->name('show-service');
+    // Delete service
+    Route::delete('/service/{id}', [ServiceController::class, 'deleteService'])->name('delete-service');
+    // Add Service
+    Route::get('/service/create', [ServiceController::class, 'create'])->name('service-create');
+    Route::post('/service/store', [ServiceController::class, 'store'])->name('service-store');
+    // edit & update portofolio
+    Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service-edit');
+    Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service-update');
+    // add technology already exist blade edit
+    Route::post('/service/{id}/add-technology', [ServiceController::class, 'addTechnology'])->name('keyfeature-add-technology');
+    // delete technology in portofolio
+    Route::delete('/service/{id}/delete-technology/{technology_id}', [ServiceController::class, 'deleteTechnologyInService'])->name('delete-technology-service');
+    // add keyfeature blade edit
+    Route::post('/service/{services_id}/add-keyFeature', [ServiceController::class, 'addKeyFeatureEdit'])->name('keyfeature.add-deliverable');
+    // delete keyfeature in portofolio
+    Route::delete('/service/{services_id}/key-feature/{keyfeature_id}', [ServiceController::class, 'deleteKeyFeature'])->name('delete-keyFeature');
 });
 
 // hanya untuk user dengan role superadmin
