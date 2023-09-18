@@ -33,6 +33,7 @@ const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
     springRef,
     transRef,
     list: data,
+    sizeType: 'vh',
   });
 
   // Remove SubMenu & Menu if it active when screen is large
@@ -103,9 +104,9 @@ const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
       {/* Menu Mobile */}
       <animated.ul
         className={cn(
-          'lg:hidden w-full absolute top-0 left-0 flex flex-col gap-md items-center text-mobile-headline font-medium bg-white pt-20 px-4',
+          'lg:hidden w-full absolute top-0 left-0 flex flex-col gap-md items-center text-mobile-headline font-medium bg-white pt-20 px-4 border-b border-sys-light-outline',
         )}
-        style={{ ...rest, height: JSON.stringify(size).replace('%', 'vh') }}
+        style={{ ...rest, height: size }}
       >
         {transitions((style, item) => {
           if (item.type === 'link' && item.link !== undefined) {

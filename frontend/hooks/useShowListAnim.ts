@@ -14,6 +14,7 @@ interface Props<T> {
   springRef: SpringRef<Lookup<any>>;
   transRef: SpringRef<Lookup<any>>;
   list: T[];
+  sizeType: 'rem' | 'vh' | '%';
 }
 
 interface Animation<T> {
@@ -34,11 +35,12 @@ function useShowListAnim<T>({
   springRef,
   transRef,
   list,
+  sizeType = '%',
 }: Props<T>): Animation<T> {
   const { size, ...rest } = useSpring({
     ref: springRef,
-    from: { size: '0%' },
-    to: { size: activeTrigger ? '100%' : '0%' },
+    from: { size: `0${sizeType}` },
+    to: { size: activeTrigger ? `100${sizeType}` : `0${sizeType}` },
     config: { ...config.gentle, duration: 100 },
   });
 
