@@ -1,3 +1,4 @@
+import CtaContactUs from '@/components/ctaContactUs';
 import Navbar from '@/components/navbar/navbar';
 import type { Metadata } from 'next';
 import { inter, raleway } from './fonts';
@@ -18,6 +19,9 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main className="w-full py-40">{children}</main>
+        <footer className="w-full">
+          <CtaContactUs />
+        </footer>
       </body>
     </html>
   );
