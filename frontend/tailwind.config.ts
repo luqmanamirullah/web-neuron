@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     screens: {
       xs: '0px',
-      sm: '320px',
+      sm: '360px',
       md: '768px',
       lg: '1000px',
       xl: '1400px',
@@ -330,13 +330,13 @@ const config: Config = {
           '100': '#FFFFFF',
         },
       },
-
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
+        techBorder2: "url('/assets/images/border_1.png')",
       },
-      highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
     },
   },
   plugins: [],
