@@ -7,10 +7,10 @@ interface Social {
 }
 
 const social: Social = {
-  facebook: 'https://www.facebook.com/your-facebook-page',
-  twitter: 'https://www.twitter.com/your-twitter-page',
-  instagram: 'https://www.instagram.com/your-instagram-page',
-  linkedin: 'https://www.linkedin.com/your-linkedin-page',
-  youtube: 'https://www.youtube.com/your-youtube-page',
+  facebook: 'https://www.facebook.com/neuron-facebook-page',
+  twitter: 'https://www.twitter.com/neuron-twitter-page',
+  instagram: 'https://www.instagram.com/neuron-instagram-page',
+  linkedin: 'https://www.linkedin.com/neuron-linkedin-page',
+  youtube: 'https://www.youtube.com/neuron-youtube-page',
 };
 export default social;
