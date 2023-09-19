@@ -28,8 +28,13 @@ class DatabaseSeeder extends Seeder
             TechnologySeeder::class,
             PortofolioTechnologySeeder::class,
             DeliverableSeeder::class,
+            HandleSeeder::class,
             ServiceTechnologySeeder::class,
             ServiceKeySeeder::class,
+            JobQualificationSeeder::class,
+            JobSeeder::class,
+            JobPlusValueSeeder::class,
+            SkillRequirementSeeder::class,
         ]);
     }
 }
