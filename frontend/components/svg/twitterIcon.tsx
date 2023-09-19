@@ -15,15 +15,23 @@ const SvgIcon = styled(MuiSvgIcon, {
   strokeWidth: '0.5px',
 }));
 
-SvgIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  focusable: 'false',
-  'aria-hidden': 'true',
-};
-
-const TwitterIcon: React.FC<SvgIconProps> = (props) => {
+const TwitterIcon: React.FC<SvgIconProps> = ({
+  fill = 'none',
+  stroke = 'currentColor',
+  strokeLinecap = 'round',
+  strokeLinejoin = 'round',
+  strokeWidth = '0.5px',
+  ...props
+}) => {
   return (
-    <SvgIcon {...props}>
+    <SvgIcon
+      fill={fill}
+      stroke={stroke}
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      strokeWidth={strokeWidth}
+      {...props}
+    >
       <path
         d="M0.5 3.25195C0.5 1.5951 1.84315 0.251953 3.5 0.251953H19.5C21.1569 0.251953 22.5 1.5951 22.5 3.25195V19.252C22.5 20.9088 21.1569 22.252 19.5 22.252H3.5C1.84315 22.252 0.5 20.9088 0.5 19.252V3.25195Z"
         fill="white"
