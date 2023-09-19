@@ -131,7 +131,7 @@ class ServiceController extends Controller
         $service->desc = $request->input('desc');
 
         // // Simpan perubahan pada data service
-        // $service->save();
+        $service->save();
 
         // Update teknologi terkait dengan service
         $selectedTechnologies = $request->input('technologies', []); // Ambil array teknologi yang dipilih
