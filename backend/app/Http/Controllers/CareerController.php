@@ -25,7 +25,7 @@ class CareerController extends Controller
             $careers = Job::with('jobQualification')->where('name_position', 'like', '%' . $search . '%')
                 ->get();
         } else {
-            // Jika tidak ada parameter pencarian, ambil semua data portofolio
+            // Jika tidak ada parameter pencarian, ambil semua data career
             $careers = Job::with('jobQualification')->get();
         }
 
@@ -36,7 +36,7 @@ class CareerController extends Controller
     {
         $career = Job::find($career_id);
 
-        // Pastikan portofolio ditemukan
+        // Pastikan career ditemukan
         if (!$career) {
             return redirect()->route('career')->with('error', 'Career not found.');
         }
@@ -58,7 +58,7 @@ class CareerController extends Controller
     {
         $career = Job::find($career_id);
 
-        // Pastikan portofolio ditemukan
+        // Pastikan career ditemukan
         if (!$career) {
             return redirect()->route('career')->with('error', 'Career not found.');
         }
