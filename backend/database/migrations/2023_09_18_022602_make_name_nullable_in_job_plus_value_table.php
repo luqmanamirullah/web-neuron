@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddOurSolutionAndDetailsToPortofoliosTable extends Migration
+class MakeNameNullableInJobPlusValueTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddOurSolutionAndDetailsToPortofoliosTable extends Migration
      */
     public function up()
     {
-        // Schema::table('portofolios', function (Blueprint $table) {
-        //     $table->text('our_solution');
-        //     $table->text('details');
-        // });
+        Schema::table('job_plus_value', function (Blueprint $table) {
+            $table->string('name')->nullable()->change();
+        });
     }
 
     /**
@@ -26,7 +25,7 @@ class AddOurSolutionAndDetailsToPortofoliosTable extends Migration
      */
     public function down()
     {
-        Schema::table('portofolios', function (Blueprint $table) {
+        Schema::table('job_plus_value', function (Blueprint $table) {
             //
         });
     }
