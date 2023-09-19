@@ -23,7 +23,6 @@ class MethadologyCategorySeeder extends Seeder
 
         DB::table('methodology_categories')->insert([
             [
-                'category_icon' => null,
                 'category_title' => 'How To Develope Software On Time',
                 'category_name' => 'On Time',
                 'flow_image' => 'http://127.0.0.1:8000/img/methodology/chart.png',
@@ -31,7 +30,6 @@ class MethadologyCategorySeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'category_icon' => null,
                 'category_title' => 'How To Develope The Software Being Reliable & Zero Bug',
                 'category_name' => 'Zero Bug',
                 'flow_image' => 'http://127.0.0.1:8000/img/methodology/tes.webp',

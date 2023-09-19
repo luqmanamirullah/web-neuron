@@ -29,45 +29,31 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('portofolio-update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('service-update', $service->id) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
-                        
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ $portofolio->name }}" required>
-                        </div>
 
                         <div class="form-group">
-                            <label for="category">Category</label>
-                            <select class="form-control" id="category" name="category" required>
-                                <option value="Web App" {{ $portofolio->category == 'Web App' ? 'selected' : '' }}>Web App</option>
-                                <option value="Mobile App" {{ $portofolio->category == 'Mobile App' ? 'selected' : '' }}>Mobile App</option>
-                                <option value="Workflow Management System" {{ $portofolio->category == 'Workflow Management System' ? 'selected' : '' }}>Workflow Management System</option>
-                                <option value="System Integrator" {{ $portofolio->category == 'System Integrator' ? 'selected' : '' }}>System Integrator</option>
-                                <option value="Business Intelligence" {{ $portofolio->category == 'Business Intelligence' ? 'selected' : '' }}>Business Intelligence</option>
-                                <option value="CRM App" {{ $portofolio->category == 'CRM App' ? 'selected' : '' }}>CRM App</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="customer_name">Customer Name</label>
-                            <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ $portofolio->customer_name }}" required>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $service->name }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Description</label>
-                            <textarea class="form-control" id="desc" name="desc" required>{{ $portofolio->desc }}</textarea>
+                            <textarea class="form-control" id="desc" name="desc" required>{{ $service->desc }}</textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="details">Detail</label>
-                            <input type="text" class="form-control" id="details" name="details" value="{{ $portofolio->details }}" required></input>
-                        </div>
+                            <div class="d-flex">
+                                <label for="serviceKey">Key Feature</label>
+                                <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addKeyFeatureModal">Add Key Feature</button>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="our_solution">Solution</label>
-                            <textarea class="ckeditor form-control" id="our_solution" name="our_solution">{{ $portofolio->our_solution }}</textarea>
+                            <ul>
+                                @foreach ($service->serviceKeys as $servicekey)
+                                <li>{{ $servicekey->name }}</li>
+                                @endforeach
+                            </ul>
                         </div>
 
                         <div class="form-group">
@@ -75,7 +61,7 @@
                                 <label for="technology">Technologies</label>
                                 <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addTechnologyModal">Add Technology</button>
                             </div>
-                            @foreach ($portofolio->technologies as $technology)
+                            @foreach ($service->technologies as $technology)
                             @php
                                 $selectedId = 0;
                                 foreach($selectedTechnologies as $tech => $id){
@@ -97,35 +83,9 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="d-flex">
-                                <label for="deliverable">Deliverables</label>
-                                <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addDeliverableModal">Add Deliverable</button>
-                            </div>
-
-                            <ul>
-                                @foreach ($portofolio->deliverables as $deliverable)
-                                <li>{{ $deliverable->name }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="d-flex">
-                                <label for="deliverable">Handle</label>
-                                <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addHandleModal">Add Handle</button>
-                            </div>
-
-                            <ul>
-                                @foreach ($portofolio->handles as $handle)
-                                <li>{{ $handle->name }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
                             <label for="image">Image</label>
                             <input type="file" class="form-control-file" id="image" name="image">
-                            <img src="{{ asset($portofolio->image) }}" alt="{{ $portofolio->name }}" class="mt-2" style="max-width: 200px;">
+                            <img src="{{ asset($service->image) }}" alt="{{ $service->name }}" class="mt-2" style="max-width: 200px;">
                         </div>
 
                         <a href="{{ URL::previous() }}" class="btn btn-primary">Back</a>
@@ -163,23 +123,23 @@
                     </div>
                     <!-- Akhir dari modal exist technology -->
 
-                    <!-- Modal untuk menambahkan deliverable -->
-                    <div class="modal fade" id="addDeliverableModal" tabindex="-1" aria-labelledby="addDeliverableModalLabel" aria-hidden="true">
+                    <!-- Modal untuk menambahkan key feature -->
+                    <div class="modal fade" id="addKeyFeatureModal" tabindex="-1" aria-labelledby="addKeyFeatureModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="addDeliverableModalLabel">Add Deliverable</h5>
+                                    <h5 class="modal-title" id="addKeyFeatureModalLabel">Add Key Feature</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- Form untuk menambahkan deliverable -->
-                                    <form action="{{ route('portofolio.add-deliverable', $portofolio->id) }}" method="post">
+                                    <!-- Form untuk menambahkan key feature -->
+                                    <form action="{{ route('keyfeature.add-deliverable', $service->id) }}" method="post">
                                         {{ csrf_field() }}
                                         <div class="form-group">
-                                            <label for="deliverable_name">Deliverable Name</label>
-                                            <input type="text" class="form-control" id="deliverable_name" name="deliverable_name" required>
+                                            <label for="keyFeature_name">Key Feature Name</label>
+                                            <input type="text" class="form-control" id="keyFeature_name" name="keyFeature_name" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Add Deliverable</button>
                                     </form>
@@ -187,55 +147,21 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Modal untuk menambahkan handle -->
-                    <div class="modal fade" id="addHandleModal" tabindex="-1" aria-labelledby="addHandleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addHandleModalLabel">Add Handle</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- Form untuk menambahkan handle -->
-                                    <form action="{{ route('portofolio.add-handle', $portofolio->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <label for="handle_name">Handle Name</label>
-                                            <input type="text" class="form-control" id="handle_name" name="handle_name" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Add Handle</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Akhir dari modal key feature -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#our_solution' ) )
-        .then( editor => {
-            console.log( our_solution );
-        })
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
-<script>
     $(document).ready(function () {
         // Handle Add Existing Technology button click
         $('#addExistingTechnologyButton').on('click', function () {
             var selectedTechnologyId = $('#existingTech').val();
 
-            // Send AJAX request to add existing technology to the portofolio
+            // Send AJAX request to add existing technology to the service
             $.ajax({
-                url: '{{ route('portofolio-add-technology', $portofolio->id) }}',
+                url: '{{ route('keyfeature-add-technology', $service->id) }}',
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',

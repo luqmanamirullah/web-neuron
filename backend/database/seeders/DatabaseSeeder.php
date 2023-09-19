@@ -23,6 +23,18 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ArticleCategorySeeder::class,
             ArticleSeeder::class,
+            MethadologyCategorySeeder::class,
+            ServiceSeeder::class,
+            TechnologySeeder::class,
+            PortofolioTechnologySeeder::class,
+            DeliverableSeeder::class,
+            HandleSeeder::class,
+            ServiceTechnologySeeder::class,
+            ServiceKeySeeder::class,
+            JobQualificationSeeder::class,
+            JobSeeder::class,
+            JobPlusValueSeeder::class,
+            SkillRequirementSeeder::class,
         ]);
     }
 }

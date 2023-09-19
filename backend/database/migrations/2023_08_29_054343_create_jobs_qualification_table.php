@@ -15,9 +15,9 @@ class CreateJobsQualificationTable extends Migration
     {
         Schema::create('jobs_qualification', function (Blueprint $table) {
             $table->id();
-            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->enum('gender', ['Man', 'Female', 'Man/Female']);
             $table->string('domicile');
-            $table->enum('education', ['SMK', 'SMA', 'D1', 'D2', 'D3', 'D4', 'S1', 'S2', 'S3']);
+            $table->string('education');
             $table->string('major');
             $table->text('other');
             $table->timestamps();

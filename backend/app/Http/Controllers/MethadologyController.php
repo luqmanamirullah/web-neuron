@@ -84,7 +84,7 @@ class MethadologyController extends Controller
         $validatedData = $request->validate([
             'category_title' => 'required|string|max:255',
             'category_name' => 'required|string|max:255',
-            'flow_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'flow_image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         // update data methadology
