@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
   const dataContacts = contacts;
   const { facebook, instagram, linkedin, youtube, twitter } = social;
   return (
-    <footer className="w-full h-fit bg-sys-dark-surface py-6 lg:px-10 md:px-6 px-4 mt-20 text-sys-dark-onSurface flex flex-col gap-lg overflow-x-hidden">
+    <footer className="w-full h-fit bg-sys-dark-surface py-6 lg:px-10 md:px-6 px-4 mt-10 text-sys-dark-onSurface flex flex-col gap-lg overflow-x-hidden">
       {/* Icon Neuronworks */}
       <Image
         src="/assets/images/logo_full_white.png"
@@ -96,7 +96,10 @@ const Footer: React.FC = () => {
         <div className="md:col-span-2 col-span-5 flex flex-col justify-between gap-lg items-start">
           <div className="grid grid-cols-2 gap-md">
             {dataOffices.map((office, index) => (
-              <div key={index} className="col-span-1 flex flex-col gap-s">
+              <div
+                key={index}
+                className="md:col-span-1 col-span-2 flex flex-col gap-s"
+              >
                 <h1 className="md:text-desktop-title text-mobile-title font-bold">
                   {office.city}
                 </h1>
