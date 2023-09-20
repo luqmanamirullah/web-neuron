@@ -7,6 +7,7 @@ use App\Models\ServiceKey;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class ServiceController extends Controller
 {
@@ -227,5 +228,34 @@ class ServiceController extends Controller
         $serviceKey->delete();
 
         return redirect()->route('service')->with('success', 'Key feature deleted successfully.');
+    }
+
+    //API
+
+    public function getServicesByName(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        // Dapatkan nama service
+        $requestedName = $request->input('name');
+
+        // Query database untuk mengambil service berdasarkan nama yang sesuai
+        $services = Service::where('name', $requestedName)->with('technologies', 'serviceKeys')->get();
+
+        // Periksa apakah service ditemukan
+        if ($services->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Service is not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'This is information about the service',
+            'data' => $services
+        ], 200);
     }
 }

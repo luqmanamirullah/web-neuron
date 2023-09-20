@@ -9,7 +9,7 @@ class Portofolio extends Model
 {
     protected $table = 'portofolios';
     protected $fillable = [
-        'name', 'customer_name', 'desc', 'category', 'image', 'link', 'our_solution', 'details'
+        'name', 'customer_name', 'desc', 'category', 'image', 'link', 'our_solution', 'details', 'created_at'
     ];
 
     public function portofolioTechnology()

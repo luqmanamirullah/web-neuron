@@ -69,6 +69,11 @@
                             <textarea class="ckeditor form-control" id="our_solution" name="our_solution"></textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label for="created_at">Date</label>
+                            <input type="datetime-local" class="form-control" id="created_at" name="created_at" required></input>
+                        </div>
+
                         <div class="form-group ">
                             <label for="technologies">Technologies</label>
                             <select multiple class="form-control" id="technologies" name="technologies[]">
