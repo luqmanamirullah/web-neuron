@@ -125,6 +125,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('methadology/{id}/update', [MethadologyController::class, 'update'])->name('methadology-update');
     // add technology
     Route::post('/technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+    // add technology category
+    Route::post('/technology/category/store', [TechnologyController::class, 'storeCategory'])->name('store-category');
     // show technology
     Route::get('/technology', [TechnologyController::class, 'technology'])->name('technology');
     Route::get('/technology', [TechnologyController::class, 'technologyshow'])->name('technology');

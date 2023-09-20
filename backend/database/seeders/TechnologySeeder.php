@@ -26,18 +26,28 @@ class TechnologySeeder extends Seeder
             [
                 'name' => 'Flutter',
                 'icon' => 'http://127.0.0.1:8000/img/technologies/flutter.png',
+                'technology_category_id' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'Fast Api',
                 'icon' => 'http://127.0.0.1:8000/img/technologies/fastapi.png',
+                'technology_category_id' => '2',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'Postgre SQL',
                 'icon' => 'http://127.0.0.1:8000/img/technologies/postgre.png',
+                'technology_category_id' => '3',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'AWS Web Service',
+                'icon' => 'http://127.0.0.1:8000/img/technologies/AWS Web Service.png',
+                'technology_category_id' => '4',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

@@ -331,7 +331,7 @@ class PortofolioController extends Controller
         $startYear = $request->input('start_year');
         $endYear = $request->input('end_year');
         $page = $request->input('page', 1); 
-        $sortBy = $request->input('sort_by', 'name'); 
+        $sortBy = $request->input('sort_by', 'date'); 
         $filterBy = $request->input('filter_by', 'asc');
 
         // Buat kueri berdasarkan sort_by dan filter_by
@@ -356,8 +356,6 @@ class PortofolioController extends Controller
 
         $portofolios->appends([
             'category' => $category,
-            'sort_by' => $sortBy,
-            'filter_by' => $filterBy,
             'page' => $page,
         ]);
 

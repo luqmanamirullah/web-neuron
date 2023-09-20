@@ -59,14 +59,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div id="collapse{{ $product->id }}" class="collapse" aria-labelledby="heading{{ $product->id }}" data-parent="#productAccordion">
-                    <div class="card-body">
-                        <p class="product-desc">{{ $product->desc }}</p>
-                        <a href="{{ $product->link }}" target="_blank" class="btn btn-danger text-white">
-                            Try Now <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
+            <div id="collapse{{ $product->id }}" class="collapse" aria-labelledby="heading{{ $product->id }}" data-parent="#productAccordion">
+                <div class="card-body">
+                    <p class="product-desc">{{ $product->desc }}</p>
+                    <a href="{{ $product->link }}" target="_blank" class="btn btn-danger text-white">
+                        Try Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
 

@@ -35,6 +35,18 @@
                             <input type="text" class="form-control" id="name" name="name" value="{{ $technology->name }}" required>
                         </div>
 
+                        <div class="form-group">
+                            <label for="technology_category_id">Category</label>
+                            <select class="form-control" id="technology_category_id" name="technology_category_id" required>
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $technology->technology_category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <a href="{{ route('technology') }}" class="btn btn-primary">Back</a>
                         <button type="submit" class="btn btn-primary float-right">Update Blog</button>
                     </form>

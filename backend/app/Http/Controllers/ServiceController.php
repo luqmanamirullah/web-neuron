@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ServiceResource;
 use App\Models\Service;
 use App\Models\ServiceKey;
 use App\Models\Technology;
@@ -252,10 +253,22 @@ class ServiceController extends Controller
             ], 404);
         }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'This is information about the service',
-            'data' => $services
-        ], 200);
+        return ServiceResource::collection($services);
+    }
+
+    public function getServices(Request $request)
+    {
+        {
+            $services = Service::all();
+    
+            if ($services->count() === 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Service is not found',
+                ], 404);
+            }
+    
+            return ServiceResource::collection($services);
+        }
     }
 }

@@ -27,8 +27,8 @@ class AddForeignToTableHandles extends Migration
     public function down()
     {
         Schema::table('handles', function (Blueprint $table) {
-            $table->unsignedBigInteger('portofolio_id');
-            $table->foreign('portofolio_id')->references('id')->on('portofolios');
+            $table->dropForeign('handles_portofolio_id_foreign');
+            $table->dropColumn('portofolio_id');
         });
     }
 }
