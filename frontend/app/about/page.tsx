@@ -1,14 +1,11 @@
-import Button from '@/components/Button';
-
 function page(): JSX.Element {
   return (
-    <main>
+    <>
       {/* Hero Section in About */}
-      <section>
+      <section className="w-full h-[200vh] flex flex-col justify-center items-center">
         <h1>About</h1>
-        <Button label="Click me" />
       </section>
-    </main>
+    </>
   );
 }
 

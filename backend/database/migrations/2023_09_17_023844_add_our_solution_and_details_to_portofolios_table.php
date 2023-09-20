@@ -13,10 +13,10 @@ class AddOurSolutionAndDetailsToPortofoliosTable extends Migration
      */
     public function up()
     {
-        Schema::table('portofolios', function (Blueprint $table) {
-            $table->text('our_solution');
-            $table->text('details');
-        });
+        // Schema::table('portofolios', function (Blueprint $table) {
+        //     $table->text('our_solution');
+        //     $table->text('details');
+        // });
     }
 
     /**

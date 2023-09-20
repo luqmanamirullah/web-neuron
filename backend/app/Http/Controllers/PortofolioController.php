@@ -9,6 +9,7 @@ use App\Models\Deliverable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\PortofolioTechnology;
+use App\Http\Resources\PortofolioResource;
 
 class PortofolioController extends Controller
 {
@@ -80,6 +81,7 @@ class PortofolioController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'our_solution' => 'required|string',
             'details' => 'required|string',
+            'created_at' => 'required|date',
             'technologies' => 'required|array',
             'deliverables' => 'required|array',
             'handles' => 'required|array',
@@ -100,6 +102,7 @@ class PortofolioController extends Controller
             'desc' => $request->desc,
             'our_solution' => $request->our_solution,
             'details' => $request->details,
+            'created_at' => $request->created_at,
             'image' => url($profilePicturePath),
         ]);
         
@@ -138,6 +141,7 @@ class PortofolioController extends Controller
     public function edit($id)
     {
         $portofolio = Portofolio::findOrFail($id);
+
         $technologies = Technology::all();
         $selectedTechnologies = $portofolio->technologies->pluck('id')->toArray();        
         return view('cms.Portofolio.edit', compact('portofolio', 'technologies', 'selectedTechnologies'));
@@ -156,6 +160,7 @@ class PortofolioController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'our_solution' => 'required|string',
             'details' => 'required|string',
+            'created_at' => 'required|date',
             'technologies' => 'required|array',
         ]);
 
@@ -166,6 +171,7 @@ class PortofolioController extends Controller
         $portofolio->desc = $request->input('desc');
         $portofolio->our_solution = $request->input('our_solution');
         $portofolio->details = $request->input('details');
+        $portofolio->created_at = $request->input('created_at');
 
         // Simpan perubahan pada data portofolio
         $portofolio->save();
@@ -306,5 +312,64 @@ class PortofolioController extends Controller
         $portofolio->handles()->save($handle);
 
         return redirect()->route('portofolio-edit', $portofolio->id)->with('success', 'Handle has been added successfully.');
+    }
+
+    // API
+
+    public function getPortofolio(Request $request)
+    {
+        $request->validate([
+            'category' => 'required|string',
+            'start_year' => 'nullable|numeric',
+            'end_year' => 'nullable|numeric',
+            'page' => 'nullable|numeric',
+            'sort_by' => 'nullable|in:name,date',
+            'filter_by' => 'nullable|in:asc,desc',
+        ]);
+
+        $category = $request->input('category');
+        $startYear = $request->input('start_year');
+        $endYear = $request->input('end_year');
+        $page = $request->input('page', 1); 
+        $sortBy = $request->input('sort_by', 'date'); 
+        $filterBy = $request->input('filter_by', 'asc');
+
+        // Buat kueri berdasarkan sort_by dan filter_by
+        $portofolioQuery = Portofolio::where('category', $category)
+            ->with('technologies', 'deliverables');
+
+        if (!is_null($startYear)) {
+            $portofolioQuery->whereYear('created_at', '>=', $startYear);
+        }
+
+        if (!is_null($endYear)) {
+            $portofolioQuery->whereYear('created_at', '<=', $endYear);
+        }
+
+        if ($sortBy === 'date') {
+            $portofolioQuery->orderBy('created_at', $filterBy);
+        } else {
+            $portofolioQuery->orderBy('name', $filterBy);
+        }
+
+        $portofolios = $portofolioQuery->paginate(6);
+
+        $portofolios->appends([
+            'category' => $category,
+            'page' => $page,
+        ]);
+
+        $portofolios->getCollection()->transform(function ($portofolio) {
+            return new PortofolioResource($portofolio);
+        });
+
+        if ($portofolios->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Portofolio is not found',
+            ], 404);
+        }
+
+        return PortofolioResource::collection($portofolios);
     }
 }

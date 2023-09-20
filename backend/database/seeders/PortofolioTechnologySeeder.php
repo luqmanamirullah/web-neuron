@@ -41,6 +41,24 @@ class PortofolioTechnologySeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'portofolio_id' => '2',
+                'technologies_id' => '1',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'portofolio_id' => '2',
+                'technologies_id' => '2',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'portofolio_id' => '2',
+                'technologies_id' => '3',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ]);
     }
 }

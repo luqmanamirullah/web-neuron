@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\AuthController;
@@ -124,6 +125,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('methadology/{id}/update', [MethadologyController::class, 'update'])->name('methadology-update');
     // add technology
     Route::post('/technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+    // add technology category
+    Route::post('/technology/category/store', [TechnologyController::class, 'storeCategory'])->name('store-category');
     // show technology
     Route::get('/technology', [TechnologyController::class, 'technology'])->name('technology');
     Route::get('/technology', [TechnologyController::class, 'technologyshow'])->name('technology');
@@ -151,6 +154,30 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/service/{services_id}/add-keyFeature', [ServiceController::class, 'addKeyFeatureEdit'])->name('keyfeature.add-deliverable');
     // delete keyfeature in portofolio
     Route::delete('/service/{services_id}/key-feature/{keyfeature_id}', [ServiceController::class, 'deleteKeyFeature'])->name('delete-keyFeature');
+    // show career
+    Route::get('/career', [CareerController::class, 'career'])->name('career');
+    Route::get('/career', [CareerController::class, 'showcareer'])->name('career');
+    Route::get('/show-career', [CareerController::class, 'showCareer'])->name('show-career');
+    // delete skill in career
+    Route::delete('/career/{career_id}/skill/{skill_id}', [CareerController::class, 'deleteSkill'])->name('delete-skill');
+    // delete job plus value in career
+    Route::delete('/career/{career_id}/plusValue/{plusvalue_id}', [CareerController::class, 'deletePlusValue'])->name('delete-plus-value');
+    // edit job plus value in career
+    Route::put('/careers/{career_id}/plusvalues/{plusvalue_id}', [CareerController::class, 'updatePlusValue'])->name('edit-plus-value');
+    // edit skill in career
+    Route::put('/careers/{career_id}/skills/{skill_id}', [CareerController::class, 'updateSkill'])->name('edit-skill');
+    // Add career
+    Route::get('/career/create', [CareerController::class, 'create'])->name('career-create');
+    Route::post('/career/store', [CareerController::class, 'store'])->name('career-store');
+    // Delete career
+    Route::delete('/career/{id}', [CareerController::class, 'deletecareer'])->name('delete-career');
+    // edit & update career
+    Route::get('career/{id}/edit', [CareerController::class, 'edit'])->name('career-edit');
+    Route::put('career/{id}/update', [CareerController::class, 'update'])->name('career-update');
+    // add skiill blade edit
+    Route::post('/career/{career_id}/add-skiill', [CareerController::class, 'addSkillEdit'])->name('career.add-skill');
+    // add plus value blade edit
+    Route::post('/career/{career_id}/add-plusValue', [CareerController::class, 'addPlusValueEdit'])->name('career.add-plusValue');
 });
 
 // hanya untuk user dengan role superadmin

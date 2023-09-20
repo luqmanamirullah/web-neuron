@@ -8,11 +8,11 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      xs: '320px',
-      s: '767px',
-      m: '991px',
-      l: '1199px',
-      xl: '12000px',
+      xs: '0px',
+      sm: '360px',
+      md: '768px',
+      lg: '1000px',
+      xl: '1400px',
     },
     fontSize: {
       'desktop-display': ['3.25rem', { lineHeight: '3.6875rem' }],
@@ -99,6 +99,7 @@ const config: Config = {
         lg: '2rem',
       },
       colors: {
+        black: '#0B0E14',
         core: {
           primary: '#FF0000',
           secondary: '#E0DF5E',
@@ -329,11 +330,12 @@ const config: Config = {
           '100': '#FFFFFF',
         },
       },
-
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
+        techBorder2: "url('/assets/images/border_1.png')",
       },
     },
   },

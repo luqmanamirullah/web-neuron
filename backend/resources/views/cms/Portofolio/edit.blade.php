@@ -71,6 +71,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="created_at">Date</label>
+                            <input type="datetime-local" class="form-control" id="created_at" name="created_at" value="{{ $portofolio->created_at }}" required>
+                        </div>
+
+                        <div class="form-group">
                             <div class="d-flex">
                                 <label for="technology">Technologies</label>
                                 <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addTechnologyModal">Add Technology</button>

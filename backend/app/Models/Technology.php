@@ -12,6 +12,7 @@ class Technology extends Model
     protected $fillable = [
         'name',
         'icon',
+        'technology_category_id',
     ];
 
     public function portofolioTechnology()
@@ -22,5 +23,10 @@ class Technology extends Model
     public function ServiceTechnology()
     {
         return $this->hasMany(ServiceTechnology::class);
+    }
+
+    public function technologyCategory()
+    {
+        return $this->belongsTo(TechnologyCategory::class, 'technology_category_id');
     }
 }

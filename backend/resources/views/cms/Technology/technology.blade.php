@@ -32,7 +32,9 @@
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </div>
-                    <a href="{{ route('create-blog-categories') }}" class="btn btn-success ml-5" data-toggle="modal" data-target="#addTechnologyModal">Add New Technology</a>
+                    <a href="{{ route('technology-store') }}" class="btn btn-success ml-5" data-toggle="modal" data-target="#addTechnologyModal">Add New Technology</a>
+
+                    <a href="#" class="btn btn-success ml-2" data-toggle="modal" data-target="#addCategoryModal">Add Category</a>
                 </div>
             </form>
         </div>
@@ -52,6 +54,7 @@
                         <th>No</th>
                         <th>Icon</th>
                         <th>Name</th>
+                        <th>Category</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +63,7 @@
                         <td>{{ $loop->index + 1 }}</td>
                         <td><img src="{{ $technology->icon }}" alt="{{ $technology->name }}"></td>
                         <td>{{ $technology->name }}</td>
+                        <td>{{ $technology->technologyCategory->name }}</td>
                         <td>
                             <a href="{{ route('technology-edit', $technology->id) }}" class="btn btn-success">Edit</a>
                         </td>
@@ -88,11 +92,46 @@
                                     <label for="icon">Icon</label>
                                     <input type="file" class="form-control-file" id="icon" name="icon" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="technology_category_id">Category</label>
+                                    <select class="form-control" id="technology_category_id" name="technology_category_id" required>
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" id="addTechnologyButton">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal untuk Add Category -->
+            <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addCategoryModalLabel">Add New Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('store-category') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="category_name">Category Name</label>
+                                    <input type="text" class="form-control" id="category_name" name="category_name" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Category</button>
                         </div>
                     </div>
                 </div>
