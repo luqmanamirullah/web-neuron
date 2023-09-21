@@ -39,12 +39,6 @@ class HomeResource extends JsonResource
                 'desc' => optional($this->neuronProgram)->desc,
                 'image' => optional($this->neuronProgram)->image,
             ],
-            'cta_contact' => [
-                'id' => $this->cta_contact_id,
-                'title' => optional($this->ctaContact)->title,
-                'desc' => optional($this->ctaContact)->desc,
-                'link' => optional($this->ctaContact)->link,
-            ],
             'hero_title_lists' => $this->heroTitleLists->map(function ($titleList) {
                 return [
                     'id' => $titleList->id,

@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function getHome()
     {
-        $homes = Home::with(['neuronProgram', 'ctaContact', 'heroTitleLists', 'testimonials', 'certificates', 'partners'])->get();
+        $homes = Home::with(['neuronProgram', 'heroTitleLists', 'testimonials', 'certificates', 'partners'])->get();
 
         return HomeResource::collection($homes);
     }
