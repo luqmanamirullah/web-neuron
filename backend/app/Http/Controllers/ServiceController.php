@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ServiceResource;
 use App\Models\Service;
 use App\Models\ServiceKey;
 use App\Models\Technology;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\ServiceResource;
+use App\Http\Resources\TopServiceResource;
 
 class ServiceController extends Controller
 {
@@ -57,8 +58,12 @@ class ServiceController extends Controller
     {
         $technologies = Technology::all();
         $service = new Service();
+        $isTopServiceOptions = [
+            'true' => 'Yes',
+            'false' => 'No',
+        ];
 
-        return view('cms.Service.add', compact('technologies', 'service'));
+        return view('cms.Service.add', compact('technologies', 'service', 'isTopServiceOptions'));
     }
 
     public function store(Request $request)
@@ -69,7 +74,8 @@ class ServiceController extends Controller
             'desc' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'technologies' => 'required|array',
-            'serviceKeys' => 'required|array'
+            'serviceKeys' => 'required|array',
+            'isTopService' => Rule::in(['true', 'false']),
         ]);
 
         if ($request->hasFile('image')) {
@@ -79,11 +85,14 @@ class ServiceController extends Controller
             $serviceImagePath = '/img/service/' . $serviceImageName;
         }
 
+        $isTopService = $request->input('isTopService');
+
         // Simpan data service ke database
         $service = new Service([
             'name' => $request->name,
             'desc' => $request->desc,
             'image' => url($serviceImagePath),
+            'isTopService' => $isTopService,
         ]);
 
         $service->save();
@@ -113,7 +122,12 @@ class ServiceController extends Controller
         $technologies = Technology::all();
         $selectedTechnologies = $service->technologies->pluck('id')->toArray();
 
-        return view('cms.Service.edit', compact('service', 'technologies', 'selectedTechnologies'));
+        $isTopServiceOptions = [
+            'true' => 'Yes',
+            'false' => 'No',
+        ];
+
+        return view('cms.Service.edit', compact('service', 'technologies', 'selectedTechnologies', 'isTopServiceOptions'));
     }
 
     public function update(Request $request, $id)
@@ -126,11 +140,13 @@ class ServiceController extends Controller
             'desc' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'technologies' => 'required|array',
+            'isTopService' => 'required|in:true,false',
         ]);
 
         //update data service
         $service->name = $request->input('name');
         $service->desc = $request->input('desc');
+        $service->isTopService = $request->input('isTopService');
 
         // // Simpan perubahan pada data service
         $service->save();
@@ -270,5 +286,12 @@ class ServiceController extends Controller
     
             return ServiceResource::collection($services);
         }
+    }
+
+    public function getTopServices()
+    {
+        $topServices = Service::where('isTopService', 'true')->get();
+
+        return TopServiceResource::collection($topServices);
     }
 }

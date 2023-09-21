@@ -27,11 +27,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/services', [ServiceController::class, 'getServices']);
 Route::get('/services/by-name', [ServiceController::class, 'getServicesByName']);
 
+// Top Service
+Route::get('/top-services', [ServiceController::class, 'getTopServices']);
+
 // Portofolio
 Route::get('/portofolio', [PortofolioController::class, 'getPortofolio']);
 
+// Success Portofolio
+Route::get('/success-portofolio', [PortofolioController::class, 'getSuccessPortofolio']);
+
 // latest portofolio
-Route::get('/portfolios/latest', [HomeController::class, 'getLatestPortfolios']);
+Route::get('/portfolios/latest', [PortofolioController::class, 'getLatestPortfolios']);
 
 // Methodology
 Route::get('/methodology', [MethadologyController::class, 'getMethadology']);
@@ -43,3 +49,6 @@ Route::get('/technologies', [TechnologyController::class, 'getTechnologies']);
 
 // Product
 Route::get('/products', [ProductController::class, 'getProduct']);
+
+// Home
+Route::get('home', [HomeController::class, 'getHome']);

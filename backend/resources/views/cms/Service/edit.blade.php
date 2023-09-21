@@ -44,6 +44,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="isTopService">Top Service</label>
+                            <select class="form-control" id="isTopService" name="isTopService">
+                                @foreach ($isTopServiceOptions as $value => $label)
+                                    <option value="{{ $value }}" {{ $service->isTopService == $value ? 'selected' : '' }}>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
                             <div class="d-flex">
                                 <label for="serviceKey">Key Feature</label>
                                 <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addKeyFeatureModal">Add Key Feature</button>
