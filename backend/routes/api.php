@@ -27,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/services', [ServiceController::class, 'getServices']);
 Route::get('/services/by-name', [ServiceController::class, 'getServicesByName']);
 
+// Service Page
+Route::get('/service-pages', [ServiceController::class, 'getServicePages']);
+
 // Top Service
 Route::get('/top-services', [ServiceController::class, 'getTopServices']);
 
