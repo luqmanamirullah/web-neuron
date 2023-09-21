@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portofolio;
+use App\Models\Home;
 use Illuminate\Http\Request;
-use App\Http\Resources\PortofolioResource;
+use App\Http\Resources\HomeResource;
 
 class HomeController extends Controller
 {
-
-    //API
-    public function getLatestPortfolios()
+    public function getHome()
     {
-        // Mengambil 6 portofolio terbaru berdasarkan tanggal pembuatan
-        $latestPortfolios = Portofolio::orderBy('created_at', 'desc')->take(6)->get();
+        $homes = Home::with(['neuronProgram', 'ctaContact', 'heroTitleLists', 'testimonials', 'certificates', 'partners'])->get();
 
-        return PortofolioResource::collection($latestPortfolios);
+        return HomeResource::collection($homes);
     }
-
 }
