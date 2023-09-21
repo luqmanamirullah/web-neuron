@@ -1,5 +1,6 @@
 import { type Menu } from '@/data/menus';
 import useShowListAnim from '@/hooks/useShowListAnim';
+import cn from '@/utils/cn';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { SvgIcon } from '@mui/material';
 import { animated, useSpringRef } from '@react-spring/web';
@@ -22,11 +23,14 @@ const SubMenu: React.FC<Props> = ({ item, isShow, setIsShow }) => {
     springRef,
     transRef,
     list: item,
+    sizeType: '%',
   });
-
   return (
     <animated.ul
-      className="lg:hidden h-screen  absolute top-0 left-0 bg-white flex flex-col gap-s items-center px-4 text-mobile-title md:text-desktop-title z-40 pt-20 will-change-transform duration-300 overflow-auto"
+      className={cn(
+        'lg:hidden h-screen  absolute top-0 left-0 bg-white flex flex-col gap-s items-center px-4 text-mobile-title md:text-desktop-title z-40 pt-20 will-change-transform overflow-auto transition-all duration-500  ease-in-out ',
+        isShow ? 'translate-x-0' : '-translate-x-full',
+      )}
       style={{ ...rest, width: size }}
     >
       {transitions((style: any, item: any) => (
