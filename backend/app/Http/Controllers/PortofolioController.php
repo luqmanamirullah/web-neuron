@@ -372,4 +372,12 @@ class PortofolioController extends Controller
 
         return PortofolioResource::collection($portofolios);
     }
+
+    public function getLatestPortfolios()
+    {
+        // Mengambil 6 portofolio terbaru berdasarkan tanggal pembuatan
+        $latestPortfolios = Portofolio::orderBy('created_at', 'desc')->take(6)->get();
+
+        return PortofolioResource::collection($latestPortfolios);
+    }
 }
