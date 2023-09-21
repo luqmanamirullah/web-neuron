@@ -36,6 +36,13 @@ class DatabaseSeeder extends Seeder
             JobSeeder::class,
             JobPlusValueSeeder::class,
             SkillRequirementSeeder::class,
+            CtaContactSeeder::class,
+            NeuronProgramSeeder::class,
+            HomeSeeder::class,
+            TestimonialSeeder::class,
+            HeroTitleListSeeder::class,
+            CertificateSeeder::class,
+            PartnerSeeder::class,
         ]);
     }
 }

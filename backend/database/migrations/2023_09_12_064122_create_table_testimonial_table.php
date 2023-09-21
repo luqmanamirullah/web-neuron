@@ -17,8 +17,9 @@ class CreateTableTestimonialTable extends Migration
             $table->id();
             $table->string('desc');
             $table->string('name');
-            $table->string('star');
+            $table->enum('star', ['1', '2', '3', '4', '5']);
             $table->string('job');
+            $table->string('image');
             $table->timestamps();
         });
     }

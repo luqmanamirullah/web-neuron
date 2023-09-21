@@ -17,14 +17,21 @@ class CreateTableHomeTable extends Migration
             $table->id();
             $table->string('hero_title1');
             $table->string('hero_title2');
+            $table->string('hero_title3');
             $table->string('hero_desc');
-            $table->string('hero-link');
-            $table->integer('about_project');
-            $table->integer('about_experience');
+            $table->string('hero-link')->nullable();
+            $table->string('about_project');
+            $table->string('about_experience');
             $table->string('about_desc');
             $table->string('about_title');
-            $table->string('about_link');
+            $table->string('about_link')->nullable();
             $table->string('about_ilustration');
+            $table->string('title_service');
+            $table->string('title_project');
+            $table->string('title_product');
+            $table->string('title_partner');
+            $table->string('title_articles');
+            $table->string('title_certificate');
             $table->timestamps();
         });
     }
