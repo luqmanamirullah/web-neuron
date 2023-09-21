@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className={raleway.variable + ' ' + inter.variable}>
       <body>
         <Navbar />
-        <main className="w-full py-40">{children}</main>
+        <main className="w-full">{children}</main>
       </body>
     </html>
   );
