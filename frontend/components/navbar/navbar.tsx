@@ -19,13 +19,20 @@ const Navbar: any = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 w-screen lg:h-48 h-16 lg:px-10 px-2 inline-flex justify-center items-center transition-all duration-300',
+        'fixed top-0 left-0 w-screen lg:h-48 h-20 lg:px-10 px-2 inline-flex justify-center items-center transition-all duration-300 z-[502]',
         isShrink
-          ? 'lg:h-28 border border-sys-light-outline bg-sys-light-surfaceContainerLow'
+          ? 'lg:h-28 lg:border lg:border-sys-light-outline bg-white'
           : 'lg:h-48',
       )}
     >
-      <nav className="w-full h-fit inline-flex justify-between items-center z-50">
+      <nav
+        className={cn(
+          'w-full h-fit inline-flex justify-between items-center z-50',
+          currentPath.startsWith('/service')
+            ? 'my-8 p-5 bg-white/70 rounded-md'
+            : 'my-0 bg-none',
+        )}
+      >
         {/* Logo Neuron */}
         <Image
           src="/assets/images/logo_full.png"
