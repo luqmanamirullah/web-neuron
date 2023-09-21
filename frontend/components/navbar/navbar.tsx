@@ -25,7 +25,14 @@ const Navbar: any = () => {
           : 'lg:h-48',
       )}
     >
-      <nav className="w-full h-fit inline-flex justify-between items-center z-50">
+      <nav
+        className={cn(
+          'w-full h-fit inline-flex justify-between items-center z-50',
+          currentPath.startsWith('/service')
+            ? 'my-8 p-5 bg-white/70 rounded-md'
+            : 'my-0 bg-none',
+        )}
+      >
         {/* Logo Neuron */}
         <Image
           src="/assets/images/logo_full.png"
