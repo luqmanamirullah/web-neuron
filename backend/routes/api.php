@@ -43,3 +43,6 @@ Route::get('/technologies', [TechnologyController::class, 'getTechnologies']);
 
 // Product
 Route::get('/products', [ProductController::class, 'getProduct']);
+
+// Home
+Route::get('home', [HomeController::class, 'getHome']);
