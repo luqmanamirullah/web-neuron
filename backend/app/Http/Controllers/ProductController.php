@@ -95,4 +95,15 @@ class ProductController extends Controller
         // Redirect ke halaman portofolio dengan pesan sukses
         return redirect()->route('product')->with('success', 'product updated successfully.');
     }
+
+    // API
+    public function getProduct()
+    {
+        $products = Product::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => $products,
+        ]);
+    }
 }

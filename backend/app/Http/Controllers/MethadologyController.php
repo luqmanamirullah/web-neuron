@@ -84,7 +84,7 @@ class MethadologyController extends Controller
         $validatedData = $request->validate([
             'category_title' => 'required|string|max:255',
             'category_name' => 'required|string|max:255',
-            'flow_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'flow_image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         // update data methadology
@@ -107,5 +107,45 @@ class MethadologyController extends Controller
 
         // Redirect ke halaman methadology dengan pesan sukses
         return redirect()->route('methadology')->with('success', 'Methadology updated successfully.');
+    }
+
+    public function getMethadology(Request $request)
+    {
+        $methadologyQuery = MethadologyCategory::all();
+
+        if ($methadologyQuery->count() === 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Methadology is not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $methadologyQuery,
+        ], 200);
+    }
+
+    public function getMethadologyByCategory(Request $request)
+    {
+        $request->validate([
+            'category_name' => 'required|string',
+        ]);
+
+        $category = $request->input('category_name');
+
+        $methadologyQuery = MethadologyCategory::where('category_name', $category)->get();
+
+        if ($methadologyQuery->count() === 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Methadology is not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $methadologyQuery,
+        ], 200);
     }
 }
