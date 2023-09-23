@@ -1,6 +1,6 @@
 export interface Menu {
   label: string;
-  type: 'link' | 'dropdown' | 'button';
+  type: 'link' | 'dropdown' | 'button' | 'lang';
   link?: string;
   subLabel?: string;
   children?: Menu[];
@@ -21,6 +21,38 @@ const menus: Menu[] = [
     label: 'Services',
     type: 'link',
     link: '/services',
+    children: [
+      {
+        label: 'Web Application',
+        type: 'link',
+        link: '/services/web-application',
+      },
+      {
+        label: 'Mobile Application',
+        type: 'link',
+        link: '/services/mobile-application',
+      },
+      {
+        label: 'System Integration',
+        type: 'link',
+        link: '/services/system-integration',
+      },
+      {
+        label: 'Workflow Management System',
+        type: 'link',
+        link: '/services/workflow-management-system',
+      },
+      {
+        label: 'Bussines Intellgence',
+        type: 'link',
+        link: '/services/bussines-intellgence',
+      },
+      {
+        label: 'CRM',
+        type: 'link',
+        link: '/services/crm',
+      },
+    ],
   },
   {
     label: 'Product',
@@ -76,7 +108,7 @@ const menus: Menu[] = [
   },
   {
     label: 'EN',
-    type: 'dropdown',
+    type: 'lang',
     children: [
       {
         label: 'EN',
