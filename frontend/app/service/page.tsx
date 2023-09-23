@@ -1,3 +1,4 @@
+'use client';
 import Hero from '@/components/service/sections/hero';
 import Methodology from '@/components/service/sections/methodology';
 import Portfolio from '@/components/service/sections/portfolio';
