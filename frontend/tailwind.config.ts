@@ -11,7 +11,7 @@ const config: Config = {
       xs: '0px',
       sm: '360px',
       md: '768px',
-      lg: '1000px',
+      lg: '1024px',
       xl: '1400px',
     },
     fontSize: {
@@ -336,6 +336,16 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
         techBorder2: "url('/assets/images/border_1.png')",
+      },
+      animation: {
+        'auto-scroll': 'scroll 30s linear infinite',
+        'auto-scroll-inverse': 'scroll 30s linear infinite reverse',
+      },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
       },
     },
   },
