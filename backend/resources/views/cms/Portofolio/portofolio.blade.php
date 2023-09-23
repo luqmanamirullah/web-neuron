@@ -21,7 +21,8 @@
             <div class="d-flex justify-content-start mb-3">
                 <a href="{{ route('portofolio') }}" class="btn btn-success mr-2">Portofolio</a>
                 <a href="{{ route('product') }}" class="btn btn-primary mr-2">Product</a>
-                <a href="#" class="btn btn-primary">Methodology</a>
+                <a href="{{ route('methadology') }}" class="btn btn-primary mr-2">Methodology</a>
+                <a href="{{ route('technology') }}" class="btn btn-primary mr-2">Technology</a>
             </div>
             <form action="{{ route('show-portofolio') }}" method="GET">
                 @csrf
@@ -38,6 +39,17 @@
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
+                </div>
+            @endif
+        </div>
+        <div id="error-message" class="mt-3">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
         </div>
@@ -106,11 +118,41 @@
                     width: 100%;
                     object-fit: cover;
                 }
+
+                .technology-card {
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    margin: 5px;
+                    padding: 20px;
+                    max-width: 400px;
+                    background-color: white;
+                }
+
+                .deliverable-card{
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    margin: 5px;
+                    padding: 20px;
+                    max-width: 400px;
+                    background-color: white;
+                }
+
+                .handle-card{
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    margin: 5px;
+                    padding: 20px;
+                    max-width: 400px;
+                    background-color: white;
+                }
             </style>
             <div class="product-grid">
                 @foreach($portofolios as $portofolio)
-                <div class="product-card" data-toggle="modal" data-target="#viewPortofolioModal{{ $portofolio->id }}">
-                    <img class="product-img" src="{{ asset($portofolio->image) }}" alt="{{ $portofolio->name }}">
+                <div class="product-card">
+                    <img class="product-img" src="{{ asset($portofolio->image) }}" alt="{{ $portofolio->name }}" data-toggle="modal" data-target="#viewPortofolioModal{{ $portofolio->id }}">
                     <div>
                         <div class="category-container">
                             <span class="category">{{ $portofolio->category }}</span>
@@ -168,8 +210,85 @@
                                         </div>
                                         <h5 class="product-name">{{ $portofolio->name }}</h5>
                                         <h6 class="product-customer">{{ $portofolio->customer_name }}</h6>
-                                        <p class="product-desc">{{ ($portofolio->desc) }}</p>
+                                        <p class="product-desc">{{ $portofolio->desc }}</p>
+                                        <h5 class="product-name">Details</h5>
+                                        <p class="product-desc">{{ $portofolio->details }}</p>
+                                        <h5 class="product-name">Our Solution</h5>
+                                        <p class="product-desc">{!! $portofolio->our_solution !!}</p>
                                         <p class="product-date">{{ $portofolio->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                    <div class="d-flex" style="justify-content: center;">
+                                        <!-- Tampilkan daftar teknologi -->
+                                        <div class="technology-card">
+                                            <h5 class="text-bold">Technology Used</h5>
+                                            <ul style="list-style: none;">
+                                                @foreach ($portofolio->portofolioTechnology as $portfolioTech)
+                                                    @if ($portfolioTech->technology)
+                                                        <li class="pb-3">
+                                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                                <div>
+                                                                    @if (!empty($portfolioTech->technology->icon))
+                                                                        <img src="{{ $portfolioTech->technology->icon }}" alt="{{ $portfolioTech->technology->name }}">
+                                                                    @endif
+                                                                    {{ $portfolioTech->technology->name }}
+                                                                </div>
+                                                                <form method="POST" action="{{ route('delete-technology', ['portofolio_id' => $portofolio->id, 'technology_id' => $portfolioTech->technology->id]) }}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        <!-- Tampilkan daftar deliverables -->
+                                        <div class="deliverable-card">
+                                            <h5 class="text-bold">Deliverables</h5>
+                                            <ul>
+                                                @foreach ($portofolio->deliverables as $deliverable)
+                                                <li class="pb-3">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <div>
+                                                            {{ $deliverable->name }}
+                                                        </div>
+                                                        <div>
+                                                            <form method="POST" action="{{ route('delete-deliverable', ['portofolio_id' => $portofolio->id, 'deliverable_id' => $deliverable->id]) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        <!-- Tampilan daftar handle -->
+                                    </div>
+                                    <div class="d-flex" style="justify-content: center;">
+                                        <div class="handle-card">
+                                            <h5 class="text-bold">Handles</h5>
+                                            <ul>
+                                                @foreach ($portofolio->handles as $handle)
+                                                <li class="pb-3">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <div>
+                                                            {{ $handle->name }}
+                                                        </div>
+                                                        <div>
+                                                            <form method="POST" action="{{ route('delete-handle', ['portofolio_id' => $portofolio->id, 'handle_id' => $handle->id]) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -188,12 +307,19 @@
 <script>
     // Cari elemen pesan sukses
     var successMessage = document.getElementById('success-message');
+    var errorMessage = document.getElementById('error-message');
 
     // Periksa apakah pesan sukses ada
     if (successMessage) {
         // Sembunyikan pesan sukses setelah 5 detik
         setTimeout(function() {
             successMessage.style.display = 'none';
+        }, 3000); // 5000 milidetik (5 detik)
+    }
+    if (errorMessage) {
+        // Sembunyikan pesan sukses setelah 5 detik
+        setTimeout(function() {
+            errorMessage.style.display = 'none';
         }, 3000); // 5000 milidetik (5 detik)
     }
 </script>

@@ -46,7 +46,7 @@
                 <form action="{{ route('password.email') }}" method="post" class="w-100">
                     @csrf
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" id="email">
                     <input type="submit" class="btn btn-primary w-100 mt-3" value="Request Password Reset">
                 </form>
                 <p class="mt-3">

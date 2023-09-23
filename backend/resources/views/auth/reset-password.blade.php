@@ -45,9 +45,9 @@
                 <input type="hidden" name="token" value="{{ request()->token }}">
                 <input type="hidden" name="email" value="{{ request()->email }}">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password"></input>
+                <input type="password" class="form-control" name="password" id="password"></input>
                 <label for="password_confirmation" class="form-label">Password Confirmation</label>
-                <input type="password" class="form-control" name="password_confirmation">
+                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                 <input type="submit" class="btn btn-primary w-100 mt-3" value="Update Password">
             </form>
         </div>
