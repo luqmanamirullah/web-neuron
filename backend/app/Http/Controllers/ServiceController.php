@@ -299,8 +299,8 @@ class ServiceController extends Controller
 
     public function getServicePages()
     {
-        // Ambil data dari tabel service_pages beserta relasinya
-        $servicePages = ServicePages::with('ctaContact')->get();
+        // Ambil data dari tabel service_pages
+        $servicePages = ServicePages::all();
 
         return ServicePageResource::collection($servicePages);
     }
