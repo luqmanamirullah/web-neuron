@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CtaContactController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\MethadologyController;
@@ -26,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Service
 Route::get('/services', [ServiceController::class, 'getServices']);
 Route::get('/services/by-name', [ServiceController::class, 'getServicesByName']);
+
+// Service Page
+Route::get('/service-pages', [ServiceController::class, 'getServicePages']);
 
 // Top Service
 Route::get('/top-services', [ServiceController::class, 'getTopServices']);
@@ -52,3 +56,6 @@ Route::get('/products', [ProductController::class, 'getProduct']);
 
 // Home
 Route::get('home', [HomeController::class, 'getHome']);
+
+// CTA_Contact
+Route::get('/cta-contacts', [CtaContactController::class, 'getCtaContacts']);

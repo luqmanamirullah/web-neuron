@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\ServiceKey;
 use App\Models\Technology;
+use App\Models\ServicePages;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\ServiceResource;
 use App\Http\Resources\TopServiceResource;
+use App\Http\Resources\ServicePageResource;
 
 class ServiceController extends Controller
 {
@@ -293,5 +295,13 @@ class ServiceController extends Controller
         $topServices = Service::where('isTopService', 'true')->get();
 
         return TopServiceResource::collection($topServices);
+    }
+
+    public function getServicePages()
+    {
+        // Ambil data dari tabel service_pages
+        $servicePages = ServicePages::all();
+
+        return ServicePageResource::collection($servicePages);
     }
 }

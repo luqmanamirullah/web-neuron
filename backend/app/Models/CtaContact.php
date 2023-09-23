@@ -21,4 +21,9 @@ class CtaContact extends Model
     {
         return $this->hasOne(Home::class, 'cta_contact_id');
     }
+
+    public function servicePages()
+    {
+        return $this->hasOne(ServicePages::class, 'cta_contact_id');
+    }
 }
