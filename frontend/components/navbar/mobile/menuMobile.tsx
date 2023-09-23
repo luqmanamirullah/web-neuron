@@ -135,18 +135,16 @@ const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
                 className="z-10 will-change-[opacity, transform] "
                 style={{ ...style }}
               >
-                <div className="lg:hidden block">
-                  <Button
-                    size="lg"
-                    buttonStyle="filled"
-                    label={item.label}
-                    withIcon
-                    icon={<ArrowOutwardRounded />}
-                    onClick={(e) => {
-                      router.push(item.link ?? '/');
-                    }}
-                  />
-                </div>
+                <Button
+                  size="lg"
+                  buttonStyle="filled"
+                  label={item.label}
+                  withIcon
+                  icon={<ArrowOutwardRounded />}
+                  onClick={(e) => {
+                    router.push(item.link ?? '/');
+                  }}
+                />
               </animated.li>
             );
           } else {
