@@ -20,37 +20,37 @@ const menus: Menu[] = [
   {
     label: 'Services',
     type: 'link',
-    link: '/services',
+    link: '/service',
     children: [
       {
         label: 'Web Application',
         type: 'link',
-        link: '/services/web-application',
+        link: '/service?name=Web Application',
       },
       {
         label: 'Mobile Application',
         type: 'link',
-        link: '/services/mobile-application',
+        link: '/service?name=Mobile Application',
       },
       {
         label: 'System Integration',
         type: 'link',
-        link: '/services/system-integration',
+        link: '/service?name=System Integration',
       },
       {
         label: 'Workflow Management System',
         type: 'link',
-        link: '/services/workflow-management-system',
+        link: '/service?name=Workflow Management System',
       },
       {
         label: 'Bussines Intellgence',
         type: 'link',
-        link: '/services/bussines-intellgence',
+        link: '/service?name=Bussines Intellgence',
       },
       {
         label: 'CRM',
         type: 'link',
-        link: '/services/crm',
+        link: '/service?name=CRM',
       },
     ],
   },
