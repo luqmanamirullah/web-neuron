@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CtaContactController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\MethadologyController;
@@ -55,3 +56,6 @@ Route::get('/products', [ProductController::class, 'getProduct']);
 
 // Home
 Route::get('home', [HomeController::class, 'getHome']);
+
+// CTA_Contact
+Route::get('/cta-contacts', [CtaContactController::class, 'getCtaContacts']);
