@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'www.neuronworks.co.id'],
+    domains: ['localhost', '127.0.0.1', 'www.neuronworks.co.id'],
   },
 };
 
