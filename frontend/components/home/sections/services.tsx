@@ -3,7 +3,11 @@ import Button from '@/components/button';
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import ServiceSlides from '../swiper/serviceSlides';
 
-const ServicesSection = () => {
+interface Props {
+  homeData: any;
+}
+
+const ServicesSection = ({ homeData }: Props) => {
   return (
     <section className="lg:h-screen lg:mt-0 xs:mt-12 lg:mx-xl xs:mx-xs">
       {/* Heading */}
@@ -14,7 +18,7 @@ const ServicesSection = () => {
 
         <div className="flex justify-between">
           <h1 className="lg:text-desktop-headline xs:text-mobile-headline font-bold">
-            Experience Top-Tier Solutions
+            {homeData.title_service}
           </h1>
           <Button
             className="lg:flex xs:hidden"

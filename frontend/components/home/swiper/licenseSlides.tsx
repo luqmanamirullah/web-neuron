@@ -11,7 +11,11 @@ import { FreeMode } from 'swiper/modules';
 import { licenses } from '@/data/license';
 import { useMediaQuery } from '@mui/material';
 
-const LicenseSlides = () => {
+interface Props {
+  licenseData: any;
+}
+
+const LicenseSlides = ({ licenseData }: Props) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   return (
@@ -23,15 +27,15 @@ const LicenseSlides = () => {
         modules={[FreeMode]}
         className="license-slides"
       >
-        {licenses.map((item) => {
+        {licenseData.map((item: any) => {
           return (
             <SwiperSlide>
               <Image
                 className="lg:h-[10rem] xs:h-[6.25rem] lg:w-auto xs:w-[8rem] object-contain"
-                width={300}
-                height={300}
-                alt={item.name}
-                src={item.imageUrl}
+                width={500}
+                height={500}
+                alt={item.id}
+                src={item.image}
               />
             </SwiperSlide>
           );

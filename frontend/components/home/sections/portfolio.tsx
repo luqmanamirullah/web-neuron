@@ -15,7 +15,11 @@ import TechCirclesAndSquares from '@/components/svg/techCirclesAndSquares';
 import DeliverableSlides from '../swiper/deliverableSlides';
 import PortfolioLine from '@/components/svg/portfolioLine';
 
-const PortfolioSection = () => {
+interface Props {
+  homeData: any;
+}
+
+const PortfolioSection = ({ homeData }: Props) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   if (largeScreen) {
@@ -27,7 +31,7 @@ const PortfolioSection = () => {
         <Heading
           alignCenter={true}
           darkBg={false}
-          heading="Amazing Transformation Achievements"
+          heading={homeData.title_project}
           subheading="Client Success Stories"
         />
 

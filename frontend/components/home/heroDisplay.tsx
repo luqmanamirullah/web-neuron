@@ -1,17 +1,20 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { homeHeroDisplays } from '@/data/homeHeroDisplay';
 import './heroDisplay.css';
 
-const HeroDisplay = () => {
+interface Props {
+  heroDisplayList: any;
+}
+
+const HeroDisplay = ({ heroDisplayList }: Props) => {
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
   const ulRef = useRef<HTMLUListElement | null>(null);
 
   // Animation Delay
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const nextIndex = (activeItemIndex + 1) % homeHeroDisplays.length;
+      const nextIndex = (activeItemIndex + 1) % heroDisplayList.length;
       setActiveItemIndex(nextIndex);
     }, 2000);
     return () => clearInterval(intervalId);
@@ -29,14 +32,14 @@ const HeroDisplay = () => {
       );
       ulRef.current.style.width = `${maxChildWidth}px`;
     }
-  }, [homeHeroDisplays, activeItemIndex]);
+  }, [heroDisplayList, activeItemIndex]);
 
   return (
     <ul
       ref={ulRef}
       className="lg:h-[3.6875rem] xs:h-[2rem] inline-flex relative overflow-hidden"
     >
-      {homeHeroDisplays.map((item, index) => {
+      {heroDisplayList.map((item: any, index: number) => {
         return (
           <li
             key={index}
@@ -44,7 +47,7 @@ const HeroDisplay = () => {
               index === activeItemIndex ? 'slide-up' : 'translate-y-[110%]'
             }`}
           >
-            {item.text}
+            {item.title}
           </li>
         );
       })}

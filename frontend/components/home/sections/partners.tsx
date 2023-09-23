@@ -3,7 +3,11 @@ import { partners } from '@/data/partners';
 import Heading from '@/components/heading';
 import PartnerSlides from '../swiper/partnerSlides';
 
-const PartnersSection = () => {
+interface Props {
+  homeData: any;
+}
+
+const PartnersSection = ({ homeData }: Props) => {
   // Function to divide an array into three
   function divideData<T>(arr: T[]): T[][] {
     const length = arr.length;
@@ -22,7 +26,7 @@ const PartnersSection = () => {
       <Heading
         alignCenter={true}
         darkBg={false}
-        heading="Over 100+ businesses have flourished with Neuron by their side"
+        heading={homeData.title_partner}
         subheading="Our Partners"
       />
 

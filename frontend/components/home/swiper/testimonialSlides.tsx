@@ -14,7 +14,11 @@ import './testimonialSlides.css';
 
 import { Pagination, Navigation, EffectCreative } from 'swiper/modules';
 
-const TestimonialSlides = () => {
+interface Props {
+  homeData: any;
+}
+
+const TestimonialSlides = ({ homeData }: Props) => {
   return (
     <div className="relative lg:h-fit xs:h-auto lg:w-fit xs:w-full">
       <Swiper
@@ -23,7 +27,6 @@ const TestimonialSlides = () => {
         navigation={{
           nextEl: '.next-slide',
         }}
-        initialSlide={1}
         pagination={true}
         loop
         noSwiping={true}
@@ -42,29 +45,47 @@ const TestimonialSlides = () => {
           },
         }}
       >
-        {testimonials.map((item) => {
+        {homeData.testimonials.map((item: any) => {
+          const stars = [];
+          const starData = parseInt(item.star);
+
+          for (let i = 0; i < starData; i++) {
+            stars.push(
+              <SvgIcon
+                className="text-sys-light-primary relative z-[1]"
+                fontSize="small"
+                key={i}
+              >
+                <GradeRoundedIcon />
+              </SvgIcon>,
+            );
+          }
+
           return (
-            <SwiperSlide className="no-swiping next-slide">
-              <div className="flex text-sys-light-primary">
-                <SvgIcon fontSize="small">
-                  <GradeRoundedIcon />
-                </SvgIcon>
-                <SvgIcon fontSize="small">
-                  <GradeRoundedIcon />
-                </SvgIcon>
-                <SvgIcon fontSize="small">
-                  <GradeRoundedIcon />
-                </SvgIcon>
-                <SvgIcon fontSize="small">
-                  <GradeRoundedIcon />
-                </SvgIcon>
-                <SvgIcon fontSize="small">
-                  <GradeRoundedIcon />
-                </SvgIcon>
+            <SwiperSlide key={item.id} className="no-swiping next-slide">
+              <div className="flex relative">
+                {stars}
+                <div className="flex absolute text-sys-light-surfaceContainer">
+                  <SvgIcon fontSize="small">
+                    <GradeRoundedIcon />
+                  </SvgIcon>
+                  <SvgIcon fontSize="small">
+                    <GradeRoundedIcon />
+                  </SvgIcon>
+                  <SvgIcon fontSize="small">
+                    <GradeRoundedIcon />
+                  </SvgIcon>
+                  <SvgIcon fontSize="small">
+                    <GradeRoundedIcon />
+                  </SvgIcon>
+                  <SvgIcon fontSize="small">
+                    <GradeRoundedIcon />
+                  </SvgIcon>
+                </div>
               </div>
 
               <p className="md:text-desktop-body xs:text-mobile-body">
-                “ {item.quote} ”
+                {item.desc}
               </p>
 
               <div className="flex items-center gap-3">
@@ -72,13 +93,13 @@ const TestimonialSlides = () => {
                   className="md:w-[3.125rem] md:h-[3.125rem] xs:w-[2.1875rem] xs:h-[2.1875rem] object-cover rounded-full"
                   width={100}
                   height={100}
-                  src={item.imageUrl}
+                  src={item.image}
                   alt="Reviewer Picture"
                 />
 
                 <div className="text-subtitle">
                   <p className="font-bold">{item.name}</p>
-                  <p>{item.role}</p>
+                  <p>{item.job}</p>
                 </div>
               </div>
             </SwiperSlide>
