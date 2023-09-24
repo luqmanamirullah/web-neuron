@@ -9,7 +9,11 @@ import Heading from '@/components/heading';
 import Button from '@/components/button';
 import DeliverableSlides from '../swiper/deliverableSlides';
 
-const PortfolioMobile = () => {
+interface Props {
+  portfolioData: any;
+}
+
+const PortfolioMobile = ({ portfolioData }: Props) => {
   return (
     <section className="mt-12 mx-xs">
       <Heading
@@ -20,7 +24,7 @@ const PortfolioMobile = () => {
       />
 
       <div className="mt-10 flex flex-col gap-20">
-        {portfolios.map((item, index) => {
+        {portfolioData.map((item: any, index: number) => {
           if (index < 3) {
             return (
               <div>
@@ -31,7 +35,7 @@ const PortfolioMobile = () => {
                   <Image
                     className="w-full h-full object-cover"
                     alt="Portfolio Image"
-                    src={item.imageUrl}
+                    src={item.image}
                     width={700}
                     height={700}
                   />
@@ -43,7 +47,7 @@ const PortfolioMobile = () => {
                 </p>
 
                 {/* Btn */}
-                <Link href={`/service/${item.portfolioId}`}>
+                <Link href={`/service/${item.id}`}>
                   <Button
                     buttonStyle="filled"
                     label="SEE STUDY CASE"
@@ -59,7 +63,7 @@ const PortfolioMobile = () => {
                     Technology used
                   </h6>
 
-                  {item.techConfidential ? (
+                  {item.technologies.length === 0 ? (
                     <p className="text-mobile-body">
                       confidential information
                       <SvgIcon className="ml-2" fontSize="small">
@@ -68,11 +72,11 @@ const PortfolioMobile = () => {
                     </p>
                   ) : (
                     <div className="flex gap-2">
-                      {item.tech.map((tech) => {
+                      {item.technologies.map((tech: any) => {
                         return (
                           <Image
                             className="w-[2.5rem] h-[2.5rem]"
-                            alt={tech.techName}
+                            alt={'Technology used'}
                             src={tech.icon}
                             width={40}
                             height={40}

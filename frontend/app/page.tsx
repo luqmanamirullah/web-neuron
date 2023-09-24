@@ -13,8 +13,8 @@ import ArticlesSection from '@/components/home/sections/articles';
 import LicensesSection from '@/components/home/sections/licenses';
 import HomeBackground from '@/components/svg/homeBackground';
 
-async function getData(): Promise<any> {
-  const res = await fetch('http://127.0.0.1:8000/api/home');
+async function getData(url: string): Promise<any> {
+  const res = await fetch(url + '?_=' + new Date().getTime());
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -25,40 +25,58 @@ async function getData(): Promise<any> {
 }
 
 async function page(): Promise<JSX.Element> {
-  const data = await getData();
-  const homeData = data.data[0];
+  const homeData = await getData('http://127.0.0.1:8000/api/home');
+  const topServiceData = await getData(
+    'http://127.0.0.1:8000/api/top-services',
+  );
+  const successPortfolio = await getData(
+    'http://127.0.0.1:8000/api/success-portofolio',
+  );
+  const productsData = await getData('http://127.0.0.1:8000/api/products');
+
   return (
     <>
-    <>
-      {/* Fetch Unfinished */}
       {/* Section: HERO */}
-      <section className="h-screen w-full flex items-center md:mx-xl xs:mx-xs">
-        <div className="max-w-[48.625rem] mt-[2.12rem]">
-          {/* Display CTA */}
-          <div className="flex flex-col text-desktop-display font-bold">
-            <h1>Enhance Your Business:</h1>
-            <div className="flex gap-6">
-              <h1 className="bg-">Simplify</h1>
-              <h1>With Neuronworks</h1>
-            </div>
-            <h1>Software Evolution</h1>
-          </div>
+      <HeroSection homeData={homeData.data[0]} />
 
-          {/* Desc */}
-          <p className="text-desktop-body-large mt-2 mb-10">
-            Where Vision Transforms into Code Empowering Your Digital Future
-          </p>
+      {/* Lottie Illustration unfinished */}
+      {/* Section: ABOUT */}
+      <AboutSection homeData={homeData.data[0]} />
 
-          {/* Btn */}
-          <Button
-            label="CONSULT WITH US"
-            size="lg"
-            buttonStyle="filled"
-            withIcon={true}
-            icon={<ArrowForwardRounded />}
-          />
-        </div>
-      </section>
+      {/* Section: SERVICES */}
+      <ServicesSection
+        homeData={homeData.data[0]}
+        topServiceData={topServiceData.data}
+      />
+
+      {/* Section: PORTFOLIO */}
+      <PortfolioSection
+        homeData={homeData.data[0]}
+        portfolioData={successPortfolio.data}
+      />
+
+      {/* Section: PRODUCTS */}
+      <ProductsSection
+        homeData={homeData.data[0]}
+        productsData={productsData.data}
+      />
+
+      {/* Section: NEURON'S PROGRAM */}
+      <ProgramSection homeData={homeData.data[0]} />
+
+      {/* Still using dummy data */}
+      {/* Section: PARTNERS */}
+      <PartnersSection homeData={homeData.data[0]} />
+
+      {/* Still using dummy data */}
+      {/* Section: LATEST ARTICLES */}
+      <ArticlesSection homeData={homeData.data[0]} />
+
+      {/* Section: LICENSES */}
+      <LicensesSection homeData={homeData.data[0]} />
+
+      {/* SVG Background */}
+      <HomeBackground className="absolute lg:block xs:hidden top-0 w-[58.34375rem] h-[76.8125rem] z-[-1]" />
     </>
   );
 }

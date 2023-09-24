@@ -13,7 +13,11 @@ import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import { services } from '@/data/services';
 import { useMediaQuery } from '@mui/material';
 
-const ServiceSlides = () => {
+interface Props {
+  topServiceData: any;
+}
+
+const ServiceSlides = ({ topServiceData }: Props) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   return (
@@ -34,7 +38,7 @@ const ServiceSlides = () => {
         modules={[FreeMode]}
         className="service-slides"
       >
-        {services.map((item, index) => {
+        {topServiceData.map((item: any, index: number) => {
           if (index < 3) {
             return (
               <SwiperSlide className={largeScreen ? 'no-swiping' : ''}>
@@ -61,7 +65,7 @@ const ServiceSlides = () => {
                   className="absolute top-0 w-full h-full object-cover"
                   height={500}
                   width={500}
-                  src={item.imageUrl}
+                  src={item.image}
                   alt={item.name}
                 />
 

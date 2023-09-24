@@ -5,9 +5,10 @@ import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
   homeData: any;
+  topServiceData: any;
 }
 
-const ServicesSection = ({ homeData }: Props) => {
+const ServicesSection = ({ homeData, topServiceData }: Props) => {
   return (
     <section className="lg:h-screen lg:mt-0 xs:mt-12 lg:mx-xl xs:mx-xs">
       {/* Heading */}
@@ -31,7 +32,7 @@ const ServicesSection = ({ homeData }: Props) => {
         </div>
       </div>
 
-      <ServiceSlides />
+      <ServiceSlides topServiceData={topServiceData} />
     </section>
   );
 };

@@ -17,15 +17,11 @@ const ProgramSection = ({ homeData }: Props) => {
         {/* Content */}
         <div className="lg:flex-1 lg:block xs:flex flex-col relative lg:py-14 xs:py-6 lg:px-10 xs:px-6">
           <h1 className="lg:text-desktop-display xs:text-mobile-headline font-bold text-sys-light-primaryContainer">
-            NEURON 3.0: Ignite Your Leadership Journey
+            {homeData.neuron_program.title}
           </h1>
 
           <p className="mt-2 lg:text-desktop-body xs:text-mobile-body text-sys-light-primaryContainer">
-            Experience NEURON 3.0, the hub of innovation. We don't just reshape
-            projects; we empower individuals to lead – themselves, their teams,
-            and our business. Uncover your potential in our dynamic,
-            forward-thinking Neuronworks environment – where together, we craft
-            the future.
+            {homeData.neuron_program.desc}
           </p>
 
           <Button
@@ -41,7 +37,7 @@ const ProgramSection = ({ homeData }: Props) => {
         {/* YT Embed */}
         <YoutubeEmbed
           className="lg:flex-1 lg:w-fit xs:w-[95%] lg:h-[80%] xs:h-[12rem] lg:mr-10 lg:my-auto lg:mx-0 xs:mx-auto relative"
-          embedId="Zvc3DgDhzhw?si=MMLCWqISXecjAaAI"
+          ytEmbed={homeData.neuron_program.image}
         />
       </div>
     </section>
