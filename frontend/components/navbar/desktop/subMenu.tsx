@@ -22,19 +22,22 @@ const SubMenu: React.FC<Props> = ({ item, isShow }) => {
     springRef,
     transRef,
     list: item,
+    sizeType: '%',
   });
 
   return (
     <animated.ul
       className={cn(
-        'absolute top-0 -left-1/2 mt-10 bg-white flex flex-col gap-s items-start p-4 text-desktop-body z-20  will-change-transform transition-all duration-500 overflow-auto border border-black rounded',
-        isShow ? 'opacity-100' : 'opacity-0 pointer-events-none',
+        'absolute top-0 -left-1/2 translate-x-1/2 mt-10 bg-white flex flex-col gap-s items-start p-4 text-desktop-body z-20  will-change-transform  overflow-auto border border-black rounded',
+        isShow
+          ? 'opacity-100'
+          : 'opacity-0 pointer-events-none transition-all duration-500',
       )}
       style={{ ...rest, scale: size }}
     >
       {transitions((style: any, item: any) => (
         <animated.li
-          className="z-10 w-max will-change-[opacity, transform] text-sys-light-onSurface font-semibold hover:text-sys-light-primary cursor-pointer group transition-all ease-in-out duration-300"
+          className="z-10 w-max will-change-[opacity, transform] text-sys-light-onSurface font-semibold hover:text-sys-light-primary cursor-pointer group"
           style={{ ...style }}
         >
           <Link href={item.link}>

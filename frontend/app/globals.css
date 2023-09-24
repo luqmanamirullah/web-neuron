@@ -9,6 +9,7 @@
 [class*='text-desktop-display'] {
   @apply font-raleway;
 }
+
 [class*='text-mobile-display'] {
   @apply font-raleway;
 }
@@ -16,6 +17,7 @@
 [class*='text-desktop-headline'] {
   @apply font-raleway;
 }
+
 [class*='text-mobile-headline'] {
   @apply font-raleway;
 }
@@ -23,6 +25,7 @@
 [class*='text-desktop-title'] {
   @apply font-raleway;
 }
+
 [class*='text-mobile-title'] {
   @apply font-raleway;
 }
@@ -30,6 +33,7 @@
 [class*='text-desktop-body'] {
   @apply font-inter;
 }
+
 [class*='text-mobile-body'] {
   @apply font-inter;
 }
@@ -45,6 +49,7 @@
 [class*='text-desktop-label'] {
   @apply font-inter;
 }
+
 [class*='text-mobile-label'] {
   @apply font-inter;
 }

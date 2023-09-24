@@ -96,6 +96,7 @@ class ProductController extends Controller
         return redirect()->route('product')->with('success', 'product updated successfully.');
     }
 
+    // API
     public function getProduct()
     {
         $products = Product::all();

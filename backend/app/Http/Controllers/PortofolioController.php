@@ -7,9 +7,11 @@ use App\Models\Portofolio;
 use App\Models\Technology;
 use App\Models\Deliverable;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Models\PortofolioTechnology;
 use App\Http\Resources\PortofolioResource;
+use App\Http\Resources\SuccessPortofolioResource;
 
 class PortofolioController extends Controller
 {
@@ -67,7 +69,11 @@ class PortofolioController extends Controller
     {
         $technologies = Technology::all();
         $portofolio = new Portofolio();
-        return view('cms.Portofolio.add', compact('technologies', 'portofolio'));
+        $successProjectOption = [
+            'true' => 'Yes',
+            'false' => 'No',
+        ];
+        return view('cms.Portofolio.add', compact('technologies', 'portofolio', 'successProjectOption'));
     }
 
     public function store(Request $request)
@@ -82,7 +88,8 @@ class PortofolioController extends Controller
             'our_solution' => 'required|string',
             'details' => 'required|string',
             'created_at' => 'required|date',
-            'technologies' => 'required|array',
+            'successProject' => Rule::in(['true', 'false']),
+            'technologies' => 'nullable|array',
             'deliverables' => 'required|array',
             'handles' => 'required|array',
         ]);
@@ -94,6 +101,8 @@ class PortofolioController extends Controller
             $profilePicturePath = '/img/portofolios/' . $profilePictureName;
         }
 
+        $successProject = $request->input('successProject');
+
         // Simpan data portofolio ke database
         $portofolio = new Portofolio([
             'name' => $request->name,
@@ -104,6 +113,7 @@ class PortofolioController extends Controller
             'details' => $request->details,
             'created_at' => $request->created_at,
             'image' => url($profilePicturePath),
+            'successProject' => $successProject,
         ]);
         
         $portofolio->save();
@@ -143,8 +153,13 @@ class PortofolioController extends Controller
         $portofolio = Portofolio::findOrFail($id);
 
         $technologies = Technology::all();
+
+        $successProjectOption = [
+            'true' => 'Yes',
+            'false' => 'No',
+        ];
         $selectedTechnologies = $portofolio->technologies->pluck('id')->toArray();        
-        return view('cms.Portofolio.edit', compact('portofolio', 'technologies', 'selectedTechnologies'));
+        return view('cms.Portofolio.edit', compact('portofolio', 'technologies', 'selectedTechnologies', 'successProjectOption'));
     }
 
     public function update(Request $request, $id)
@@ -161,6 +176,7 @@ class PortofolioController extends Controller
             'our_solution' => 'required|string',
             'details' => 'required|string',
             'created_at' => 'required|date',
+            'successProject' => 'required|in:true,false',
             'technologies' => 'required|array',
         ]);
 
@@ -172,6 +188,7 @@ class PortofolioController extends Controller
         $portofolio->our_solution = $request->input('our_solution');
         $portofolio->details = $request->input('details');
         $portofolio->created_at = $request->input('created_at');
+        $portofolio->successProject = $request->input(('successProject'));
 
         // Simpan perubahan pada data portofolio
         $portofolio->save();
@@ -371,5 +388,30 @@ class PortofolioController extends Controller
         }
 
         return PortofolioResource::collection($portofolios);
+    }
+
+    public function getLatestPortfolios()
+    {
+        // Mengambil 6 portofolio terbaru berdasarkan tanggal pembuatan
+        $latestPortfolios = Portofolio::orderBy('created_at', 'desc')->take(6)->get();
+
+        return PortofolioResource::collection($latestPortfolios);
+    }
+
+    public function getSuccessPortofolio()
+    {
+        $successPortofolio = Portofolio::where('successProject', 'true')
+        ->limit(3) // Batasi hanya mengambil 3 data teratas
+        ->orderBy('id', 'desc') // Urutkan berdasarkan ID secara descending (untuk mengambil yang paling atas)
+        ->get();
+
+        return SuccessPortofolioResource::collection($successPortofolio);
+    }
+
+    public function getPortfolioById($id)
+    {
+        $portfolio = Portofolio::findOrFail($id);
+
+        return new PortofolioResource($portfolio);
     }
 }
