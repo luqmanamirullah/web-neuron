@@ -1,0 +1,64 @@
+.service-tab-nav.Mui-selected {
+  color: black;
+  font-style: bold;
+}
+
+.service-tab.MuiTabScrollButton-root:nth-child(1) {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 502;
+}
+
+div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:first-child {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 40;
+}
+
+div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:last-child {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 40;
+}
+
+@media (max-width: 599.95px) {
+  .css-1ujnqem-MuiTabs-root .MuiTabs-scrollButtons {
+    display: inline-flex;
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root {
+    backdrop-filter: blur(1px);
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:first-child {
+    left: -10px;
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:last-child {
+    right: -10px;
+  }
+}

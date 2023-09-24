@@ -20,7 +20,8 @@
             <div class="d-flex justify-content-start mb-3">
                 <a href="{{ route('portofolio') }}" class="btn btn-primary mr-2">Portofolio</a>
                 <a href="{{ route('product') }}" class="btn btn-success mr-2">Product</a>
-                <a href="#" class="btn btn-primary">Methodology</a>
+                <a href="{{ route('methadology') }}" class="btn btn-primary mr-2">Methodology</a>
+                <a href="{{ route('technology') }}" class="btn btn-primary mr-2">Technology</a>
             </div>
             <form action="{{ route('show-product') }}" method="GET">
                 @csrf
@@ -58,14 +59,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div id="collapse{{ $product->id }}" class="collapse" aria-labelledby="heading{{ $product->id }}" data-parent="#productAccordion">
-                    <div class="card-body">
-                        <p class="product-desc">{{ $product->desc }}</p>
-                        <a href="{{ $product->link }}" target="_blank" class="btn btn-danger text-white">
-                            Try Now <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
+            <div id="collapse{{ $product->id }}" class="collapse" aria-labelledby="heading{{ $product->id }}" data-parent="#productAccordion">
+                <div class="card-body">
+                    <p class="product-desc">{{ $product->desc }}</p>
+                    <a href="{{ $product->link }}" target="_blank" class="btn btn-danger text-white">
+                        Try Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
 

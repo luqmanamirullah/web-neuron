@@ -33,27 +33,27 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name">
                     </div>
 
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     </div>
 
                     <div class="form-group">
                         <label for="password_confirmation">Confirm Password</label>
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
                     </div>
 
                     <div class="form-group">

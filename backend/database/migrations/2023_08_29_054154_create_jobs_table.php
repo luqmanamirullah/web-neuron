@@ -19,6 +19,7 @@ class CreateJobsTable extends Migration
             $table->string('location', 50);
             $table->text('desc');
             $table->text('responsibilities');
+            $table->string('link');
             $table->timestamps();
         });
     }

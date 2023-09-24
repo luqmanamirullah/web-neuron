@@ -28,14 +28,14 @@ const SubMenu: React.FC<Props> = ({ item, isShow, setIsShow }) => {
   return (
     <animated.ul
       className={cn(
-        'lg:hidden h-screen  absolute top-0 left-0 bg-white flex flex-col gap-s items-center px-4 text-mobile-title md:text-desktop-title z-40 pt-20 will-change-transform overflow-auto transition-all duration-500  ease-in-out ',
+        'lg:hidden h-screen  absolute top-0 left-0 bg-white flex flex-col gap-s items-center px-4 text-mobile-title md:text-desktop-title z-40 pt-20 will-change-transform overflow-auto',
         isShow ? 'translate-x-0' : '-translate-x-full',
       )}
       style={{ ...rest, width: size }}
     >
       {transitions((style: any, item: any) => (
         <animated.li
-          className="z-10 w-full sm:w-72 md:w-96  will-change-[opacity, transform] text-sys-light-onSurface font-semibold hover:text-sys-light-primary cursor-pointer group transition-all ease-in-out duration-300"
+          className="z-10 w-full sm:w-72 md:w-96  will-change-[opacity, transform] text-sys-light-onSurface font-semibold hover:text-sys-light-primary cursor-pointer group "
           style={{ ...style }}
         >
           <Link href={item.link}>

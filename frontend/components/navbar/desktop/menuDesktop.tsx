@@ -17,7 +17,7 @@ interface Props {
 
 const MenuDesktop: React.FC<Props> = ({ item, router, currPath }) => {
   return (
-    <ul className="hidden lg:flex gap-lg items-center text-desktop-body text-sys-light-onSurface font-medium">
+    <ul className="hidden lg:flex gap-md items-center text-desktop-body text-sys-light-onSurface font-medium">
       {item.map((menu: Menu, index: number) => {
         if (menu.type === 'link' && menu.link !== undefined) {
           return (

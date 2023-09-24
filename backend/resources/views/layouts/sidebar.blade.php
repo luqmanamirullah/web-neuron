@@ -58,15 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-image"></i>
-              <p>
-                Gallery
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('career') }}" class="nav-link">
             <i class="nav-icon fas fa-house-user"></i>
               <p>
                 Career
@@ -83,7 +75,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('service') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Services</p>
                 </a>

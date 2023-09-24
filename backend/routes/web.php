@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\MethadologyController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\Register\RegisterController;
 
@@ -57,6 +61,18 @@ Route::middleware(['auth'])->group(function () {
     // edit & update portofolio
     Route::get('portofolio/{id}/edit', [PortofolioController::class, 'edit'])->name('portofolio-edit');
     Route::put('portofolio/{id}/update', [PortofolioController::class, 'update'])->name('portofolio-update');
+    // delete technology in portofolio
+    Route::delete('/delete-technology/{portofolio_id}/{technology_id}', [PortofolioController::class, 'deleteTechnology'])->name('delete-technology');
+    // add technology already exist blade edit
+    Route::post('/portofolio/{id}/add-technology', [PortofolioController::class, 'addTechnology'])->name('portofolio-add-technology');
+    // delete deliverable in portofolio
+    Route::delete('/portofolio/{portofolio_id}/deliverable/{deliverable_id}', [PortofolioController::class, 'deleteDeliverable'])->name('delete-deliverable');
+    // delete handle in portofolio
+    Route::delete('/portofolio/{portofolio_id}/handle/{handle_id}', [PortofolioController::class, 'deleteHandle'])->name('delete-handle');
+    // add delivery blade edit
+    Route::post('/portofolio/{portofolio_id}/add-deliverable', [PortofolioController::class, 'addDeliverableEdit'])->name('portofolio.add-deliverable');
+    // add handle blade edit
+    Route::post('/portofolio/{portofolio_id}/add-handle', [PortofolioController::class, 'addHandleEdit'])->name('portofolio.add-handle');
     // show produk
     Route::get('/product', [ProductController::class, 'product'])->name('product');
     Route::get('/product', [ProductController::class, 'showproduct'])->name('product');
@@ -95,6 +111,73 @@ Route::middleware(['auth'])->group(function () {
     // edit & update blog category
     Route::get('blog-categories/{id}/edit', [BlogCategoryController::class, 'edit'])->name('blog-categories-edit');
     Route::put('blog-categories/{id}/update', [BlogCategoryController::class, 'update'])->name('blog-categories-update');
+    // show methadology
+    Route::get('/methadology', [MethadologyController::class, 'methadology'])->name('methadology');
+    Route::get('/methadology', [MethadologyController::class, 'methadologyshow'])->name('methadology');
+    Route::get('/show-methadology', [MethadologyController::class, 'showMethadology'])->name('show-methadology');
+    // delete methadology
+    Route::delete('/methadology/{id}', [MethadologyController::class, 'deleteMethadology'])->name('delete-methadology');
+    // Add methadology
+    Route::get('/methadology/create', [MethadologyController::class, 'create'])->name('create-methadology');
+    Route::post('/methadology/store', [MethadologyController::class, 'store'])->name('store-methadology');
+    // edit & update methadology
+    Route::get('methadology/{id}/edit', [MethadologyController::class, 'edit'])->name('methadology-edit');
+    Route::put('methadology/{id}/update', [MethadologyController::class, 'update'])->name('methadology-update');
+    // add technology
+    Route::post('/technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+    // add technology category
+    Route::post('/technology/category/store', [TechnologyController::class, 'storeCategory'])->name('store-category');
+    // show technology
+    Route::get('/technology', [TechnologyController::class, 'technology'])->name('technology');
+    Route::get('/technology', [TechnologyController::class, 'technologyshow'])->name('technology');
+    Route::get('/show-technology', [TechnologyController::class, 'showTechnology'])->name('show-technology');
+    // edit & update blog category
+    Route::get('technology/{id}/edit', [TechnologyController::class, 'edit'])->name('technology-edit');
+    Route::put('technology/{id}/update', [TechnologyController::class, 'update'])->name('technology-update');
+    // show service
+    Route::get('/service', [ServiceController::class, 'service'])->name('service');
+    Route::get('/service', [ServiceController::class, 'showservice'])->name('service');
+    Route::get('/show-service', [ServiceController::class, 'showService'])->name('show-service');
+    // Delete service
+    Route::delete('/service/{id}', [ServiceController::class, 'deleteService'])->name('delete-service');
+    // Add Service
+    Route::get('/service/create', [ServiceController::class, 'create'])->name('service-create');
+    Route::post('/service/store', [ServiceController::class, 'store'])->name('service-store');
+    // edit & update portofolio
+    Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service-edit');
+    Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service-update');
+    // add technology already exist blade edit
+    Route::post('/service/{id}/add-technology', [ServiceController::class, 'addTechnology'])->name('keyfeature-add-technology');
+    // delete technology in portofolio
+    Route::delete('/service/{id}/delete-technology/{technology_id}', [ServiceController::class, 'deleteTechnologyInService'])->name('delete-technology-service');
+    // add keyfeature blade edit
+    Route::post('/service/{services_id}/add-keyFeature', [ServiceController::class, 'addKeyFeatureEdit'])->name('keyfeature.add-deliverable');
+    // delete keyfeature in portofolio
+    Route::delete('/service/{services_id}/key-feature/{keyfeature_id}', [ServiceController::class, 'deleteKeyFeature'])->name('delete-keyFeature');
+    // show career
+    Route::get('/career', [CareerController::class, 'career'])->name('career');
+    Route::get('/career', [CareerController::class, 'showcareer'])->name('career');
+    Route::get('/show-career', [CareerController::class, 'showCareer'])->name('show-career');
+    // delete skill in career
+    Route::delete('/career/{career_id}/skill/{skill_id}', [CareerController::class, 'deleteSkill'])->name('delete-skill');
+    // delete job plus value in career
+    Route::delete('/career/{career_id}/plusValue/{plusvalue_id}', [CareerController::class, 'deletePlusValue'])->name('delete-plus-value');
+    // edit job plus value in career
+    Route::put('/careers/{career_id}/plusvalues/{plusvalue_id}', [CareerController::class, 'updatePlusValue'])->name('edit-plus-value');
+    // edit skill in career
+    Route::put('/careers/{career_id}/skills/{skill_id}', [CareerController::class, 'updateSkill'])->name('edit-skill');
+    // Add career
+    Route::get('/career/create', [CareerController::class, 'create'])->name('career-create');
+    Route::post('/career/store', [CareerController::class, 'store'])->name('career-store');
+    // Delete career
+    Route::delete('/career/{id}', [CareerController::class, 'deletecareer'])->name('delete-career');
+    // edit & update career
+    Route::get('career/{id}/edit', [CareerController::class, 'edit'])->name('career-edit');
+    Route::put('career/{id}/update', [CareerController::class, 'update'])->name('career-update');
+    // add skiill blade edit
+    Route::post('/career/{career_id}/add-skiill', [CareerController::class, 'addSkillEdit'])->name('career.add-skill');
+    // add plus value blade edit
+    Route::post('/career/{career_id}/add-plusValue', [CareerController::class, 'addPlusValueEdit'])->name('career.add-plusValue');
 });
 
 // hanya untuk user dengan role superadmin
