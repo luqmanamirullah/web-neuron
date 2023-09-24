@@ -31,4 +31,9 @@ class CtaContact extends Model
     {
         return $this->hasOne(About::class, 'cta_contact_id');
     }
+
+    public function articlePages()
+    {
+        return $this->hasOne(ArticlePages::class, 'cta_contact_id');
+    }
 }
