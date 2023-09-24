@@ -17,9 +17,10 @@ import PortfolioLine from '@/components/svg/portfolioLine';
 
 interface Props {
   homeData: any;
+  portfolioData: any;
 }
 
-const PortfolioSection = ({ homeData }: Props) => {
+const PortfolioSection = ({ homeData, portfolioData }: Props) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   if (largeScreen) {
@@ -37,7 +38,7 @@ const PortfolioSection = ({ homeData }: Props) => {
 
         {/* Portfolios */}
         <div className="flex flex-col gap-32">
-          {portfolios.map((item, index) => {
+          {portfolioData.map((item: any, index: number) => {
             if (index < 3) {
               return (
                 <div className="flex gap-12 lg:mt-16 relative">
@@ -56,7 +57,7 @@ const PortfolioSection = ({ homeData }: Props) => {
                       {item.desc}
                     </p>
 
-                    <Link href={`/service/${item.portfolioId}`}>
+                    <Link href={`/service/${item.id}`}>
                       <Button
                         buttonStyle="filled"
                         label="SEE STUDY CASE"
@@ -71,7 +72,7 @@ const PortfolioSection = ({ homeData }: Props) => {
                     <Image
                       className="w-full h-full object-cover"
                       alt="Portfolio Image"
-                      src={item.imageUrl}
+                      src={item.image}
                       width={700}
                       height={700}
                     />
@@ -83,7 +84,7 @@ const PortfolioSection = ({ homeData }: Props) => {
                       <h4 className="lg:text-desktop-title font-bold mb-2">
                         Technology Used
                       </h4>
-                      {item.techConfidential ? (
+                      {item.technologies.length === 0 ? (
                         <p className="text-desktop-body">
                           confidential information
                           <SvgIcon className="ml-2" fontSize="small">
@@ -92,11 +93,11 @@ const PortfolioSection = ({ homeData }: Props) => {
                         </p>
                       ) : (
                         <div className="flex gap-2">
-                          {item.tech.map((tech) => {
+                          {item.technologies.map((tech: any) => {
                             return (
                               <Image
                                 className="w-[2.5rem] h-[2.5rem]"
-                                alt={tech.techName}
+                                alt={'Technology used'}
                                 src={tech.icon}
                                 width={40}
                                 height={40}
@@ -136,7 +137,7 @@ const PortfolioSection = ({ homeData }: Props) => {
       </section>
     );
   } else {
-    return <PortfolioMobile />;
+    return <PortfolioMobile portfolioData={portfolioData} />;
   }
 };
 

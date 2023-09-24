@@ -8,12 +8,14 @@ import { SvgIcon } from '@mui/material';
 import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import Button from '@/components/button';
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
+import Link from 'next/link';
 
 interface Props {
+  productsData: any;
   homeData: any;
 }
 
-const ProductsSection = ({ homeData }: Props) => {
+const ProductsSection = ({ homeData, productsData }: Props) => {
   const [isActive, setIsActive] = useState<number>(-1);
 
   const toggleActive = (id: number) => {
@@ -30,7 +32,7 @@ const ProductsSection = ({ homeData }: Props) => {
       />
 
       <div className="mt-6 flex flex-col gap-1 items-center">
-        {products.map((item, index) => {
+        {productsData.map((item: any, index: number) => {
           const isItemActive = isActive === index;
 
           const contentSpring = useSpring({
@@ -56,7 +58,7 @@ const ProductsSection = ({ homeData }: Props) => {
               <div className="pt-8 pb-4 px-4 flex justify-between items-center cursor-pointer">
                 <div>
                   <h4 className="lg:text-desktop-title xs:text-mobile-title font-bold">
-                    {item.title}
+                    {item.name}
                   </h4>
                   <p className="lg:text-desktop-label xs:text-mobile-label text-sys-light-onSurfaceVariant">
                     {item.subtitle}
@@ -80,18 +82,19 @@ const ProductsSection = ({ homeData }: Props) => {
                 style={contentSpring}
                 className="px-4 pb-6 overflow-hidden"
               >
-                <p className="lg:text-desktop-body xs:text-mobile-body text-sys-light-onSurface">
+                <p className="mb-4 lg:text-desktop-body xs:text-mobile-body text-sys-light-onSurface">
                   {item.desc}
                 </p>
 
-                <Button
-                  className="mt-4"
-                  buttonStyle="filled"
-                  label="Try Now"
-                  size="sm"
-                  withIcon={true}
-                  icon={<ArrowForwardRounded />}
-                />
+                <Link href={item.link}>
+                  <Button
+                    buttonStyle="filled"
+                    label="Try Now"
+                    size="sm"
+                    withIcon={true}
+                    icon={<ArrowForwardRounded />}
+                  />
+                </Link>
               </animated.div>
 
               {/* Bottom Divider */}
