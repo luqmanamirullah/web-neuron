@@ -9,7 +9,11 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import Button from '@/components/button';
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 
-const ProductsSection = () => {
+interface Props {
+  homeData: any;
+}
+
+const ProductsSection = ({ homeData }: Props) => {
   const [isActive, setIsActive] = useState<number>(-1);
 
   const toggleActive = (id: number) => {
@@ -21,7 +25,7 @@ const ProductsSection = () => {
       <Heading
         alignCenter={true}
         darkBg={false}
-        heading="Revealing Digital Brilliance"
+        heading={homeData.title_product}
         subheading="Our Products"
       />
 

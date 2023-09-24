@@ -9,35 +9,57 @@ import ArticlesSection from '@/components/home/sections/articles';
 import LicensesSection from '@/components/home/sections/licenses';
 import HomeBackground from '@/components/svg/homeBackground';
 
-function page(): JSX.Element {
+async function getData(): Promise<any> {
+  const res = await fetch('http://127.0.0.1:8000/api/home');
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+async function page(): Promise<JSX.Element> {
+  const data = await getData();
+  const homeData = data.data[0];
   return (
     <>
+      {/* Fetch Unfinished */}
       {/* Section: HERO */}
-      <HeroSection />
+      <HeroSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: ABOUT */}
-      <AboutSection />
+      <AboutSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: SERVICES */}
-      <ServicesSection />
+      <ServicesSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: PORTFOLIO */}
-      <PortfolioSection />
+      <PortfolioSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: PRODUCTS */}
-      <ProductsSection />
+      <ProductsSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: NEURON'S PROGRAM */}
-      <ProgramSection />
+      <ProgramSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: PARTNERS */}
-      <PartnersSection />
+      <PartnersSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: LATEST ARTICLES */}
-      <ArticlesSection />
+      <ArticlesSection homeData={homeData} />
 
+      {/* Fetch Unfinished */}
       {/* Section: LICENSES */}
-      <LicensesSection />
+      <LicensesSection homeData={homeData} />
 
       {/* SVG Background */}
       <HomeBackground className="absolute lg:block xs:hidden top-0 w-[58.34375rem] h-[76.8125rem] z-[-1]" />

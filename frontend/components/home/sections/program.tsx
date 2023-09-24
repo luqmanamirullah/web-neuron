@@ -3,7 +3,11 @@ import Button from '@/components/button';
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import YoutubeEmbed from '../youtubeEmbed';
 
-const ProgramSection = () => {
+interface Props {
+  homeData: any;
+}
+
+const ProgramSection = ({ homeData }: Props) => {
   return (
     <section className="mt-20">
       <div className="flex lg:flex-row xs:flex-col lg:gap-2 xs:gap-8 relative lg:h-[31.3125rem]">
