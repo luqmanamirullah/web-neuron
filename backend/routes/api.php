@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CtaContactController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\MethadologyController;
@@ -27,11 +28,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/services', [ServiceController::class, 'getServices']);
 Route::get('/services/by-name', [ServiceController::class, 'getServicesByName']);
 
+// Service Page
+Route::get('/service-pages', [ServiceController::class, 'getServicePages']);
+
+// Top Service
+Route::get('/top-services', [ServiceController::class, 'getTopServices']);
+
 // Portofolio
 Route::get('/portofolio', [PortofolioController::class, 'getPortofolio']);
 
+// Success Portofolio
+Route::get('/success-portofolio', [PortofolioController::class, 'getSuccessPortofolio']);
+
 // latest portofolio
-Route::get('/portfolios/latest', [HomeController::class, 'getLatestPortfolios']);
+Route::get('/portfolios/latest', [PortofolioController::class, 'getLatestPortfolios']);
 
 // Methodology
 Route::get('/methodology', [MethadologyController::class, 'getMethadology']);
@@ -46,3 +56,6 @@ Route::get('/products', [ProductController::class, 'getProduct']);
 
 // Home
 Route::get('home', [HomeController::class, 'getHome']);
+
+// CTA_Contact
+Route::get('/cta-contacts', [CtaContactController::class, 'getCtaContacts']);
