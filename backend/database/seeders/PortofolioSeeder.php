@@ -24,14 +24,15 @@ class PortofolioSeeder extends Seeder
 
         DB::table('portofolios')->insert([
             [
-                'name' => 'My Telkom',
+                'name' => 'My Simetri',
                 'category' => 'CRM App',
                 'customer_name' => 'PT. Telkom Indonesia',
-                'desc' => 'My.telkom.co.id (MyTelkom) adalah sebuah portal self-services dengan konsep zero touch point (mandiri atau tanpa diperantara petugas) untuk memudahkan dan memberikan ultimate experience bagi pelanggan',
+                'desc' => 'Embark on a journey of achievement with the My SIMETRI web application. Our success is woven into every line of code, as we ve harnessed cutting-edge technology to create a seamless queue management system. From intuitive touch screen registration to swift queue number allocation',
                 'link' => null,
                 'image' => 'http://127.0.0.1:8000/img/portofolios/mytelkom.png',
                 'our_solution' => 'Embark on a journey of achievement with the My SIMETRI web application. Our success is woven into every line of code, as weve harnessed cutting-edge technology to create a seamless queue management system. From intuitive touch screen registration to swift queue number allocation',
                 'details' => 'Embark on a journey of achievement with the My SIMETRI web application. Our success is woven into every line of code, as weve harnessed cutting-edge technology to create a seamless queue management system. From intuitive touch screen registration to swift queue number allocation',
+                'successProject' => 'true',
                 'created_at' => '2019-10-13',
                 'updated_at' => Carbon::now(),
             ],
@@ -44,6 +45,7 @@ class PortofolioSeeder extends Seeder
                 'image' => 'http://127.0.0.1:8000/img/portofolios/mytelkom.png',
                 'our_solution' => 'Embark on a journey of achievement with the My SIMETRI web application. Our success is woven into every line of code, as weve harnessed cutting-edge technology to create a seamless queue management system. From intuitive touch screen registration to swift queue number allocation',
                 'details' => 'Embark on a journey of achievement with the My SIMETRI web application. Our success is woven into every line of code, as weve harnessed cutting-edge technology to create a seamless queue management system. From intuitive touch screen registration to swift queue number allocation',
+                'successProject' => 'true',
                 'created_at' => '2020-11-25',
                 'updated_at' => Carbon::now(),
             ],

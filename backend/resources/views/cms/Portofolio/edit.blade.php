@@ -76,6 +76,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="successProject">Success Project</label>
+                            <select class="form-control" id="successProject" name="successProject">
+                                @foreach ($successProjectOption as $value => $label)
+                                <option value="{{ $value }}" {{ $portofolio->successProject == $value ? 'selected' : '' }}>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <div class="d-flex">
                                 <label for="technology">Technologies</label>
                                 <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addTechnologyModal">Add Technology</button>

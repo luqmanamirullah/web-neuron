@@ -47,6 +47,15 @@
                             <input type="file" class="form-control-file" id="image" name="image" required>
                         </div>
 
+                        <div class="form-group">
+                            <label for="isTopService">Top Service</label>
+                            <select class="form-control" id="isTopService" name="isTopService">
+                                @foreach ($isTopServiceOptions as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group ">
                             <label for="technologies">Technologies</label>
                             <select multiple class="form-control" id="technologies" name="technologies[]">

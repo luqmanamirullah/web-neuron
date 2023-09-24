@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             HeroTitleListSeeder::class,
             CertificateSeeder::class,
             PartnerSeeder::class,
+            ServicePagesSeeder::class,
         ]);
     }
 }

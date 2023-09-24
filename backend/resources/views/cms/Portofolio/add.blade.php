@@ -74,6 +74,15 @@
                             <input type="datetime-local" class="form-control" id="created_at" name="created_at" required></input>
                         </div>
 
+                        <div class="form-group">
+                            <label for="successProject">Success Project</label>
+                            <select class="form-control" id="successProject" name="successProject">
+                                @foreach ($successProjectOption as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group ">
                             <label for="technologies">Technologies</label>
                             <select multiple class="form-control" id="technologies" name="technologies[]">

@@ -14,11 +14,15 @@ class CtaContact extends Model
     protected $fillable = [
         'title',
         'desc',
-        'link',
     ];
 
     public function home()
     {
         return $this->hasOne(Home::class, 'cta_contact_id');
+    }
+
+    public function servicePages()
+    {
+        return $this->hasOne(ServicePages::class, 'cta_contact_id');
     }
 }

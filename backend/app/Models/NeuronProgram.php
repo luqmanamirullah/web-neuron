@@ -14,7 +14,6 @@ class NeuronProgram extends Model
     protected $fillable = [
         'title',
         'desc',
-        'link',
         'image',
     ];
 

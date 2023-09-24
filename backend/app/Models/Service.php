@@ -14,6 +14,7 @@ class Service extends Model
         'name',
         'desc',
         'image',
+        'isTopService',
     ];
 
     public function serviceTechnology()
