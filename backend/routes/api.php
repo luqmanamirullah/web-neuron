@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CtaContactController;
@@ -62,3 +63,6 @@ Route::get('home', [HomeController::class, 'getHome']);
 
 // CTA_Contact
 Route::get('/cta-contacts', [CtaContactController::class, 'getCtaContacts']);
+
+// About
+Route::get('/about', [AboutController::class, 'getAbout']);
