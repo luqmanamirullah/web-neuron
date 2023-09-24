@@ -2,9 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Heading from '../../components/heading';
 
-type Props = {};
+interface Props {
+  aboutData: any;
+}
 
-const VisionAndMissions = (props: Props) => {
+const VisionAndMissions = ({ aboutData }: Props) => {
   return (
     <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
       {/* Missions */}
@@ -13,7 +15,7 @@ const VisionAndMissions = (props: Props) => {
           className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
           width={700}
           height={700}
-          src="/assets/images/3.jpg"
+          src={aboutData.mission_image}
           alt="Neuron Picture"
         />
 
@@ -21,22 +23,18 @@ const VisionAndMissions = (props: Props) => {
         <div className="flex flex-col gap-2">
           <Heading
             darkBg={false}
-            heading={'Fueling Digital Innovation'}
-            subheading={'Our Missions'}
+            heading={aboutData.mission_subtitle}
+            subheading={aboutData.mission_title}
           />
 
           {/* Body */}
           <div className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            <p>
-              Discover our company's core missions that drive us forward. From
-              empowering innovation to fostering sustainability, explore how
-              we're dedicated to making a positive impact on our world:
-            </p>
+            <p>{aboutData.mission_desc}</p>
             <br />
             <ul className="ml-6 list-disc">
-              <li>Foundation for success</li>
-              <li>Innovating Excellence</li>
-              <li>Reliability in IT Solutions</li>
+              {aboutData.mission_lists.map((item: any) => {
+                return <li>{item}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -48,15 +46,13 @@ const VisionAndMissions = (props: Props) => {
         <div className="flex flex-col gap-2">
           <Heading
             darkBg={false}
-            heading={'Pioneering the Future of Digital Excellence'}
-            subheading={'Our Vision'}
+            heading={aboutData.vision_subtitle}
+            subheading={aboutData.vision_title}
           />
 
           {/* Body */}
           <p className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            Improving customer performance by making improvements. Improvements
-            and progress in all corners of the customer's business processes
-            through superior and best IT solutions.
+            {aboutData.vision_desc}
           </p>
         </div>
 
@@ -64,7 +60,7 @@ const VisionAndMissions = (props: Props) => {
           className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
           width={668}
           height={701}
-          src="/assets/images/1.jpg"
+          src={aboutData.vision_image}
           alt="Neuron Picture"
         />
       </div>

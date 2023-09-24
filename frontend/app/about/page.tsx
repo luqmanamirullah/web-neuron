@@ -9,40 +9,52 @@ import Values from '@/components/about/values';
 import StrategicPlan from '@/components/about/strategicPlan';
 import HugeImage from '@/components/about/hugeImage';
 
-function page(): JSX.Element {
+async function getData(url: string): Promise<any> {
+  const res = await fetch(url + '?_=' + new Date().getTime());
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+async function page(): Promise<JSX.Element> {
+  const aboutData = await getData('http://127.0.0.1:8000/api/about');
   return (
     <>
       {/* Section: HERO */}
-      <Hero />
+      <Hero aboutData={aboutData.data} />
 
       {/* Section: HUGE IMAGE */}
-      <HugeImage imageUrl="/assets/images/3.jpg" />
+      <HugeImage imageUrl={aboutData.data.activity_image} />
 
       {/* Section: VISION & MISSIONS */}
-      <VisionAndMissions />
+      <VisionAndMissions aboutData={aboutData.data} />
 
       {/* Section: VALUES */}
-      <Values />
+      <Values aboutData={aboutData.data} />
 
       {/* Section: DIRECTORS */}
       <section className="md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 md:mx-xl xs:mx-xs">
         <Heading
           darkBg={false}
-          heading={'Board of Directors'}
-          subheading={'Our Great Founder'}
+          heading={aboutData.data.director_subtitle}
+          subheading={aboutData.data.director_title}
         />
-        <Directors />
+        <Directors aboutData={aboutData.data} />
       </section>
 
       {/* Section: STRATEGIC PLAN */}
       <section className="bg-[#101415] w-full md:mt-0 xs:mt-28 md:px-10 xs:px-2 md:py-10 xs:p-6 flex flex-col md:gap-8 xs:gap-4">
         <Heading
           darkBg={true}
-          heading={'Navigating the Path to Software Excellence '}
-          subheading={'Our Strategic Plan for Management'}
+          heading={aboutData.data.strategic_subtitle}
+          subheading={aboutData.data.strategic_title}
         />
 
-        <StrategicPlan />
+        <StrategicPlan aboutData={aboutData.data} />
       </section>
     </>
   );

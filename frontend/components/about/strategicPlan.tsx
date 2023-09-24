@@ -6,14 +6,16 @@ import ArrowDropDownRounded from '@mui/icons-material/ArrowDropDownRounded';
 import SvgIcon from '@mui/material/SvgIcon';
 import { planData } from '@/data/strategicPlan';
 
-interface Props {}
+interface Props {
+  aboutData: any;
+}
 
-const StrategicPlan = ({}: Props) => {
+const StrategicPlan = ({ aboutData }: Props) => {
   const [isActive, setIsActive] = useState<number>(0);
 
   return (
     <div className="flex flex-col gap-4">
-      {planData.map((item) => {
+      {aboutData.management_strategies.map((item: any) => {
         return (
           <div className="w-full border-[0.5px] border-sys-dark-onSurface rounded md:px-6 xs:px-4 md:py-4 xs:py-2 flex flex-col transition-all duration-[400ms]">
             {/* Plan Title */}
@@ -22,7 +24,7 @@ const StrategicPlan = ({}: Props) => {
               className="flex items-center justify-between cursor-pointer"
             >
               <h1 className="md:text-desktop-headline xs:text-mobile-headline font-bold text-white">
-                {item.planTitle}
+                {item.title}
               </h1>
 
               <SvgIcon
@@ -37,7 +39,7 @@ const StrategicPlan = ({}: Props) => {
               </SvgIcon>
             </div>
 
-            <StrategicPlanList plan={item} active={isActive} />
+            <StrategicPlanList strategyData={item} active={isActive} />
           </div>
         );
       })}
