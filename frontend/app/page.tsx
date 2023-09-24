@@ -1,11 +1,68 @@
-'use client';
-function page(): JSX.Element {
+import AboutSection from '@/components/home/sections/about';
+import ArticlesSection from '@/components/home/sections/articles';
+import HeroSection from '@/components/home/sections/hero';
+import LicensesSection from '@/components/home/sections/licenses';
+import PartnersSection from '@/components/home/sections/partners';
+import PortfolioSection from '@/components/home/sections/portfolio';
+import ProductsSection from '@/components/home/sections/products';
+import ProgramSection from '@/components/home/sections/program';
+import ServicesSection from '@/components/home/sections/services';
+import HomeBackground from '@/components/svg/homeBackground';
+
+async function getData(): Promise<any> {
+  const res = await fetch('http://127.0.0.1:8000/api/home');
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+async function page(): Promise<JSX.Element> {
+  const data = await getData();
+  const homeData = data.data[0];
   return (
     <>
-      {/* Hero Section */}
-      <section className="w-full h-[200vh] flex flex-col justify-center items-center py-40">
-        <h1>Hello</h1>
-      </section>
+      {/* Fetch Unfinished */}
+      {/* Section: HERO */}
+      <HeroSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: ABOUT */}
+      <AboutSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: SERVICES */}
+      <ServicesSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: PORTFOLIO */}
+      <PortfolioSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: PRODUCTS */}
+      <ProductsSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: NEURON'S PROGRAM */}
+      <ProgramSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: PARTNERS */}
+      <PartnersSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: LATEST ARTICLES */}
+      <ArticlesSection homeData={homeData} />
+
+      {/* Fetch Unfinished */}
+      {/* Section: LICENSES */}
+      <LicensesSection homeData={homeData} />
+
+      {/* SVG Background */}
+      <HomeBackground className="absolute lg:block xs:hidden top-0 w-[58.34375rem] h-[76.8125rem] z-[-1]" />
     </>
   );
 }
