@@ -46,12 +46,13 @@ const Footer: React.FC = () => {
                           .slice(0, menu.children.length / 2)
                           .map((child, index) => {
                             return (
-                              <h1
+                              <Link
+                                href={child.link ?? '/'}
                                 key={index}
                                 className="md:text-desktop-body text-mobile-body md:font-medium font-normal"
                               >
                                 {child.label}
-                              </h1>
+                              </Link>
                             );
                           })}
                       </div>
@@ -61,9 +62,12 @@ const Footer: React.FC = () => {
                           .map((child, index) => {
                             return (
                               <div key={index} className="flex flex-col gap-s">
-                                <h1 className="md:text-desktop-body text-mobile-body md:font-medium font-normal">
+                                <Link
+                                  href={child.link ?? '/'}
+                                  className="md:text-desktop-body text-mobile-body md:font-medium font-normal"
+                                >
                                   {child.label}
-                                </h1>
+                                </Link>
                               </div>
                             );
                           })}
@@ -80,12 +84,13 @@ const Footer: React.FC = () => {
             {dataMenus.map((menu, index) => {
               if (menu.type === 'link' && menu.children === undefined) {
                 return (
-                  <h1
+                  <Link
+                    href={menu.link ?? '/'}
                     key={index}
                     className="md:text-desktop-title text-mobile-body font-bold"
                   >
                     {menu.label}
-                  </h1>
+                  </Link>
                 );
               } else {
                 return null;

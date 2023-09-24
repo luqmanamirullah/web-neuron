@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="en" className={raleway.variable + ' ' + inter.variable}>
       <body>
         <Navbar />
-        <main className="w-full">{children}</main>
-        <footer className="w-full">
+        <main className="w-full max-w-[1400px] xl:mx-auto">{children}</main>
+        <footer className="w-full  max-w-[1400px] xl:mx-auto">
           <CtaContactUs />
           <Footer />
         </footer>

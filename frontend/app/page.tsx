@@ -1,3 +1,7 @@
+import Button from '@/components/button';
+import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
+
+function page(): JSX.Element {
 import HeroSection from '@/components/home/sections/hero';
 import AboutSection from '@/components/home/sections/about';
 import ServicesSection from '@/components/home/sections/services';
@@ -25,44 +29,36 @@ async function page(): Promise<JSX.Element> {
   const homeData = data.data[0];
   return (
     <>
+    <>
       {/* Fetch Unfinished */}
       {/* Section: HERO */}
-      <HeroSection homeData={homeData} />
+      <section className="h-screen w-full flex items-center md:mx-xl xs:mx-xs">
+        <div className="max-w-[48.625rem] mt-[2.12rem]">
+          {/* Display CTA */}
+          <div className="flex flex-col text-desktop-display font-bold">
+            <h1>Enhance Your Business:</h1>
+            <div className="flex gap-6">
+              <h1 className="bg-">Simplify</h1>
+              <h1>With Neuronworks</h1>
+            </div>
+            <h1>Software Evolution</h1>
+          </div>
 
-      {/* Fetch Unfinished */}
-      {/* Section: ABOUT */}
-      <AboutSection homeData={homeData} />
+          {/* Desc */}
+          <p className="text-desktop-body-large mt-2 mb-10">
+            Where Vision Transforms into Code Empowering Your Digital Future
+          </p>
 
-      {/* Fetch Unfinished */}
-      {/* Section: SERVICES */}
-      <ServicesSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: PORTFOLIO */}
-      <PortfolioSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: PRODUCTS */}
-      <ProductsSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: NEURON'S PROGRAM */}
-      <ProgramSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: PARTNERS */}
-      <PartnersSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: LATEST ARTICLES */}
-      <ArticlesSection homeData={homeData} />
-
-      {/* Fetch Unfinished */}
-      {/* Section: LICENSES */}
-      <LicensesSection homeData={homeData} />
-
-      {/* SVG Background */}
-      <HomeBackground className="absolute lg:block xs:hidden top-0 w-[58.34375rem] h-[76.8125rem] z-[-1]" />
+          {/* Btn */}
+          <Button
+            label="CONSULT WITH US"
+            size="lg"
+            buttonStyle="filled"
+            withIcon={true}
+            icon={<ArrowForwardRounded />}
+          />
+        </div>
+      </section>
     </>
   );
 }

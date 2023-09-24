@@ -407,4 +407,11 @@ class PortofolioController extends Controller
 
         return SuccessPortofolioResource::collection($successPortofolio);
     }
+
+    public function getPortfolioById($id)
+    {
+        $portfolio = Portofolio::findOrFail($id);
+
+        return new PortofolioResource($portfolio);
+    }
 }

@@ -44,6 +44,13 @@ class DatabaseSeeder extends Seeder
             CertificateSeeder::class,
             PartnerSeeder::class,
             ServicePagesSeeder::class,
+            AboutSeeder::class,
+            MissionListSeeder::class,
+            ValueListSeeder::class,
+            DirectorListSeeder::class,
+            ManagementStrategySeeder::class,
+            ManagementStrategyListSeeder::class,
+            ArticlePageSeeder::class,
         ]);
     }
 }
