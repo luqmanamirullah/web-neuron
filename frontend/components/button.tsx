@@ -27,7 +27,7 @@ const button = tv({
       filled:
         'bg-sys-light-primary text-sys-light-onPrimary hover:bg-primary-default focus:active:bg-sys-light-primary',
       outlined:
-        'bg-transparent text-sys-light-primary border border-sys-light-outline hover:bg-primary-default hover:text-sys-light-onPrimary focus:bg-sys-light-primary focus:border-sys-light-primary focus:text-sys-light-onPrimary active:bg-sys-light-primary active:border-sys-light-outline disabled:text-sys-light-onSurfaceVariant disabled:opacity-50',
+        'bg-transparent text-sys-light-primary border border-sys-light-outline hover:bg-primary-default/20 hover:text-sys-light-onPrimary focus:bg-primary-default/30  focus:border-sys-light-primary active:bg-primary-default/40  active:border-sys-light-primary disabled:text-sys-light-onSurfaceVariant disabled:opacity-50',
       text: 'bg-transparent text-sys-light-primary hover:bg-primary-default/10  focus:bg-primary-default/20 active:bg-primary-default/30 disabled:text-sys-light-onSurfaceVariant disabled:bg-[#1D1B201F]',
     },
   },
