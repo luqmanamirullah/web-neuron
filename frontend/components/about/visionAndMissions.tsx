@@ -23,6 +23,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            alignCenter={false}
             darkBg={false}
             heading={aboutData.data.mission_subtitle}
             subheading={aboutData.data.mission_title}
@@ -46,6 +47,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            alignCenter={false}
             darkBg={false}
             heading={aboutData.data.vision_subtitle}
             subheading={aboutData.data.vision_title}

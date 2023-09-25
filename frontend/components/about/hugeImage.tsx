@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import AboutLines from '../svg/aboutLines';
-import AboutCirclesAndSquares from '../svg/aboutCirclesAndSquares';
+import TechLines from '../svg/techLines';
+import TechCirclesAndSquares from '../svg/techCirclesAndSquares';
 
 interface Props {
   imageUrl: string;
@@ -12,8 +12,8 @@ const HugeImage: React.FC<Props> = ({ imageUrl }) => {
     <section className="relative md:h-screen xs:h-fit md:mt-[5rem] xs:my-[8rem] flex justify-center items-center xs:mx-xs">
       {/* Lines SVG BG */}
       <div className="absolute w-fit h-fit -left-44 -top-40">
-        <AboutLines className="md:scale-100 xs:scale-50" />
-        <AboutCirclesAndSquares className="absolute -top-2 md:scale-100 xs:scale-50" />
+        <TechLines className="md:scale-100 xs:scale-50" />
+        <TechCirclesAndSquares className="absolute -top-2 md:scale-100 xs:scale-50" />
       </div>
 
       <div className="relative overflow-hidden md:rounded-lg xs:rounded">

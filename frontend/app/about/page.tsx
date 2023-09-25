@@ -41,6 +41,7 @@ async function page(): Promise<JSX.Element> {
       {/* Section: DIRECTORS */}
       <section className="md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 md:mx-xl xs:mx-xs">
         <Heading
+          alignCenter={false}
           darkBg={false}
           heading={aboutData.data.director_subtitle}
           subheading={aboutData.data.director_title}
@@ -51,6 +52,7 @@ async function page(): Promise<JSX.Element> {
       {/* Section: STRATEGIC PLAN */}
       <section className="bg-[#101415] w-full md:mt-0 xs:mt-28 md:px-10 xs:px-2 md:py-10 xs:p-6 flex flex-col md:gap-8 xs:gap-4">
         <Heading
+          alignCenter={false}
           darkBg={true}
           heading={aboutData.data.strategic_subtitle}
           subheading={aboutData.data.strategic_title}

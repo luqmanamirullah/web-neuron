@@ -5,7 +5,7 @@ interface Props {
   className: string;
 }
 
-const AboutCirclesAndSquares: React.FC<Props> = ({ className }) => {
+const TechCirclesAndSquares: React.FC<Props> = ({ className }) => {
   return (
     <svg
       className={twMerge('w-[20.15163rem] h-[23.58106rem]', className)}
@@ -145,4 +145,4 @@ const AboutCirclesAndSquares: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default AboutCirclesAndSquares;
+export default TechCirclesAndSquares;

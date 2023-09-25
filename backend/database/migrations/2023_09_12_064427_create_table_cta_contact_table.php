@@ -17,7 +17,6 @@ class CreateTableCtaContactTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('desc');
-            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
