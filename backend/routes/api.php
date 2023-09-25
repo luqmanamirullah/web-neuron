@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CtaContactController;
@@ -79,3 +80,9 @@ Route::get('/blog-pages', [BlogController::class, 'getBlogPages']);
 
 //Latest Blog
 Route::get('/blog-latest', [BlogController::class, 'getLatestBlog']);
+
+// Career Page
+Route::get('/career-page', [CareerController::class, 'getCareerPage']);
+
+// Career
+Route::get('/career', [CareerController::class, 'getCareer']);
