@@ -6,9 +6,10 @@ import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
   homeData: any;
+  topServiceData: any;
 }
 
-const ServicesSection: React.FC<Props> = ({ homeData }) => {
+const ServicesSection: React.FC<Props> = ({ homeData, topServiceData }) => {
   return (
     <Section className="lg:py-10 py-8 max-h-fit ">
       {/* Heading */}
@@ -32,7 +33,7 @@ const ServicesSection: React.FC<Props> = ({ homeData }) => {
         </div>
       </div>
 
-      <ServiceSlides />
+      <ServiceSlides topServiceData={topServiceData} />
     </Section>
   );
 };

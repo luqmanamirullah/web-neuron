@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NeuronProgram extends Model
+class ArticlePages extends Model
 {
     use HasFactory;
 
-    protected $table = 'neuron_programs';
+    protected $table = 'article_pages';
 
     protected $fillable = [
         'title',
@@ -17,8 +17,8 @@ class NeuronProgram extends Model
         'image',
     ];
 
-    public function home()
+    public function ctaContact()
     {
-        return $this->hasOne(Home::class, 'neuron_program_id');
+        return $this->belongsTo(CtaContact::class);
     }
 }

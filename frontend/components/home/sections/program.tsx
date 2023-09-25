@@ -16,17 +16,13 @@ const ProgramSection: React.FC<Props> = ({ homeData }) => {
         <div className="absolute left-0 lg:w-[75%] w-full lg:h-full h-[85%]  bg-sys-light-onPrimaryContainer"></div>
 
         {/* Content */}
-        <div className="lg:flex-1 lg:block flex flex-col relative lg:py-14 py-6 lg:px-10 px-6">
-          <h1 className="xl:text-desktop-display lg:text-desktop-headline text-mobile-headline font-bold text-sys-light-primaryContainer">
-            NEURON 3.0: Ignite Your Leadership Journey
+        <div className="lg:flex-1 lg:block xs:flex flex-col relative lg:py-14 xs:py-6 lg:px-10 xs:px-6">
+          <h1 className="lg:text-desktop-display xs:text-mobile-headline font-bold text-sys-light-primaryContainer">
+            {homeData.neuron_program.title}
           </h1>
 
-          <p className="mt-2 lg:text-desktop-body text-mobile-body text-sys-light-primaryContainer">
-            Experience NEURON 3.0, the hub of innovation. We don&apos;t just
-            reshape projects; we empower individuals to lead – themselves, their
-            teams, and our business. Uncover your potential in our dynamic,
-            forward-thinking Neuronworks environment – where together, we craft
-            the future.
+          <p className="mt-2 lg:text-desktop-body xs:text-mobile-body text-sys-light-primaryContainer">
+            {homeData.neuron_program.desc}
           </p>
 
           <Button
@@ -42,7 +38,7 @@ const ProgramSection: React.FC<Props> = ({ homeData }) => {
         {/* YT Embed */}
         <YoutubeEmbed
           className="lg:flex-1 lg:w-1/2 w-[95%] xl:h-[80%] lg:h-auto  h-auto lg:mr-10 lg:my-auto lg:mx-0 mx-auto relative"
-          embedId="Zvc3DgDhzhw?si=MMLCWqISXecjAaAI"
+          ytEmbed={homeData.neuron_program.image}
         />
       </div>
     </Section>

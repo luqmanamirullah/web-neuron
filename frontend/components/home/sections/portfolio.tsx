@@ -2,7 +2,6 @@
 import Button from '@/components/button';
 import Heading from '@/components/heading';
 import Section from '@/components/section';
-import { succesPortfolio } from '@/data/portfolio';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 import { SvgIcon, useMediaQuery } from '@mui/material';
@@ -14,9 +13,10 @@ import PortfolioMobile from './portfolioMobile';
 
 interface Props {
   homeData: any;
+  portfolioData: any;
 }
 
-const PortfolioSection: React.FC<Props> = ({ homeData }) => {
+const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
   const route = useRouter();
 
@@ -33,8 +33,8 @@ const PortfolioSection: React.FC<Props> = ({ homeData }) => {
         />
 
         {/* Portfolios */}
-        <div className="flex flex-col gap-32 mt-20">
-          {succesPortfolio.map((item, index) => {
+        <div className="flex flex-col gap-32">
+          {portfolioData.map((item: any, index: number) => {
             if (index < 3) {
               return (
                 <div
@@ -68,7 +68,7 @@ const PortfolioSection: React.FC<Props> = ({ homeData }) => {
                     <Image
                       className="w-full h-auto object-cover"
                       alt="Portfolio Image"
-                      src={item.imageUrl}
+                      src={item.image}
                       width={700}
                       height={700}
                     />
@@ -80,7 +80,7 @@ const PortfolioSection: React.FC<Props> = ({ homeData }) => {
                       <h4 className="lg:text-desktop-title font-bold mb-2">
                         Technology Used
                       </h4>
-                      {item.techConfidential ? (
+                      {item.technologies.length === 0 ? (
                         <p className="text-desktop-body">
                           confidential information
                           <SvgIcon className="ml-2" fontSize="small">
@@ -89,12 +89,12 @@ const PortfolioSection: React.FC<Props> = ({ homeData }) => {
                         </p>
                       ) : (
                         <div className="flex gap-2">
-                          {item.tech.map((tech, index) => {
+                          {item.technologies.map((tech: any) => {
                             return (
                               <Image
                                 key={index}
                                 className="w-[2.5rem] h-[2.5rem]"
-                                alt={tech.name}
+                                alt={'Technology used'}
                                 src={tech.icon}
                                 width={40}
                                 height={40}
@@ -138,7 +138,7 @@ const PortfolioSection: React.FC<Props> = ({ homeData }) => {
       </Section>
     );
   } else {
-    return <PortfolioMobile />;
+    return <PortfolioMobile portfolioData={portfolioData} />;
   }
 };
 

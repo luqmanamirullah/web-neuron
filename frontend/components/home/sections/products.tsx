@@ -1,15 +1,15 @@
 'use client';
 
 import Heading from '@/components/heading';
-import { products } from '@/data/products';
 import React, { useState } from 'react';
 import ProductRow from '../productRow';
 
 interface Props {
+  productsData: any;
   homeData: any;
 }
 
-const ProductsSection: React.FC<Props> = ({ homeData }) => {
+const ProductsSection: React.FC<Props> = ({ homeData, productsData }) => {
   const [isActive, setIsActive] = useState<number>(-1);
 
   const toggleActive: any = (id: number) => {
@@ -26,7 +26,7 @@ const ProductsSection: React.FC<Props> = ({ homeData }) => {
       />
 
       <div className="mt-6 flex flex-col gap-1 items-center">
-        {products.map((item, index) => (
+        {productsData.map((item, index) => (
           <ProductRow
             key={index}
             index={index}

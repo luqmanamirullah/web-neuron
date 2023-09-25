@@ -9,8 +9,8 @@ import ProductsSection from '@/components/home/sections/products';
 import ProgramSection from '@/components/home/sections/program';
 import ServicesSection from '@/components/home/sections/services';
 
-async function getData(): Promise<any> {
-  const res = await fetch('http://127.0.0.1:8000/api/home');
+async function getData(url: string): Promise<any> {
+  const res = await fetch(url + '?_=' + new Date().getTime());
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -21,45 +21,55 @@ async function getData(): Promise<any> {
 }
 
 async function page(): Promise<JSX.Element> {
-  const data = await getData();
-  const homeData = data.data[0];
+  const homeData = await getData('http://127.0.0.1:8000/api/home');
+  const topServiceData = await getData(
+    'http://127.0.0.1:8000/api/top-services',
+  );
+  const successPortfolio = await getData(
+    'http://127.0.0.1:8000/api/success-portofolio',
+  );
+  const productsData = await getData('http://127.0.0.1:8000/api/products');
+
   return (
     <>
-      {/* Fetch Unfinished */}
       {/* Section: HERO */}
-      <HeroSection homeData={homeData} />
+      <HeroSection homeData={homeData.data[0]} />
 
-      {/* Fetch Unfinished */}
+      {/* Lottie Illustration unfinished */}
       {/* Section: ABOUT */}
-      <AboutSection homeData={homeData} />
+      <AboutSection homeData={homeData.data[0]} />
 
-      {/* Fetch Unfinished */}
       {/* Section: SERVICES */}
-      <ServicesSection homeData={homeData} />
+      <ServicesSection
+        homeData={homeData.data[0]}
+        topServiceData={topServiceData.data}
+      />
 
-      {/* Fetch Unfinished */}
       {/* Section: PORTFOLIO */}
-      <PortfolioSection homeData={homeData} />
+      <PortfolioSection
+        homeData={homeData.data[0]}
+        portfolioData={successPortfolio.data}
+      />
 
-      {/* Fetch Unfinished */}
       {/* Section: PRODUCTS */}
-      <ProductsSection homeData={homeData} />
+      <ProductsSection
+        homeData={homeData.data[0]}
+        productsData={productsData.data}
+      />
 
-      {/* Fetch Unfinished */}
       {/* Section: NEURON'S PROGRAM */}
-      <ProgramSection homeData={homeData} />
+      <ProgramSection homeData={homeData.data[0]} />
 
-      {/* Fetch Unfinished */}
+      {/* Still using dummy data */}
       {/* Section: PARTNERS */}
-      <PartnersSection homeData={homeData} />
+      <PartnersSection homeData={homeData.data[0]} />
 
-      {/* Fetch Unfinished */}
+      {/* Still using dummy data */}
       {/* Section: LATEST ARTICLES */}
-      <ArticlesSection homeData={homeData} />
+      <ArticlesSection homeData={homeData.data[0]} />
 
-      {/* Fetch Unfinished */}
       {/* Section: LICENSES */}
-      <LicensesSection homeData={homeData} />
+      <LicensesSection homeData={homeData.data[0]} />
 
       {/* SVG Background */}
       <HomeBackground />

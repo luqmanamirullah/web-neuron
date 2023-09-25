@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNeuronProgramsTable extends Migration
+class CreateArticlePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateNeuronProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('neuron_programs', function (Blueprint $table) {
+        Schema::create('article_pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('desc');
+            $table->string('desc');
             $table->string('image');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateNeuronProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('neuron_programs');
+        Schema::dropIfExists('article_pages');
     }
 }

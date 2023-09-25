@@ -10,7 +10,11 @@ import Link from 'next/link';
 import React from 'react';
 import DeliverableSlides from '../swiper/deliverableSlides';
 
-const PortfolioMobile: React.FC = () => {
+interface Props {
+  portfolioData: any;
+}
+
+const PortfolioMobile: React.FC<Props> = ({ portfolioData }) => {
   return (
     <Section className="max-h-fit mt-12 mx-xs">
       <Heading
@@ -21,7 +25,7 @@ const PortfolioMobile: React.FC = () => {
       />
 
       <div className="mt-10 flex flex-col gap-20">
-        {succesPortfolio.map((item, index) => {
+        {portfolioData.map((item: any, index: number) => {
           if (index < 3) {
             return (
               <div key={item.name}>
@@ -32,7 +36,7 @@ const PortfolioMobile: React.FC = () => {
                   <Image
                     className="w-full h-full object-cover"
                     alt="Portfolio Image"
-                    src={item.imageUrl}
+                    src={item.image}
                     width={700}
                     height={700}
                   />
@@ -44,7 +48,7 @@ const PortfolioMobile: React.FC = () => {
                 </p>
 
                 {/* Btn */}
-                <Link href={`/service/${item.portfolioId}`}>
+                <Link href={`/service/${item.id}`}>
                   <Button
                     buttonStyle="filled"
                     label="SEE STUDY CASE"
@@ -60,7 +64,7 @@ const PortfolioMobile: React.FC = () => {
                       Technology used
                     </h6>
 
-                    {item.techConfidential ? (
+                    {item.technologies.length === 0 ? (
                       <p className="text-mobile-body">
                         confidential information
                         <SvgIcon className="ml-2" fontSize="small">
@@ -69,12 +73,12 @@ const PortfolioMobile: React.FC = () => {
                       </p>
                     ) : (
                       <div className="flex gap-2">
-                        {item.tech.map((tech, index) => {
+                        {item.technologies.map((tech: any, index: number) => {
                           return (
                             <Image
                               key={index}
                               className="w-[2.5rem] h-[2.5rem]"
-                              alt={tech.name}
+                              alt={'Technology used'}
                               src={tech.icon}
                               width={40}
                               height={40}

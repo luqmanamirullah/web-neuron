@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CtaContactResource extends JsonResource
+class BlogResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,12 @@ class CtaContactResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'desc' => $this->desc,
+            'image' => $this->image,
+            'description' => $this->desc,
+            'author' => $this->author,
+            'articles_categories' => $this->articleCategory->name,
+            'created_at' => $this->created_at->format('Y-m-d'),
+            'updated_at' => $this->updated_at->format('Y-m-d'),
         ];
     }
 }

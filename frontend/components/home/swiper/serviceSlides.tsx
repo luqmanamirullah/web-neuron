@@ -6,13 +6,16 @@ import 'swiper/css';
 import './serviceSlides.css';
 
 import Button from '@/components/button';
-import { topService } from '@/data/services';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import { FreeMode } from 'swiper/modules';
 
-const ServiceSlides: React.FC = () => {
+interface Props {
+  topServiceData: any;
+}
+
+const ServiceSlides: React.FC<Props> = ({ topServiceData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   return (
@@ -33,7 +36,7 @@ const ServiceSlides: React.FC = () => {
         modules={[FreeMode]}
         className="service-slides"
       >
-        {topService.map((item, index) => {
+        {topServiceData.map((item: any, index: number) => {
           return (
             <SwiperSlide key={index}>
               {/* Content */}
@@ -59,7 +62,7 @@ const ServiceSlides: React.FC = () => {
                 className="absolute top-0 w-full h-full object-cover"
                 height={500}
                 width={500}
-                src={item.img}
+                src={item.image}
                 alt={item.name}
               />
 
