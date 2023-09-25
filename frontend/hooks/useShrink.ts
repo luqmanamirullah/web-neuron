@@ -9,7 +9,7 @@ function useShrink(): Shrink {
 
   const handlerScroll: any = () => {
     const scrollY = window.scrollY;
-    if (scrollY > 100) {
+    if (scrollY > 0) {
       setIsShrink(true);
     } else {
       setIsShrink(false);
