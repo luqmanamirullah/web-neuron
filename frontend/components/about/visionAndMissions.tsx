@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import Heading from '../../components/heading';
+import { About } from '@/interface';
 
 interface Props {
-  aboutData: any;
+  aboutData: About;
 }
 
 const VisionAndMissions = ({ aboutData }: Props) => {
@@ -15,7 +16,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
           width={700}
           height={700}
-          src={aboutData.mission_image}
+          src={aboutData.data.mission_image}
           alt="Neuron Picture"
         />
 
@@ -23,16 +24,16 @@ const VisionAndMissions = ({ aboutData }: Props) => {
         <div className="flex flex-col gap-2">
           <Heading
             darkBg={false}
-            heading={aboutData.mission_subtitle}
-            subheading={aboutData.mission_title}
+            heading={aboutData.data.mission_subtitle}
+            subheading={aboutData.data.mission_title}
           />
 
           {/* Body */}
           <div className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            <p>{aboutData.mission_desc}</p>
+            <p>{aboutData.data.mission_desc}</p>
             <br />
             <ul className="ml-6 list-disc">
-              {aboutData.mission_lists.map((item: any) => {
+              {aboutData.data.mission_lists.map((item: any) => {
                 return <li>{item}</li>;
               })}
             </ul>
@@ -46,13 +47,13 @@ const VisionAndMissions = ({ aboutData }: Props) => {
         <div className="flex flex-col gap-2">
           <Heading
             darkBg={false}
-            heading={aboutData.vision_subtitle}
-            subheading={aboutData.vision_title}
+            heading={aboutData.data.vision_subtitle}
+            subheading={aboutData.data.vision_title}
           />
 
           {/* Body */}
           <p className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            {aboutData.vision_desc}
+            {aboutData.data.vision_desc}
           </p>
         </div>
 
@@ -60,7 +61,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
           width={668}
           height={701}
-          src={aboutData.vision_image}
+          src={aboutData.data.vision_image}
           alt="Neuron Picture"
         />
       </div>
