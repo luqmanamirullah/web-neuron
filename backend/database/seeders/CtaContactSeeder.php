@@ -24,6 +24,7 @@ class CtaContactSeeder extends Seeder
         DB::table('cta_contact')->insert([
             'title' => 'Transform Today, Conquer Tomorrow',
             'desc' => 'Let us help you with your digital transformation to boost productivity and fortify your daily activities and business worth.',
+            'link' => null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

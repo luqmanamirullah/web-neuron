@@ -33,7 +33,7 @@
           <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
 
-          <li class="nav-item" id="dashboard">
+          <li class="nav-item">
             <a href="{{ route('adminpanel') }}" class="nav-link hover">
             <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -41,7 +41,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item" id="blog">
+          <li class="nav-item">
             <a href="{{ route('blog') }}" class="nav-link">
             <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -49,7 +49,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item" id="pages">
+          <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
               <p>
@@ -57,7 +57,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item" id="career">
+          <li class="nav-item">
             <a href="{{ route('career') }}" class="nav-link">
             <i class="nav-icon fas fa-house-user"></i>
               <p>
@@ -74,13 +74,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item" id="service">
+              <li class="nav-item">
                 <a href="{{ route('service') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Services</p>
                 </a>
               </li>
-              <li class="nav-item" id="portofolio">
+              <li class="nav-item">
                 <a href="{{ route('portofolio') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Portofolio</p>
@@ -89,7 +89,7 @@
             </ul>
           </li>
           @if(Auth::user()->role_id === 1) <!-- Check if user role is superadmin -->
-          <li class="nav-item" id="user">
+          <li class="nav-item">
             <a href="{{ route('user') }}" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
               <p>
@@ -101,7 +101,7 @@
 
           <!-- Setting -->
           <li class="nav-header">ACCOUNT</li>
-            <li class="nav-item" id="changePassword">
+            <li class="nav-item">
               <a href="{{ route('change-password') }}" class="nav-link">
                   <i class="nav-icon fas fa-key"></i>
                   <p>
@@ -109,7 +109,7 @@
                   </p>
               </a>
             </li>
-            <li class="nav-item" id="logout">
+            <li class="nav-item">
               <a href="{{ route('logout') }}" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>

@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use App\Models\CareerPages;
 use App\Models\JobPlusValue;
 use Illuminate\Http\Request;
 use App\Models\JobQualification;
 use App\Models\SkillRequirement;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\JobResource;
-use App\Http\Resources\CareerPageResource;
 
 class CareerController extends Controller
 {
@@ -279,45 +276,5 @@ class CareerController extends Controller
         $career->skillRequirements()->save($plusValue);
 
         return redirect()->route('career-edit', $career->id)->with('success', 'Plus value has been added successfully.');
-    }
-
-    // API
-    public function getCareerPage()
-    {
-        $careerPage = CareerPages::first(); // Mengambil data halaman karier pertama
-
-        if (!$careerPage) {
-            return response()->json(['message' => 'Career page not found'], 404);
-        }
-
-        return new CareerPageResource($careerPage);
-    }
-
-    public function getCareer(Request $request)
-    {
-        $location = $request->input('location');
-        $name = $request->input('name');
-
-        $query = Job::query();
-
-        if ($location) {
-            $query->where('location', $location);
-        }
-
-        if ($name) {
-            $query->where('name_position', 'like', '%' . $name . '%');
-        }
-
-        // Menambahkan pagination dengan batasan 6 data per halaman
-        $jobs = $query->paginate(6);
-
-        if ($jobs->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Jobs not found'
-            ], 404);
-        }
-
-        return JobResource::collection($jobs);
     }
 }

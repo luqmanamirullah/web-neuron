@@ -12,7 +12,6 @@ const config: Config = {
       sm: '360px',
       md: '768px',
       lg: '1024px',
-      lg: '1000px',
       xl: '1400px',
     },
     fontSize: {

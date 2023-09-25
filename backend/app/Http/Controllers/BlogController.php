@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\ArticlePages;
 use Illuminate\Http\Request;
 use App\Models\ArticleCategory;
-use App\Http\Resources\BlogResource;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\BlogDetailResource;
-use App\Http\Resources\ArticlePagesResource;
 
 class BlogController extends Controller
 {
@@ -139,51 +135,5 @@ class BlogController extends Controller
 
         // Redirect ke halaman portofolio dengan pesan sukses
         return redirect()->route('blog')->with('success', 'Blog updated successfully.');
-    }
-
-    //API
-    public function getBlog(Request $request)
-    {
-        $category = $request->input('category');
-
-        $query = Article::query();
-
-        if ($category) {
-            $query->whereHas('articleCategory', function ($query) use ($category) {
-                $query->where('name', $category);
-            });
-        }
-
-        $blogs = $query->get();
-
-        if ($blogs->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Blogs not found'
-            ], 404);
-        }
-
-        return BlogResource::collection($blogs);
-    }
-
-    public function getBlogById($id)
-    {
-        $blog = Article::findOrFail($id);
-
-        return new BlogDetailResource($blog);
-    }
-
-    public function getBlogPages()
-    {
-        $blogPages = ArticlePages::all();
-
-        return ArticlePagesResource::collection($blogPages);
-    }
-
-    public function getLatestBlog()
-    {
-        $latestBlogs = Article::orderBy('created_at', 'desc')->take(5)->get();
-
-        return BlogResource::collection($latestBlogs);
     }
 }

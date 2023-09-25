@@ -8,7 +8,7 @@ use App\Http\Resources\HomeResource;
 
 class HomeController extends Controller
 {
-    public function getHome(Request $request)
+    public function getHome()
     {
         $homes = Home::with(['neuronProgram', 'heroTitleLists', 'testimonials', 'certificates', 'partners'])->get();
 

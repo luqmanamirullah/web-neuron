@@ -14,6 +14,7 @@ class CtaContact extends Model
     protected $fillable = [
         'title',
         'desc',
+        'link',
     ];
 
     public function home()
@@ -29,15 +30,5 @@ class CtaContact extends Model
     public function about()
     {
         return $this->hasOne(About::class, 'cta_contact_id');
-    }
-
-    public function articlePages()
-    {
-        return $this->hasOne(ArticlePages::class, 'cta_contact_id');
-    }
-
-    public function careerPages()
-    {
-        return $this->hasOne(CareerPages::class, 'cta_contact_id');
     }
 }

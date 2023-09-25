@@ -19,10 +19,12 @@ class CreateTableHomeTable extends Migration
             $table->string('hero_title2');
             $table->string('hero_title3');
             $table->string('hero_desc');
+            $table->string('hero-link')->nullable();
             $table->string('about_project');
             $table->string('about_experience');
             $table->string('about_desc');
             $table->string('about_title');
+            $table->string('about_link')->nullable();
             $table->string('about_ilustration');
             $table->string('title_service');
             $table->string('title_project');

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -24,9 +23,8 @@ class NeuronProgramSeeder extends Seeder
         DB::table('neuron_programs')->insert([
             'title' => 'NEURON 3.0: Ignite Your Leadership Journey',
             'desc' => 'Experience NEURON 3.0, the hub of innovation. We dont just reshape projects; we empower individuals to lead – themselves, their teams, and our business. Uncover your potential in our dynamic, forward-thinking Neuronworks environment – where together, we craft the future.',
-            'image' => 'https://www.youtube.com/embed/Zvc3DgDhzhw',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'link' => null,
+            'image' => 'http://127.0.0.1:8000/img/neuronprogram/neuron.png'
         ]);
     }
 }

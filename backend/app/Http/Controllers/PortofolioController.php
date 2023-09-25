@@ -89,7 +89,7 @@ class PortofolioController extends Controller
             'details' => 'required|string',
             'created_at' => 'required|date',
             'successProject' => Rule::in(['true', 'false']),
-            'technologies' => 'nullable|array',
+            'technologies' => 'required|array',
             'deliverables' => 'required|array',
             'handles' => 'required|array',
         ]);
