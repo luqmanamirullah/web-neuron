@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Heading from '../../components/heading';
 import { About } from '@/interface';
+import VisionImage from '../svg/visionImage';
 
 interface Props {
   aboutData: About;
@@ -12,12 +13,11 @@ const VisionAndMissions = ({ aboutData }: Props) => {
     <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
       {/* Missions */}
       <div className="flex flex-col md:gap-10 xs:gap-4">
-        <Image
-          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
-          width={700}
-          height={700}
-          src={aboutData.data.mission_image}
-          alt="Neuron Picture"
+        <VisionImage
+          flipImage={false}
+          imageId="missionImage"
+          imageUrl={aboutData.data.mission_image}
+          className="lg:h-[43.8125rem] xs:h-auto w-full object-cover"
         />
 
         {/* Content */}
@@ -59,12 +59,11 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           </p>
         </div>
 
-        <Image
-          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
-          width={668}
-          height={701}
-          src={aboutData.data.vision_image}
-          alt="Neuron Picture"
+        <VisionImage
+          flipImage={true}
+          imageId="visionImage"
+          imageUrl={aboutData.data.vision_image}
+          className="lg:h-[43.8125rem] scale-x-[-1] xs:h-auto w-full object-cover"
         />
       </div>
     </section>
