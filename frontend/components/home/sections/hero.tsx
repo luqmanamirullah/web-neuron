@@ -2,6 +2,7 @@
 
 import Button from '@/components/button';
 import Section from '@/components/section';
+import { type Hero, type Testimonial } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
 import { useRouter } from 'next/navigation';
@@ -10,10 +11,11 @@ import HeroDisplay from '../heroDisplay';
 import TestimonialSlides from '../swiper/testimonialSlides';
 
 interface Props {
-  homeData: any;
+  hero: Hero;
+  testimonials: Testimonial[];
 }
 
-const HeroSection: React.FC<Props> = ({ homeData }) => {
+const HeroSection: React.FC<Props> = ({ hero, testimonials }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
   const smallScreen = useMediaQuery('(min-width:360px)');
   const route = useRouter();
@@ -23,17 +25,17 @@ const HeroSection: React.FC<Props> = ({ homeData }) => {
       <div className="lg:max-w-[48.625rem] ">
         {/* Display CTA */}
         <div className="flex flex-col xl:text-desktop-display lg:text-desktop-headline md:text-desktop-display sm:text-mobile-headline text-mobile-title-large  font-bold ">
-          <h1>{homeData.hero_title1}</h1>
+          <h1>{hero.hero_title1}</h1>
           <div className="flex md:gap-4 gap-2">
-            <HeroDisplay heroDisplayList={homeData.hero_title_lists} />
-            <h1>{homeData.hero_title2}</h1>
+            <HeroDisplay heroDisplayList={hero.hero_title_lists} />
+            <h1>{hero.hero_title2}</h1>
           </div>
-          <h1>{homeData.hero_title3}</h1>
+          <h1>{hero.hero_title3}</h1>
         </div>
 
         {/* Desc */}
         <p className="lg:text-desktop-body-large md:text-desktop-body text-mobile-body mt-2 lg:mb-10 md:mb-16 mb-4 ">
-          {homeData.hero_desc}
+          {hero.hero_desc}
         </p>
 
         {/* Btn */}
@@ -50,7 +52,7 @@ const HeroSection: React.FC<Props> = ({ homeData }) => {
       </div>
 
       {/* Testimonials */}
-      <TestimonialSlides homeData={homeData} />
+      <TestimonialSlides testimonials={testimonials} />
     </Section>
   );
 };

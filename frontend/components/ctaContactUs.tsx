@@ -1,10 +1,17 @@
 'use client';
 import Button from '@/components/button';
+import { type CTAContact } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const CtaContactUs: React.FC = () => {
+interface Props {
+  contact: CTAContact;
+}
+
+const CtaContactUs: React.FC<Props> = ({ contact }) => {
+  const route = useRouter();
   const isLarge = useMediaQuery('(min-width:768px)');
   const isMedium = useMediaQuery('(min-width:480px)');
   return (
@@ -14,44 +21,26 @@ const CtaContactUs: React.FC = () => {
         {/* Content */}
         <div className="w-4/5  flex flex-col gap-2 justify-center items-center text-center z-10">
           <h1 className="lg:text-desktop-display md:text-desktop-headline text-mobile-headline font-bold ">
-            Transform Today, Conquer Tomorrow
+            {contact.title}
           </h1>
           <p
             className="md:text-desktop-body 
           text-subtitle sm:inline-flex hidden font-medium lg:w-4/5 w-full"
           >
-            Let us help you with your digital transformation to boost
-            productivity and fortify your daily activities and business worth.
+            {contact.desc}
           </p>
 
-          {isLarge ? (
-            <Button
-              buttonStyle="filled"
-              size="lg"
-              label="Schedule A Consultation"
-              withIcon
-              icon={<ArrowOutwardRounded />}
-              className="mt-6"
-            />
-          ) : isMedium ? (
-            <Button
-              buttonStyle="filled"
-              size="md"
-              label="Schedule A Consultation"
-              withIcon
-              icon={<ArrowOutwardRounded />}
-              className="mt-4"
-            />
-          ) : (
-            <Button
-              buttonStyle="filled"
-              size="sm"
-              label="Schedule A Consultation"
-              withIcon
-              icon={<ArrowOutwardRounded />}
-              className="mt-4"
-            />
-          )}
+          <Button
+            buttonStyle="filled"
+            size={isLarge ? 'lg' : isMedium ? 'md' : 'sm'}
+            label="Schedule A Consultation"
+            withIcon
+            icon={<ArrowOutwardRounded />}
+            className="mt-6"
+            onClick={() => {
+              route.push('/contact');
+            }}
+          />
         </div>
       </div>
     </section>

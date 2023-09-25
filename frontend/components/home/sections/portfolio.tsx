@@ -2,6 +2,7 @@
 import Button from '@/components/button';
 import Heading from '@/components/heading';
 import Section from '@/components/section';
+import { type PortfolioHome, type SuccessPortfolio } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 import { SvgIcon, useMediaQuery } from '@mui/material';
@@ -12,33 +13,33 @@ import DeliverableSlides from '../swiper/deliverableSlides';
 import PortfolioMobile from './portfolioMobile';
 
 interface Props {
-  homeData: any;
-  portfolioData: any;
+  portfolio: PortfolioHome;
+  portfolioData: SuccessPortfolio[];
 }
 
-const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
+const PortfolioSection: React.FC<Props> = ({ portfolio, portfolioData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
   const route = useRouter();
 
   if (largeScreen) {
     return (
-      <Section className="max-h-fit relative overflow-x-hidden">
+      <Section className="max-h-fit relative ">
         <PortfolioLine />
         {/* Heading */}
         <Heading
           alignCenter={true}
           darkBg={false}
-          heading={homeData.title_project}
+          heading={portfolio.title_portfolio}
           subheading="Successfull Projects"
         />
 
         {/* Portfolios */}
-        <div className="flex flex-col gap-32">
-          {portfolioData.map((item: any, index: number) => {
+        <div className="flex flex-col gap-32 mt-20">
+          {portfolioData.map((item, index) => {
             if (index < 3) {
               return (
                 <div
-                  key={item.portfolioId}
+                  key={item.id}
                   className="grid grid-cols-12 
                 gap-lg relative"
                 >
@@ -59,7 +60,7 @@ const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
                       withIcon={true}
                       icon={<ArrowOutwardRounded />}
                       onClick={() => {
-                        route.push(`/portfolio/${item.portfolioId}`);
+                        route.push(`/portfolio/${item.id}`);
                       }}
                     />
                   </div>
@@ -76,7 +77,7 @@ const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
 
                   <div className="col-span-4 flex-col gap-8 flex-1">
                     {/* Tech */}
-                    <div className="block">
+                    <div className="flex flex-col gap-s">
                       <h4 className="lg:text-desktop-title font-bold mb-2">
                         Technology Used
                       </h4>
@@ -89,13 +90,13 @@ const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
                         </p>
                       ) : (
                         <div className="flex gap-2">
-                          {item.technologies.map((tech: any) => {
+                          {item.technologies.map((tech, index) => {
                             return (
                               <Image
                                 key={index}
                                 className="w-[2.5rem] h-[2.5rem]"
                                 alt={'Technology used'}
-                                src={tech.icon}
+                                src={tech.icon ?? ''}
                                 width={40}
                                 height={40}
                               />
@@ -106,14 +107,23 @@ const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
                     </div>
 
                     {/* Deliverables */}
-                    <div className="block">
+                    <div className="flex flex-col gap-2 mt-4">
                       <h4 className="lg:text-desktop-title font-bold mb-8">
                         Deliverables
                       </h4>
-                      <DeliverableSlides
-                        portfolioItem={item}
-                        portfolioIndex={index}
-                      />
+                      {item.deliverables.length > 0 ? (
+                        <DeliverableSlides
+                          delivarables={item.deliverables}
+                          portfolioIndex={item.id}
+                        />
+                      ) : (
+                        <p className="text-desktop-body">
+                          confidential information
+                          <SvgIcon className="ml-2" fontSize="small">
+                            <VisibilityOffRoundedIcon />
+                          </SvgIcon>
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -131,14 +141,16 @@ const PortfolioSection: React.FC<Props> = ({ homeData, portfolioData }) => {
             withIcon={true}
             icon={<ArrowOutwardRounded />}
             onClick={() => {
-              route.push('/service#portfolio');
+              route.push('/service');
             }}
           />
         </div>
       </Section>
     );
   } else {
-    return <PortfolioMobile portfolioData={portfolioData} />;
+    return (
+      <PortfolioMobile portfolio={portfolio} portfolioData={portfolioData} />
+    );
   }
 };
 

@@ -27,7 +27,7 @@ class AddForeignManagementStrategyIdToTableManagementStrategyList extends Migrat
     public function down()
     {
         Schema::table('management_strategy_list', function (Blueprint $table) {
-            $table->dropForeign('management_strategy_list_about_id_foreign');
+            $table->dropForeign('management_strategy_list_management_strategy_id_foreign');
             $table->dropColumn('management_strategy_id');
         });
     }

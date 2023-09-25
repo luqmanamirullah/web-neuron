@@ -11,10 +11,10 @@ const Technology: React.FC<Props> = ({ title, subtitle }) => {
     <section id="techStack" className="lg:p-10 md:p-8 p-4 text-black  ">
       <div className="flex flex-col justify-center items-center text-center md:w-4/5 w-full mx-auto">
         <h1 className="md:text-desktop-headline text-mobile-title  font-bold text-core-primary ">
-          {subtitle}
+          {title}
         </h1>
         <h2 className="md:text-desktop-body text-mobile-body  font-medium  ">
-          {title}
+          {subtitle}
         </h2>
       </div>
       {/* Tabs */}

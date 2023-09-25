@@ -1,15 +1,16 @@
 'use client';
 
 import Heading from '@/components/heading';
+import { type ProductHome, type ProductsHome } from '@/interface';
 import React, { useState } from 'react';
 import ProductRow from '../productRow';
 
 interface Props {
-  productsData: any;
-  homeData: any;
+  productsData: ProductsHome[];
+  product: ProductHome;
 }
 
-const ProductsSection: React.FC<Props> = ({ homeData, productsData }) => {
+const ProductsSection: React.FC<Props> = ({ product, productsData }) => {
   const [isActive, setIsActive] = useState<number>(-1);
 
   const toggleActive: any = (id: number) => {
@@ -21,15 +22,15 @@ const ProductsSection: React.FC<Props> = ({ homeData, productsData }) => {
       <Heading
         alignCenter={true}
         darkBg={false}
-        heading={homeData.title_product}
+        heading={product.title_product}
         subheading="Our Products"
       />
 
       <div className="mt-6 flex flex-col gap-1 items-center">
-        {productsData.map((item, index) => (
+        {productsData.map((item) => (
           <ProductRow
-            key={index}
-            index={index}
+            key={item.id}
+            index={item.id}
             item={item}
             isActive={isActive}
             toggleActive={toggleActive}

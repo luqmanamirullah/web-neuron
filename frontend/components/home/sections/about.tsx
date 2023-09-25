@@ -2,17 +2,18 @@
 
 import Button from '@/components/button';
 import Section from '@/components/section';
+import { type AboutHome } from '@/interface';
 import TechBrain from '@/public/assets/LottieFiles/Tech_Brain.json';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
 import Lottie from 'lottie-react';
 import Link from 'next/link';
 import React from 'react';
 interface Props {
-  homeData: any;
+  about: AboutHome;
 }
 
-const AboutSection: React.FC<Props> = ({ homeData }) => {
+const AboutSection: React.FC<Props> = ({ about }) => {
   const xLargeScreen = useMediaQuery('(min-width:1200px)');
   const largeScreen = useMediaQuery('(min-width:1024px)');
   const mediumScreen = useMediaQuery('(min-width:768px)');
@@ -24,16 +25,16 @@ const AboutSection: React.FC<Props> = ({ homeData }) => {
         <div className="lg:w-[27.1875rem] flex lg:gap-0 gap-12 lg:justify-between">
           <div className="flex flex-col lg:gap-2 gap-0">
             <h1 className="md:text-desktop-display text-mobile-display font-bold">
-              {homeData.about_project}
+              {about.about_project}
             </h1>
             <p className="md:text-desktop-body text-mobile-label">
-              successful projects
+              success projects
             </p>
           </div>
 
           <div className="flex flex-col lg:gap-2 gap-0">
             <h1 className="md:text-desktop-display  text-mobile-display font-bold">
-              {homeData.about_experience}
+              {about.about_experience}
             </h1>
             <p className="md:text-desktop-body text-mobile-label">
               years of experience
@@ -44,10 +45,10 @@ const AboutSection: React.FC<Props> = ({ homeData }) => {
         {/* CTA */}
         <div>
           <h4 className="md:text-desktop-title text-mobile-title font-bold">
-            {homeData.about_desc}
+            {about.about_desc}
           </h4>
           <h1 className="xl:text-desktop-display md:text-desktop-headline text-mobile-headline mb-6 font-bold bg-gradient-to-r from-sys-light-primary to-[#0B0E14] bg-clip-text text-transparent">
-            {homeData.about_title}
+            {about.about_title}
           </h1>
 
           <Link href={''}>
@@ -56,7 +57,7 @@ const AboutSection: React.FC<Props> = ({ homeData }) => {
               label="LEARN MORE"
               size={largeScreen ? 'lg' : 'full'}
               withIcon={true}
-              icon={<ArrowForwardRounded />}
+              icon={<ArrowOutwardRounded />}
             />
           </Link>
         </div>

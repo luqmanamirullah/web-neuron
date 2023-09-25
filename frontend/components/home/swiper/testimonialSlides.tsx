@@ -10,13 +10,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './testimonialSlides.css';
 
+import { type Testimonial } from '@/interface';
 import { EffectCreative, Navigation, Pagination } from 'swiper/modules';
 
 interface Props {
-  homeData: any;
+  testimonials: Testimonial[];
 }
 
-const TestimonialSlides: React.FC<Props> = ({ homeData }) => {
+const TestimonialSlides: React.FC<Props> = ({ testimonials }) => {
   return (
     <div className="relative lg:h-fit xs:h-auto lg:w-fit xs:w-full">
       <Swiper
@@ -43,7 +44,7 @@ const TestimonialSlides: React.FC<Props> = ({ homeData }) => {
           },
         }}
       >
-        {homeData.testimonials.map((item: any) => {
+        {testimonials.map((item: any) => {
           const stars = [];
           const starData = parseInt(item.star);
 

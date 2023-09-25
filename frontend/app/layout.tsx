@@ -1,3 +1,4 @@
+import getCtaContact from '@/api/getCtaContact';
 import CtaContactUs from '@/components/ctaContactUs';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar/navbar';
@@ -7,18 +8,20 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Transforming your business into best digital experience',
-    template: '%s | Neuronworks Company',
+    default:
+      'Neuronworks ~ Transforming your business into best digital experience',
+    template: 'Neuronworks ~  | %s',
   },
   description:
     'Neuronworks is a software house company based in Bandung and Jakarta, Indonesia. We help businesses transform into digital products.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element {
+}): Promise<JSX.Element> {
+  const contact = await getCtaContact();
   return (
     <html lang="en" className={raleway.variable + ' ' + inter.variable}>
       <body>
@@ -27,7 +30,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="w-full  max-w-[1440px] 2xl:mx-auto">
-          <CtaContactUs />
+          <CtaContactUs contact={contact} />
           <Footer />
         </footer>
       </body>

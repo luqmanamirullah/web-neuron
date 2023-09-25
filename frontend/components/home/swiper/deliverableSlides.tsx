@@ -7,16 +7,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './deliverableSlides.css';
 
-import { type SuccesPortfolio } from '@/data/portfolio';
 import { EffectCreative, Navigation, Pagination } from 'swiper/modules';
 
 interface Props {
-  portfolioItem: SuccesPortfolio;
+  delivarables: string[] | [];
   portfolioIndex: number;
 }
 
 const DeliverableSlides: React.FC<Props> = ({
-  portfolioItem,
+  delivarables,
   portfolioIndex,
 }) => {
   return (
@@ -42,18 +41,19 @@ const DeliverableSlides: React.FC<Props> = ({
         },
       }}
     >
-      {portfolioItem.deliverables.map((item, index) => {
-        return (
-          <SwiperSlide
-            key={index}
-            className={`no-swiping next-slide-${portfolioIndex}`}
-          >
-            <p className="lg:text-desktop-body font-semibold text-center">
-              {item}
-            </p>
-          </SwiperSlide>
-        );
-      })}
+      {delivarables.length > 0 &&
+        delivarables.map((item, index) => {
+          return (
+            <SwiperSlide
+              key={index}
+              className={`no-swiping next-slide-${portfolioIndex}`}
+            >
+              <p className="lg:text-desktop-body font-semibold text-center">
+                {item}
+              </p>
+            </SwiperSlide>
+          );
+        })}
     </Swiper>
   );
 };

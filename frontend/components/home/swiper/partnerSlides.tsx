@@ -6,13 +6,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './partnerSlides.css';
 
-import { type Partner } from '@/data/partners';
+import { type Partners } from '@/interface';
 import Image from 'next/image';
 import { A11y, Autoplay, FreeMode } from 'swiper/modules';
 
 interface Props {
   reverse: boolean;
-  partnerData: Partner[];
+  partnerData: Partners[];
 }
 
 const PartnerSlides: React.FC<Props> = ({ reverse, partnerData }) => {
@@ -33,14 +33,14 @@ const PartnerSlides: React.FC<Props> = ({ reverse, partnerData }) => {
         }}
         className="partner-slides"
       >
-        {partnerData.map((item, index) => (
-          <SwiperSlide key={index}>
+        {partnerData.map((item) => (
+          <SwiperSlide key={item.id}>
             <Image
               className="lg:w-[14.875rem] xs:w-[9.25rem] lg:h-[5.9375rem] xs:h-[5.4375rem] object-contain"
               width={500}
               height={500}
-              alt={item.name}
-              src={item.imageUrl}
+              alt="our partner"
+              src={item.image}
             />
           </SwiperSlide>
         ))}

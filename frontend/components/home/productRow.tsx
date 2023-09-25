@@ -1,14 +1,15 @@
 import Button from '@/components/button';
-import { type Product } from '@/data/products';
+import { type ProductsHome } from '@/interface';
 import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import { SvgIcon } from '@mui/material';
 import { animated, config, useSpring } from '@react-spring/web';
+import Link from 'next/link';
 import React from 'react';
 
 interface Props {
   index: number;
-  item: Product;
+  item: ProductsHome;
   isActive: number;
   toggleActive: (id: number) => void;
 }
@@ -46,7 +47,7 @@ const ProductRow: React.FC<Props> = ({
       <div className="pt-8 pb-4 px-4 flex justify-between items-center cursor-pointer">
         <div>
           <h4 className="lg:text-desktop-title xs:text-mobile-title font-bold">
-            {item.title}
+            {item.name}
           </h4>
           <p className="lg:text-desktop-label xs:text-mobile-label text-sys-light-onSurfaceVariant">
             {item.subtitle}
@@ -70,15 +71,16 @@ const ProductRow: React.FC<Props> = ({
         <p className="lg:text-desktop-body xs:text-mobile-body text-sys-light-onSurface">
           {item.desc}
         </p>
-
-        <Button
-          className="mt-4"
-          buttonStyle="filled"
-          label="Try Now"
-          size="sm"
-          withIcon={true}
-          icon={<ArrowForwardRounded />}
-        />
+        <Link href={item.link ?? '/'}>
+          <Button
+            className="mt-4"
+            buttonStyle="filled"
+            label="Try Now"
+            size="sm"
+            withIcon={true}
+            icon={<ArrowForwardRounded />}
+          />
+        </Link>
       </animated.div>
 
       {/* Bottom Divider */}

@@ -7,10 +7,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './licenseSlides.css';
 
+import { type Certificate } from '@/interface';
 import { FreeMode } from 'swiper/modules';
 
 interface Props {
-  licenseData: any;
+  licenseData: Certificate[];
 }
 
 const LicenseSlides: React.FC<Props> = ({ licenseData }) => {
@@ -23,14 +24,14 @@ const LicenseSlides: React.FC<Props> = ({ licenseData }) => {
         modules={[FreeMode]}
         className="license-slides"
       >
-        {licenseData.map((item: any, index: number) => {
+        {licenseData.map((item) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={item.id}>
               <Image
                 className="lg:h-[10rem] xs:h-[6.25rem] lg:w-auto xs:w-[8rem] object-contain"
                 width={500}
                 height={500}
-                alt={item.id}
+                alt='our license'
                 src={item.image}
               />
             </SwiperSlide>

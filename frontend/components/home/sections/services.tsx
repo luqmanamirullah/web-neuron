@@ -1,15 +1,16 @@
 import Button from '@/components/button';
 import Section from '@/components/section';
+import { type Service } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import React from 'react';
 import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
-  homeData: any;
+  service: Service;
   topServiceData: any;
 }
 
-const ServicesSection: React.FC<Props> = ({ homeData, topServiceData }) => {
+const ServicesSection: React.FC<Props> = ({ service, topServiceData }) => {
   return (
     <Section className="lg:py-10 py-8 max-h-fit ">
       {/* Heading */}
@@ -20,7 +21,7 @@ const ServicesSection: React.FC<Props> = ({ homeData, topServiceData }) => {
 
         <div className="flex justify-between">
           <h1 className="lg:text-desktop-headline xs:text-mobile-headline font-bold">
-            {homeData.title_service}
+            {service.title_service}
           </h1>
           <Button
             className="lg:flex xs:hidden"

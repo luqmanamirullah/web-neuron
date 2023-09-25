@@ -2,6 +2,7 @@ import Button from '@/components/button';
 import Heading from '@/components/heading';
 import Section from '@/components/section';
 import { succesPortfolio } from '@/data/portfolio';
+import { type PortfolioHome, type SuccessPortfolio } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 import { SvgIcon } from '@mui/material';
@@ -11,21 +12,22 @@ import React from 'react';
 import DeliverableSlides from '../swiper/deliverableSlides';
 
 interface Props {
-  portfolioData: any;
+  portfolio: PortfolioHome;
+  portfolioData: SuccessPortfolio[];
 }
 
-const PortfolioMobile: React.FC<Props> = ({ portfolioData }) => {
+const PortfolioMobile: React.FC<Props> = ({ portfolioData, portfolio }) => {
   return (
     <Section className="max-h-fit mt-12 mx-xs">
       <Heading
         alignCenter={true}
         darkBg={false}
-        heading="Amazing Transformation Achievements"
-        subheading="Client Success Stories"
+        heading={portfolio.title_portfolio}
+        subheading="Successfull Projects"
       />
 
       <div className="mt-10 flex flex-col gap-20">
-        {portfolioData.map((item: any, index: number) => {
+        {portfolioData.map((item, index: number) => {
           if (index < 3) {
             return (
               <div key={item.name}>
@@ -94,10 +96,19 @@ const PortfolioMobile: React.FC<Props> = ({ portfolioData }) => {
                     <h6 className="mb-6 text-mobile-title font-bold">
                       Deliverables
                     </h6>
-                    <DeliverableSlides
-                      portfolioItem={item}
-                      portfolioIndex={index}
-                    />
+                    {item.deliverables.length > 0 ? (
+                      <DeliverableSlides
+                        delivarables={item.deliverables}
+                        portfolioIndex={item.id}
+                      />
+                    ) : (
+                      <p className="text-mobile-body">
+                        confidential information
+                        <SvgIcon className="ml-2" fontSize="small">
+                          <VisibilityOffRoundedIcon />
+                        </SvgIcon>
+                      </p>
+                    )}
                   </div>
                 </div>
 

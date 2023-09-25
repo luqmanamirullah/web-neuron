@@ -6,22 +6,24 @@ import Image from 'next/image';
 import MaskTechCard from '../svg/maskTechCard';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import NeuronTab from '../tabs/tab';
 import CustomTabPanel from '../tabs/tabPane';
 import KeyFeatureSlides from './swiper/keyFeatureSlides';
 
 const ServiceTabs: React.FC = () => {
+  const route = useRouter();
   const [value, setValue] = useState<number>(0);
   const handleChangeService: any = (
     e: React.SyntheticEvent,
     newValue: number,
   ) => {
     setValue(newValue);
+    route.push(`/service?name=${services[newValue].name}`);
   };
-  const tabs = services.map((service) => service.name);
   const serviceParams = useSearchParams();
+  const tabs = services.map((service) => service.name);
   const serviceName = serviceParams.get('name');
   useEffect(() => {
     if (serviceName !== undefined && serviceName !== null) {

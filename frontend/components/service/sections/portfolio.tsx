@@ -1,4 +1,5 @@
 'use client';
+import Heading from '@/components/heading';
 import { all } from '@/data/portfolio';
 import useFilterPortfolio from '@/hooks/useFilterPortfolio';
 import generateSelectOptions from '@/utils/generateSelectOptions';
@@ -63,15 +64,11 @@ const Portfolio: React.FC = () => {
 
   return (
     <section className="lg:p-10 md:p-8 p-4 text-black transition-all duration-300">
-      <div className="flex flex-col items-start">
-        <h2 className="md:text-desktop-title text-mobile-body font-medium text-core-primary">
-          Our Work
-        </h2>
-        <h1 className="md:text-desktop-headline text-mobile-title font-bold ">
-          {/* Explain of our work */}
-          The Best Gives The Best
-        </h1>
-      </div>
+      <Heading
+        darkBg={false}
+        heading={'The Best Gives The Best'}
+        subheading={'Our Work'}
+      />
       <Filter
         currPage={currPage}
         pages={pages}

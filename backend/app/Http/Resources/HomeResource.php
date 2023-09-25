@@ -16,33 +16,61 @@ class HomeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'hero_title1' => $this->hero_title1,
-            'hero_title2' => $this->hero_title2,
-            'hero_title3' => $this->hero_title3,
-            'hero_desc' => $this->hero_desc,
-            'about_project' => $this->about_project,
-            'about_experience' => $this->about_experience,
-            'about_desc' => $this->about_desc,
-            'about_title' => $this->about_title,
-            'about_ilustration' => $this->about_ilustration,
-            'title_service' => $this->title_service,
-            'title_project' => $this->title_project,
-            'title_product' => $this->title_product,
-            'title_partner' => $this->title_partner,
-            'title_articles' => $this->title_articles,
-            'title_certificate' => $this->title_certificate,
-            'neuron_program' => [
+            'hero' => [
+                'hero_title1' => $this->hero_title1,
+                'hero_title2' => $this->hero_title2,
+                'hero_title3' => $this->hero_title3,
+                'hero_title_lists' => $this->heroTitleLists->map(function ($titleList) {
+                    return [
+                        'id' => $titleList->id,
+                        'title' => $titleList->title,
+                    ];
+                }),
+                'hero_desc' => $this->hero_desc,
+            ],
+            'about' => [
+                'about_project' => $this->about_project,
+                'about_experience' => $this->about_experience,
+                'about_desc' => $this->about_desc,
+                'about_title' => $this->about_title,
+                'about_ilustration' => $this->about_ilustration,
+            ],
+            'service' => [
+                'title_service' => $this->title_service,
+            ],
+            'portfolio' => [
+                'title_portfolio' => $this->title_project,
+            ],
+            'product' => [
+                'title_product' => $this->title_product,
+            ],
+            'partner' => [
+                'title_partner' => $this->title_partner,
+                'partners' => $this->partners->map(function ($partner) {
+                    return [
+                        'id' => $partner->id,
+                        'image' => $partner->image,
+                    ];
+                }),
+            ],
+            'article' => [
+                'title_articles' => $this->title_articles,
+            ],
+            'license' => [
+                'title_certificate' => $this->title_certificate,
+                'certificates' => $this->certificates->map(function ($certificate) {
+                    return [
+                        'id' => $certificate->id,
+                        'image' => $certificate->image,
+                    ];
+                }),
+            ],
+            'program' => [
                 'id' => $this->neuron_program_id,
                 'title' => optional($this->neuronProgram)->title,
                 'desc' => optional($this->neuronProgram)->desc,
-                'image' => optional($this->neuronProgram)->image,
+                'ytEmbed' => optional($this->neuronProgram)->image,
             ],
-            'hero_title_lists' => $this->heroTitleLists->map(function ($titleList) {
-                return [
-                    'id' => $titleList->id,
-                    'title' => $titleList->title,
-                ];
-            }),
             'testimonials' => $this->testimonials->map(function ($testimonial) {
                 return [
                     'id' => $testimonial->id,
@@ -53,18 +81,7 @@ class HomeResource extends JsonResource
                     'image' => $testimonial->image,
                 ];
             }),
-            'certificates' => $this->certificates->map(function ($certificate) {
-                return [
-                    'id' => $certificate->id,
-                    'image' => $certificate->image,
-                ];
-            }),
-            'partners' => $this->partners->map(function ($partner) {
-                return [
-                    'id' => $partner->id,
-                    'image' => $partner->image,
-                ];
-            }),
+
         ];
     }
 }
