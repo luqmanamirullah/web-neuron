@@ -1,13 +1,14 @@
-import React from 'react';
-import { partners } from '@/data/partners';
 import Heading from '@/components/heading';
+import Section from '@/components/section';
+import { partners } from '@/data/partners';
+import React from 'react';
 import PartnerSlides from '../swiper/partnerSlides';
 
 interface Props {
   homeData: any;
 }
 
-const PartnersSection = ({ homeData }: Props) => {
+const PartnersSection: React.FC<Props> = ({ homeData }) => {
   // Function to divide an array into three
   function divideData<T>(arr: T[]): T[][] {
     const length = arr.length;
@@ -22,7 +23,7 @@ const PartnersSection = ({ homeData }: Props) => {
   const dividedPartners = divideData(partners);
 
   return (
-    <section className="lg:mt-28 xs:mt-12">
+    <Section className="lg:mt-28 xs:mt-12 ">
       <Heading
         alignCenter={true}
         darkBg={false}
@@ -35,7 +36,7 @@ const PartnersSection = ({ homeData }: Props) => {
         <PartnerSlides partnerData={dividedPartners[1]} reverse={true} />
         <PartnerSlides partnerData={dividedPartners[2]} reverse={false} />
       </div>
-    </section>
+    </Section>
   );
 };
 

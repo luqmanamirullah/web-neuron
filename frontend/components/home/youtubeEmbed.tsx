@@ -5,7 +5,7 @@ interface Props {
   className: string;
 }
 
-const YoutubeEmbed = ({ embedId, className }: Props) => {
+const YoutubeEmbed: React.FC<Props> = ({ embedId, className }) => {
   return (
     <div className={className}>
       <iframe

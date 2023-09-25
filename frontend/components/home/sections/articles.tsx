@@ -1,15 +1,16 @@
-import React from 'react';
 import Button from '@/components/button';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
+import Section from '@/components/section';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import React from 'react';
 import ArticleSlides from '../swiper/articleSlides';
 
 interface Props {
   homeData: any;
 }
 
-const ArticlesSection = ({ homeData }: Props) => {
+const ArticlesSection: React.FC<Props> = ({ homeData }) => {
   return (
-    <section className="lg:mt-28 xs:mt-14 lg:mx-xl xs:mx-xs">
+    <Section className="lg:mt-28 xs:mt-14 ">
       {/* Heading */}
       <div className="mb-6">
         <h5 className="lg:text-desktop-title xs:text-mobile-title font-bold text-sys-light-primary">
@@ -26,13 +27,13 @@ const ArticlesSection = ({ homeData }: Props) => {
             label="See More"
             size="md"
             withIcon={true}
-            icon={<ArrowForwardRounded />}
+            icon={<ArrowOutwardRounded />}
           />
         </div>
       </div>
 
       <ArticleSlides />
-    </section>
+    </Section>
   );
 };
 

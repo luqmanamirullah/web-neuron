@@ -1,53 +1,49 @@
 'use client';
-
-import React from 'react';
-import Image from 'next/image';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
-import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
-import { portfolios } from '@/data/portfolio';
-import { SvgIcon, useMediaQuery } from '@mui/material';
-import PortfolioMobile from './portfolioMobile';
-import Link from 'next/link';
-import Heading from '@/components/heading';
 import Button from '@/components/button';
-import TechLines from '@/components/svg/techLines';
-import TechCirclesAndSquares from '@/components/svg/techCirclesAndSquares';
+import Heading from '@/components/heading';
+import Section from '@/components/section';
+import { succesPortfolio } from '@/data/portfolio';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
+import { SvgIcon, useMediaQuery } from '@mui/material';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import PortfolioLine from '../portfolioBackground';
 import DeliverableSlides from '../swiper/deliverableSlides';
-import PortfolioLine from '@/components/svg/portfolioLine';
+import PortfolioMobile from './portfolioMobile';
 
 interface Props {
   homeData: any;
 }
 
-const PortfolioSection = ({ homeData }: Props) => {
+const PortfolioSection: React.FC<Props> = ({ homeData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
+  const route = useRouter();
 
   if (largeScreen) {
     return (
-      <section className="ml-xl relative">
-        {/* Background Line SVG */}
-        <PortfolioLine className="absolute lg:block xs:hidden left-[40%] top-0 z-[-1]" />
+      <Section className="max-h-fit relative overflow-x-hidden">
+        <PortfolioLine />
         {/* Heading */}
         <Heading
           alignCenter={true}
           darkBg={false}
           heading={homeData.title_project}
-          subheading="Client Success Stories"
+          subheading="Successfull Projects"
         />
 
         {/* Portfolios */}
-        <div className="flex flex-col gap-32">
-          {portfolios.map((item, index) => {
+        <div className="flex flex-col gap-32 mt-20">
+          {succesPortfolio.map((item, index) => {
             if (index < 3) {
               return (
-                <div className="flex gap-12 lg:mt-16 relative">
-                  {/* Lines SVG BG */}
-                  <div className="absolute scale-x-[-1] lg:block xs:hidden w-fit h-fit right-0 top-0 z-[-1]">
-                    <TechLines className="" />
-                    <TechCirclesAndSquares className="absolute -top-2" />
-                  </div>
+                <div
+                  key={item.portfolioId}
+                  className="grid grid-cols-12 
+                gap-lg relative"
+                >
                   {/* Content */}
-                  <div className="flex-1">
+                  <div className="col-span-4">
                     <h2 className="lg:text-desktop-headline font-bold lg:mb-2">
                       {item.name}
                     </h2>
@@ -56,20 +52,21 @@ const PortfolioSection = ({ homeData }: Props) => {
                       {item.desc}
                     </p>
 
-                    <Link href={`/service/${item.portfolioId}`}>
-                      <Button
-                        buttonStyle="filled"
-                        label="SEE STUDY CASE"
-                        size="lg"
-                        withIcon={true}
-                        icon={<ArrowForwardRounded />}
-                      />
-                    </Link>
+                    <Button
+                      buttonStyle="filled"
+                      label="SEE STUDY CASE"
+                      size="lg"
+                      withIcon={true}
+                      icon={<ArrowOutwardRounded />}
+                      onClick={() => {
+                        route.push(`/portfolio/${item.portfolioId}`);
+                      }}
+                    />
                   </div>
 
-                  <div className="flex-1 p-2 w-[25rem] h-[12rem] my-auto border-[3px] rounded-[0.3125rem] border-[#ddd]">
+                  <div className="col-span-4  h-fit p-2  border-[3px] rounded-[0.3125rem] bg-sys-light-surface border-[#ddd]">
                     <Image
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-cover"
                       alt="Portfolio Image"
                       src={item.imageUrl}
                       width={700}
@@ -77,9 +74,9 @@ const PortfolioSection = ({ homeData }: Props) => {
                     />
                   </div>
 
-                  <div className="flex flex-col gap-8 flex-1">
+                  <div className="col-span-4 flex-col gap-8 flex-1">
                     {/* Tech */}
-                    <div>
+                    <div className="block">
                       <h4 className="lg:text-desktop-title font-bold mb-2">
                         Technology Used
                       </h4>
@@ -92,11 +89,12 @@ const PortfolioSection = ({ homeData }: Props) => {
                         </p>
                       ) : (
                         <div className="flex gap-2">
-                          {item.tech.map((tech) => {
+                          {item.tech.map((tech, index) => {
                             return (
                               <Image
+                                key={index}
                                 className="w-[2.5rem] h-[2.5rem]"
-                                alt={tech.techName}
+                                alt={tech.name}
                                 src={tech.icon}
                                 width={40}
                                 height={40}
@@ -108,7 +106,7 @@ const PortfolioSection = ({ homeData }: Props) => {
                     </div>
 
                     {/* Deliverables */}
-                    <div>
+                    <div className="block">
                       <h4 className="lg:text-desktop-title font-bold mb-8">
                         Deliverables
                       </h4>
@@ -121,6 +119,7 @@ const PortfolioSection = ({ homeData }: Props) => {
                 </div>
               );
             }
+            return null;
           })}
         </div>
 
@@ -130,10 +129,13 @@ const PortfolioSection = ({ homeData }: Props) => {
             label="See More"
             size="md"
             withIcon={true}
-            icon={<ArrowForwardRounded />}
+            icon={<ArrowOutwardRounded />}
+            onClick={() => {
+              route.push('/service#portfolio');
+            }}
           />
         </div>
-      </section>
+      </Section>
     );
   } else {
     return <PortfolioMobile />;

@@ -1,23 +1,19 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from 'next/image';
 
 import 'swiper/css';
 import './licenseSlides.css';
 
 import { FreeMode } from 'swiper/modules';
-import { licenses } from '@/data/license';
-import { useMediaQuery } from '@mui/material';
 
 interface Props {
   licenseData: any;
 }
 
-const LicenseSlides = ({ licenseData }: Props) => {
-  const largeScreen = useMediaQuery('(min-width:1000px)');
-
+const LicenseSlides: React.FC<Props> = ({ licenseData }) => {
   return (
     <div className="lg:mt-10 xs:mt-4 flex justify-center">
       <Swiper
@@ -27,9 +23,9 @@ const LicenseSlides = ({ licenseData }: Props) => {
         modules={[FreeMode]}
         className="license-slides"
       >
-        {licenseData.map((item: any) => {
+        {licenseData.map((item: any, index: number) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <Image
                 className="lg:h-[10rem] xs:h-[6.25rem] lg:w-auto xs:w-[8rem] object-contain"
                 width={500}

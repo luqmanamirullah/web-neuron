@@ -5,6 +5,10 @@
   margin-bottom: 1rem !important;
 }
 
+.article-slides .swiper-slide:last-child {
+  margin-right: 1rem !important;
+}
+
 @media (min-width: 1000px) {
   .article-slides .swiper-slide {
     height: 28.875rem !important;

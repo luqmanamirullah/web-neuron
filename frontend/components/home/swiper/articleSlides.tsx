@@ -6,15 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './articleSlides.css';
 
-import { FreeMode } from 'swiper/modules';
-import Image from 'next/image';
 import Button from '@/components/button';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
-import { SvgIcon, useMediaQuery } from '@mui/material';
 import { articles } from '@/data/articles';
-import Link from 'next/link';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import { SvgIcon, useMediaQuery } from '@mui/material';
+import Image from 'next/image';
+import { FreeMode } from 'swiper/modules';
 
-const ArticleSlides = () => {
+const ArticleSlides: React.FC = () => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
   const mediumScreen = useMediaQuery('(min-width:768px)');
 
@@ -57,7 +56,7 @@ const ArticleSlides = () => {
                   {largeScreen ? (
                     <button className="text-white bg-sys-light-primary p-4 transition-all xs:hidden lg:block translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                       <SvgIcon fontSize="large">
-                        <ArrowForwardRounded />
+                        <ArrowOutwardRounded />
                       </SvgIcon>
                     </button>
                   ) : (
@@ -66,7 +65,7 @@ const ArticleSlides = () => {
                       label="Read More"
                       size="sm"
                       withIcon={true}
-                      icon={<ArrowForwardRounded />}
+                      icon={<ArrowOutwardRounded />}
                     />
                   )}
                 </div>
@@ -84,6 +83,7 @@ const ArticleSlides = () => {
               </SwiperSlide>
             );
           }
+          return null;
         })}
       </Swiper>
       <Button
@@ -92,7 +92,7 @@ const ArticleSlides = () => {
         label="See More"
         size="sm"
         withIcon={true}
-        icon={<ArrowForwardRounded />}
+        icon={<ArrowOutwardRounded />}
       />
     </div>
   );

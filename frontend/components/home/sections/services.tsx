@@ -1,15 +1,16 @@
-import React from 'react';
 import Button from '@/components/button';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
+import Section from '@/components/section';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import React from 'react';
 import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
   homeData: any;
 }
 
-const ServicesSection = ({ homeData }: Props) => {
+const ServicesSection: React.FC<Props> = ({ homeData }) => {
   return (
-    <section className="lg:h-screen lg:mt-0 xs:mt-12 lg:mx-xl xs:mx-xs">
+    <Section className="lg:py-10 py-8 ">
       {/* Heading */}
       <div className="mb-6">
         <h5 className="lg:text-desktop-title xs:text-mobile-title font-bold text-sys-light-primary">
@@ -26,13 +27,13 @@ const ServicesSection = ({ homeData }: Props) => {
             label="See More"
             size="md"
             withIcon={true}
-            icon={<ArrowForwardRounded />}
+            icon={<ArrowOutwardRounded />}
           />
         </div>
       </div>
 
       <ServiceSlides />
-    </section>
+    </Section>
   );
 };
 

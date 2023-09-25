@@ -6,16 +6,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './partnerSlides.css';
 
-import { FreeMode, Autoplay, A11y } from 'swiper/modules';
+import { type Partner } from '@/data/partners';
 import Image from 'next/image';
-import { Partner, partners } from '@/data/partners';
+import { A11y, Autoplay, FreeMode } from 'swiper/modules';
 
 interface Props {
   reverse: boolean;
   partnerData: Partner[];
 }
 
-const PartnerSlides = ({ reverse, partnerData }: Props) => {
+const PartnerSlides: React.FC<Props> = ({ reverse, partnerData }) => {
   return (
     <div>
       <Swiper
@@ -33,19 +33,17 @@ const PartnerSlides = ({ reverse, partnerData }: Props) => {
         }}
         className="partner-slides"
       >
-        {partnerData.map((item) => {
-          return (
-            <SwiperSlide>
-              <Image
-                className="lg:w-[14.875rem] xs:w-[9.25rem] lg:h-[5.9375rem] xs:h-[5.4375rem] object-contain"
-                width={500}
-                height={500}
-                alt={item.name}
-                src={item.imageUrl}
-              />
-            </SwiperSlide>
-          );
-        })}
+        {partnerData.map((item, index) => (
+          <SwiperSlide key={index}>
+            <Image
+              className="lg:w-[14.875rem] xs:w-[9.25rem] lg:h-[5.9375rem] xs:h-[5.4375rem] object-contain"
+              width={500}
+              height={500}
+              alt={item.name}
+              src={item.imageUrl}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

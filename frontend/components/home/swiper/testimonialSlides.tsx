@@ -1,28 +1,26 @@
 'use client';
 
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { testimonials } from '@/data/testimonials';
 import GradeRoundedIcon from '@mui/icons-material/GradeRounded';
 import { SvgIcon } from '@mui/material';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './testimonialSlides.css';
 
-import { Pagination, Navigation, EffectCreative } from 'swiper/modules';
+import { EffectCreative, Navigation, Pagination } from 'swiper/modules';
 
 interface Props {
   homeData: any;
 }
 
-const TestimonialSlides = ({ homeData }: Props) => {
+const TestimonialSlides: React.FC<Props> = ({ homeData }) => {
   return (
     <div className="relative lg:h-fit xs:h-auto lg:w-fit xs:w-full">
       <Swiper
-        spaceBetween={40}
+        spaceBetween={50}
         autoHeight={true}
         navigation={{
           nextEl: '.next-slide',
@@ -39,7 +37,7 @@ const TestimonialSlides = ({ homeData }: Props) => {
             translate: [0, -60, -200],
           },
           next: {
-            shadow: true,
+            shadow: false,
             translate: ['100%', '-20%', 0],
             rotate: [0, 0, 90],
           },
@@ -84,13 +82,13 @@ const TestimonialSlides = ({ homeData }: Props) => {
                 </div>
               </div>
 
-              <p className="md:text-desktop-body xs:text-mobile-body">
+              <p className="lg:text-subtitle text-desktop-body font-medium">
                 {item.desc}
               </p>
 
               <div className="flex items-center gap-3">
                 <Image
-                  className="md:w-[3.125rem] md:h-[3.125rem] xs:w-[2.1875rem] xs:h-[2.1875rem] object-cover rounded-full"
+                  className="md:w-10 md:h-10 xs:w-[2.1875rem] xs:h-[2.1875rem] object-cover rounded-full"
                   width={100}
                   height={100}
                   src={item.image}

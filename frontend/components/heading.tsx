@@ -1,13 +1,18 @@
 import React from 'react';
 
-type Props = {
+interface Props {
   heading: string;
   subheading: string;
   darkBg: boolean;
   alignCenter: boolean;
-};
+}
 
-const Heading = ({ heading, subheading, darkBg, alignCenter }: Props) => {
+const Heading: React.FC<Props> = ({
+  heading,
+  subheading,
+  darkBg,
+  alignCenter,
+}) => {
   return (
     <div className={alignCenter ? 'w-full flex flex-col items-center' : ''}>
       <h5
@@ -20,7 +25,7 @@ const Heading = ({ heading, subheading, darkBg, alignCenter }: Props) => {
       <h1
         className={`lg:text-desktop-headline xs:text-mobile-headline font-bold
         ${alignCenter ? 'text-center' : ''}
-        ${darkBg ? 'text-sys-dark-onSurface' : 'text-black'}`}
+        ${darkBg ? 'text-sys-dark-onSurface' : 'text-sys-light-onSurface'}`}
       >
         {heading}
       </h1>

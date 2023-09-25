@@ -1,3 +1,4 @@
+import HomeBackground from '@/components/home/heroBackground';
 import AboutSection from '@/components/home/sections/about';
 import ArticlesSection from '@/components/home/sections/articles';
 import HeroSection from '@/components/home/sections/hero';
@@ -7,7 +8,6 @@ import PortfolioSection from '@/components/home/sections/portfolio';
 import ProductsSection from '@/components/home/sections/products';
 import ProgramSection from '@/components/home/sections/program';
 import ServicesSection from '@/components/home/sections/services';
-import HomeBackground from '@/components/svg/homeBackground';
 
 async function getData(): Promise<any> {
   const res = await fetch('http://127.0.0.1:8000/api/home');
@@ -17,7 +17,7 @@ async function getData(): Promise<any> {
     throw new Error('Failed to fetch data');
   }
 
-  return res.json();
+  return await res.json();
 }
 
 async function page(): Promise<JSX.Element> {
@@ -62,7 +62,7 @@ async function page(): Promise<JSX.Element> {
       <LicensesSection homeData={homeData} />
 
       {/* SVG Background */}
-      <HomeBackground className="absolute lg:block xs:hidden top-0 w-[58.34375rem] h-[76.8125rem] z-[-1]" />
+      <HomeBackground />
     </>
   );
 }

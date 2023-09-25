@@ -1,28 +1,28 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './heroDisplay.css';
 
 interface Props {
   heroDisplayList: any;
 }
 
-const HeroDisplay = ({ heroDisplayList }: Props) => {
+const HeroDisplay: React.FC<Props> = ({ heroDisplayList }: Props) => {
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
   const ulRef = useRef<HTMLUListElement | null>(null);
 
-  // Animation Delay
   useEffect(() => {
     const intervalId = setInterval(() => {
       const nextIndex = (activeItemIndex + 1) % heroDisplayList.length;
       setActiveItemIndex(nextIndex);
     }, 2000);
-    return () => clearInterval(intervalId);
-  }, [activeItemIndex]);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [activeItemIndex, heroDisplayList.length]);
 
-  // Set the width of the <ul> based on the max width of the absolute positioned <li>
   useEffect(() => {
-    if (ulRef.current) {
+    if (ulRef.current !== null) {
       const maxChildWidth = Array.from(ulRef.current.children).reduce(
         (maxWidth, child) => {
           const childWidth = child.getBoundingClientRect().width;
@@ -30,15 +30,20 @@ const HeroDisplay = ({ heroDisplayList }: Props) => {
         },
         0,
       );
+      const maxChildHeight = Array.from(ulRef.current.children).reduce(
+        (maxHeight, child) => {
+          const childHeight = child.getBoundingClientRect().height;
+          return childHeight > maxHeight ? childHeight : maxHeight;
+        },
+        0,
+      );
+      ulRef.current.style.height = `${maxChildHeight}px`;
       ulRef.current.style.width = `${maxChildWidth}px`;
     }
   }, [heroDisplayList, activeItemIndex]);
 
   return (
-    <ul
-      ref={ulRef}
-      className="lg:h-[3.6875rem] xs:h-[2rem] inline-flex relative overflow-hidden"
-    >
+    <ul ref={ulRef} className="inline-flex relative overflow-hidden">
       {heroDisplayList.map((item: any, index: number) => {
         return (
           <li

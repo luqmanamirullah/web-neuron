@@ -1,28 +1,30 @@
 'use client';
 
-import React from 'react';
-import TestimonialSlides from '../swiper/testimonialSlides';
-import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
-import { useMediaQuery } from '@mui/material';
 import Button from '@/components/button';
+import Section from '@/components/section';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import { useMediaQuery } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import HeroDisplay from '../heroDisplay';
-import Link from 'next/link';
+import TestimonialSlides from '../swiper/testimonialSlides';
 
 interface Props {
   homeData: any;
 }
 
-const HeroSection = ({ homeData }: Props) => {
+const HeroSection: React.FC<Props> = ({ homeData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
-
+  const smallScreen = useMediaQuery('(min-width:360px)');
+  const route = useRouter();
   return (
-    <section className="lg:h-screen flex lg:flex-row md:flex-col xs:flex-col lg:items-center lg:justify-between lg:gap-0 xs:gap-[3.25rem] lg:pt-0 xs:pt-20 lg:mx-xl xs:mx-xs">
+    <Section className="flex lg:flex-row md:flex-col flex-col lg:items-center lg:justify-between lg:gap-0 gap-[3.25rem] lg:pt-48 py-32">
       {/* CTA */}
-      <div className="lg:max-w-[48.625rem]">
+      <div className="lg:max-w-[48.625rem] ">
         {/* Display CTA */}
-        <div className="flex flex-col lg:text-desktop-display md:text-desktop-headline xs:text-mobile-headline font-bold">
+        <div className="flex flex-col xl:text-desktop-display lg:text-desktop-headline md:text-desktop-display sm:text-mobile-headline text-mobile-title-large  font-bold ">
           <h1>{homeData.hero_title1}</h1>
-          <div className="flex md:gap-4 xs:gap-2">
+          <div className="flex md:gap-4 gap-2">
             <HeroDisplay heroDisplayList={homeData.hero_title_lists} />
             <h1>{homeData.hero_title2}</h1>
           </div>
@@ -30,25 +32,26 @@ const HeroSection = ({ homeData }: Props) => {
         </div>
 
         {/* Desc */}
-        <p className="lg:text-desktop-body-large md:text-desktop-body xs:text-mobile-body mt-2 lg:mb-10 xs:mb-6">
+        <p className="lg:text-desktop-body-large md:text-desktop-body text-mobile-body mt-2 lg:mb-10 md:mb-16 mb-4 ">
           {homeData.hero_desc}
         </p>
 
         {/* Btn */}
-        <Link href={''}>
-          <Button
-            label="CONSULT WITH US"
-            size={largeScreen ? 'lg' : 'full'}
-            buttonStyle="filled"
-            withIcon={true}
-            icon={<ArrowForwardRounded />}
-          />
-        </Link>
+        <Button
+          onClick={() => {
+            route.push('/contact');
+          }}
+          label="CONSULT WITH US"
+          size={largeScreen ? 'lg' : smallScreen ? 'full' : 'md'}
+          buttonStyle="filled"
+          withIcon={true}
+          icon={<ArrowOutwardRounded />}
+        />
       </div>
 
       {/* Testimonials */}
       <TestimonialSlides homeData={homeData} />
-    </section>
+    </Section>
   );
 };
 

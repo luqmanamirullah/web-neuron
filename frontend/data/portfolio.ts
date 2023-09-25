@@ -1,3 +1,5 @@
+import { type Technology } from './services';
+
 export interface Portfolio {
   name: string;
   desc: string;
@@ -162,10 +164,10 @@ export const succesPortfolio: SuccesPortfolio[] = [
     imageUrl: '/assets/images/home/portfolio/mySimetri.png',
     techConfidential: false,
     tech: [
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
     ],
     deliverables: [
       'Queue Management System',
@@ -183,10 +185,10 @@ export const succesPortfolio: SuccesPortfolio[] = [
     imageUrl: '/assets/images/home/portfolio/mySimetri.png',
     techConfidential: false,
     tech: [
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
     ],
     deliverables: ['Queue Management System', 'Web Applications Solution'],
     scopeHandled: ['Ideaton', 'Design', 'Implementation', 'Support'],
@@ -199,10 +201,10 @@ export const succesPortfolio: SuccesPortfolio[] = [
     imageUrl: '/assets/images/home/portfolio/mySimetri.png',
     techConfidential: true,
     tech: [
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
     ],
     deliverables: ['Queue Management System', 'Web Applications Solution'],
     scopeHandled: ['Ideaton', 'Design', 'Implementation', 'Support'],
@@ -215,10 +217,10 @@ export const succesPortfolio: SuccesPortfolio[] = [
     imageUrl: '/assets/images/home/portfolio/mySimetri.png',
     techConfidential: false,
     tech: [
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
-      { icon: '/assets/images/home/tech/flutter.png', techName: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
+      { icon: '/assets/images/home/tech/flutter.png', name: 'Flutter' },
     ],
     deliverables: ['Queue Management System', 'Web Applications Solution'],
     scopeHandled: ['Ideaton', 'Design', 'Implementation', 'Support'],
