@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import ServiceTabs from '../serviceTab';
 
@@ -20,7 +18,7 @@ const Service: React.FC<Props> = ({ title, subtitle }) => {
         </h1>
       </div>
       {/* Tabs */}
-      <div className="w-full xl:max-h-[800px] md:min-h-screen  h-fit flex flex-col items-start justify-start gap-lg">
+      <div className="w-full 2xl:max-h-[800px] md:min-h-screen  h-fit flex flex-col items-start justify-start gap-lg">
         {/* Tab Nav */}
         <ServiceTabs />
       </div>

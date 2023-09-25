@@ -1,7 +1,5 @@
-import { portfolios } from '@/data/portfolio';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 interface Props {
   params: {
@@ -9,7 +7,7 @@ interface Props {
   };
 }
 
-function page({ params }: Props) {
+function page({ params }: Props): JSX.Element {
   return (
     <>
       {/* Hero Section */}
@@ -64,10 +62,10 @@ function page({ params }: Props) {
           </h2>
           <p className="lg:text-desktop-body-large xs:text-mobile-body mt-2">
             Embark on a journey of achievement with the My SIMETRI web
-            application. Our success is woven into every line of code, as we've
-            harnessed cutting-edge technology to create a seamless queue
-            management system. From intuitive touch screen registration to swift
-            queue number allocation
+            application. Our success is woven into every line of code, as
+            we&apos;ve harnessed cutting-edge technology to create a seamless
+            queue management system. From intuitive touch screen registration to
+            swift queue number allocation
           </p>
         </div>
 
@@ -78,10 +76,10 @@ function page({ params }: Props) {
           </h2>
           <p className="lg:text-desktop-body-large xs:text-mobile-body mt-2">
             Embark on a journey of achievement with the My SIMETRI web
-            application. Our success is woven into every line of code, as we've
-            harnessed cutting-edge technology to create a seamless queue
-            management system. From intuitive touch screen registration to swift
-            queue number allocation
+            application. Our success is woven into every line of code, as
+            we&apos;ve harnessed cutting-edge technology to create a seamless
+            queue management system. From intuitive touch screen registration to
+            swift queue number allocation
           </p>
         </div>
 

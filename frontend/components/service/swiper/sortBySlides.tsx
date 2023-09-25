@@ -1,10 +1,11 @@
+'use client';
 import sorts, { type Sorts } from '@/data/sortby';
 import cn from '@/utils/cn';
 import { useMediaQuery } from '@mui/material';
 import React from 'react';
 import { FreeMode } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './custom.swiper.sortBy.css';
+import './sortBySlides.css';
 interface Props {
   sortBy: Sorts | undefined;
   setSortBy: (sort: Sorts) => void;

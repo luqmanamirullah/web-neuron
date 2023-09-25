@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import TechnologyTabs from '../technologyTab';
 
@@ -19,7 +18,7 @@ const Technology: React.FC<Props> = ({ title, subtitle }) => {
         </h2>
       </div>
       {/* Tabs */}
-      <div className="w-full xl:max-h-[800px]   h-fit flex flex-col items-center justify-center gap-lg">
+      <div className="w-full 2xl:max-h-[800px]   h-fit flex flex-col items-center justify-center gap-lg">
         {/* Tab Nav */}
         <TechnologyTabs />
       </div>

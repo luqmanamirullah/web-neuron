@@ -1,0 +1,78 @@
+.service-tab-nav.Mui-selected {
+  color: black !important;
+  font-style: bold !important;
+}
+
+.css-1ujnqem-MuiTabs-root {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+div.MuiTabs-scroller.MuiTabs-hideScrollbar.MuiTabs-scrollableX.css-12qnib
+  > span {
+  background-color: #c00100 !important;
+  flex-grow: 0 !important;
+}
+
+.service-tab.MuiTabScrollButton-root:nth-child(1) {
+  position: absolute !important;
+  left: -20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background-color: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  z-index: 502 !important;
+}
+
+div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:first-child {
+  width: 24px !important;
+  height: 24px !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  backdrop-filter: blur(10px) !important;
+  z-index: 40 !important;
+}
+
+div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:last-child {
+  width: 24px !important;
+  height: 24px !important;
+  position: absolute !important;
+  right: -20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  backdrop-filter: blur(10px) !important;
+  z-index: 40 !important;
+}
+
+@media (max-width: 599.95px) {
+  .css-orq8zk .MuiTabs-scrollButtons {
+    display: inline-flex !important;
+  }
+  .css-1ujnqem-MuiTabs-root .MuiTabs-scrollButtons {
+    display: inline-flex !important;
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root {
+    backdrop-filter: blur(1px) !important;
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:first-child {
+    left: -10px !important;
+  }
+  div.service-tab > div.MuiButtonBase-root.MuiTabScrollButton-root:last-child {
+    right: -10px !important;
+  }
+}

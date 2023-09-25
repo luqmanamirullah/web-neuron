@@ -4,7 +4,7 @@ import useFilterPortfolio from '@/hooks/useFilterPortfolio';
 import generateSelectOptions from '@/utils/generateSelectOptions';
 import generateYears from '@/utils/generateYears';
 import { Pagination, useMediaQuery } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Filter from '../filter';
 import PortfolioCard from '../portfolioCard';
 // interface Props {}
@@ -61,9 +61,6 @@ const Portfolio: React.FC = () => {
   // Hooks
   const isMedium = useMediaQuery('(min-width: 768px)');
 
-  useEffect(() => {
-    console.log(startYear, endYear, sortBy);
-  }, [startYear, endYear, sortBy]);
   return (
     <section className="lg:p-10 md:p-8 p-4 text-black transition-all duration-300">
       <div className="flex flex-col items-start">

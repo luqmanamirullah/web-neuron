@@ -3,7 +3,7 @@ import cn from '@/utils/cn';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
-import '../custom.mui.css';
+import './mui-tab.css';
 import { a11yProps } from './tabPane';
 
 interface Props {

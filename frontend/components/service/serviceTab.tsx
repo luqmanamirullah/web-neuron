@@ -1,17 +1,16 @@
 'use client';
-import services from '@/data/services';
+import { services } from '@/data/services';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { SvgIcon } from '@mui/material';
 import Image from 'next/image';
-import '../custom.mui.css';
 import MaskTechCard from '../svg/maskTechCard';
-import SwipeCard from './swipeCard';
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import NeuronTab from '../tabs/tab';
 import CustomTabPanel from '../tabs/tabPane';
+import KeyFeatureSlides from './swiper/keyFeatureSlides';
 
 const ServiceTabs: React.FC = () => {
   const [value, setValue] = useState<number>(0);
@@ -88,7 +87,7 @@ const ServiceTabs: React.FC = () => {
                               alt={tech.name}
                               width={40}
                               height={40}
-                              key={index}
+                              key={i}
                             />
                           ))
                       : service.technologies.map((tech, i) => (
@@ -97,7 +96,7 @@ const ServiceTabs: React.FC = () => {
                             alt={tech.name}
                             width={40}
                             height={40}
-                            key={index}
+                            key={i}
                           />
                         ))}
                     {service.technologies.length > 8 ? (
@@ -120,7 +119,10 @@ const ServiceTabs: React.FC = () => {
                     </h1>
                   </div>
 
-                  <SwipeCard item={service.keyFeature} index={service.id} />
+                  <KeyFeatureSlides
+                    item={service.keyFeature}
+                    index={service.id}
+                  />
                 </div>
               </div>
             </div>

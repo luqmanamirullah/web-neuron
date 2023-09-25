@@ -1,8 +1,6 @@
 'use client';
-import Image from 'next/image';
-import '../custom.mui.css';
-
 import technologies from '@/data/technologies';
+import Image from 'next/image';
 import { useState } from 'react';
 import NeuronTab from '../tabs/tab';
 import CustomTabPanel from '../tabs/tabPane';

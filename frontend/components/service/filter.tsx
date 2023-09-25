@@ -8,7 +8,7 @@ import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
 import { SvgIcon } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import NeuronSelect, { type Option } from '../select';
-import SortBy from './sortBy';
+import SortBy from './swiper/sortBySlides';
 
 interface Props {
   pages: number;
@@ -55,7 +55,7 @@ const Filter: React.FC<Props> = ({
           className={cn(
             'pt-8  flex items-center w-full md:justify-start justify-between gap-md transition-all duration-500 z-[501] bg-white ',
             isSticky
-              ? 'max-w-[1400px] xl:left-1/2 xl:-translate-x-1/2 fixed lg:top-24 top-20  left-0 lg:p-10 md:p-8 border-b border-sys-light-outline  py-4 px-2 mb-10'
+              ? 'max-w-[1440px] 2xl:left-1/2 2xl:-translate-x-1/2 fixed lg:top-24 top-20  left-0 lg:p-10 md:p-8 border-b border-sys-light-outline  py-4 px-2 mb-10'
               : ' relative mb-0',
           )}
         >

@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import '../custom.mui.css';
 
 import methodologies from '@/data/methodologies';
 import { useState } from 'react';

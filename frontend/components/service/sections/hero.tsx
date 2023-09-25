@@ -1,3 +1,4 @@
+import Section from '@/components/section';
 import React from 'react';
 import Banner from '../banner';
 
@@ -8,7 +9,7 @@ interface Props {
 
 const Hero: React.FC<Props> = ({ display, subtitle }) => {
   return (
-    <section className="lg:px-10 md:px-8 px-4 relative  max-h-[800px] xl:mx-auto w-full md:h-screen h-[70vh] flex flex-col gap-lg justify-center items-start overflow-hidden border-b border-black ">
+    <Section className="xl:mx-auto w-full md:h-screen h-[70vh] flex flex-col gap-lg justify-center items-start overflow-hidden">
       {/* Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-20"></div>
       <Banner />
@@ -20,7 +21,7 @@ const Hero: React.FC<Props> = ({ display, subtitle }) => {
           {subtitle}
         </p>
       </div>
-    </section>
+    </Section>
   );
 };
 

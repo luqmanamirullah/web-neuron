@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './custom.swiper.swipecard.css';
+import './keyFeatureSlides.css';
 
 import { EffectCreative, Navigation, Pagination } from 'swiper/modules';
 
@@ -16,7 +16,7 @@ interface Props {
   className?: string;
 }
 
-const SwipeCard: React.FC<Props> = ({ item, index, className = '' }) => {
+const KeyFeatureSlides: React.FC<Props> = ({ item, index, className = '' }) => {
   return (
     <div className={className}>
       <Swiper
@@ -55,4 +55,4 @@ const SwipeCard: React.FC<Props> = ({ item, index, className = '' }) => {
   );
 };
 
-export default SwipeCard;
+export default KeyFeatureSlides;
