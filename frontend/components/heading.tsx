@@ -4,14 +4,14 @@ interface Props {
   heading: string;
   subheading: string;
   darkBg: boolean;
-  alignCenter: boolean;
+  alignCenter?: boolean;
 }
 
 const Heading: React.FC<Props> = ({
   heading,
   subheading,
   darkBg,
-  alignCenter,
+  alignCenter = false,
 }) => {
   return (
     <div className={alignCenter ? 'w-full flex flex-col items-center' : ''}>

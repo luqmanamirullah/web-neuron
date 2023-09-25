@@ -3,7 +3,10 @@ interface Props {
   active: number;
 }
 
-const StrategicPlanList = ({ strategyData, active }: Props) => {
+const StrategicPlanList: React.FC<Props> = ({
+  strategyData,
+  active,
+}: Props) => {
   return (
     <div
       className={`overflow-hidden grid md:grid-cols-4 xs:grid-cols-1 md:gap-8 xs:gap-4 text-sys-dark-onSurface duration-[600ms] transition-all ${

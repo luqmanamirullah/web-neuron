@@ -9,12 +9,12 @@ interface Props {
   aboutData: any;
 }
 
-const StrategicPlan = ({ aboutData }: Props) => {
+const StrategicPlan: React.FC<Props> = ({ aboutData }) => {
   const [isActive, setIsActive] = useState<number>(0);
 
   return (
     <div className="flex flex-col gap-4">
-      {aboutData.management_strategies.map((item: any, index) => {
+      {aboutData.management_strategies.map((item: any, index: number) => {
         return (
           <div
             key={index}

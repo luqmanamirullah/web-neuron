@@ -5,7 +5,7 @@ interface Props {
   aboutData: any;
 }
 
-const VisionAndMissions = ({ aboutData }: Props) => {
+const VisionAndMissions: React.FC<Props> = ({ aboutData }) => {
   return (
     <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
       {/* Missions */}
@@ -31,8 +31,8 @@ const VisionAndMissions = ({ aboutData }: Props) => {
             <p>{aboutData.mission_desc}</p>
             <br />
             <ul className="ml-6 list-disc">
-              {aboutData.mission_lists.map((item: any) => {
-                return <li>{item}</li>;
+              {aboutData.mission_lists.map((item: any, index: number) => {
+                return <li key={index}>{item}</li>;
               })}
             </ul>
           </div>

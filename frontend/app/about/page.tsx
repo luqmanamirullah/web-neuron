@@ -1,13 +1,10 @@
-import React from 'react';
-import Image from 'next/image';
-
 import Directors from '@/components/about/directors';
-import Heading from '@/components/heading';
-import VisionAndMissions from '@/components/about/visionAndMissions';
 import Hero from '@/components/about/hero';
-import Values from '@/components/about/values';
-import StrategicPlan from '@/components/about/strategicPlan';
 import HugeImage from '@/components/about/hugeImage';
+import StrategicPlan from '@/components/about/strategicPlan';
+import Values from '@/components/about/values';
+import VisionAndMissions from '@/components/about/visionAndMissions';
+import Heading from '@/components/heading';
 
 async function getData(url: string): Promise<any> {
   const res = await fetch(url + '?_=' + new Date().getTime());
@@ -17,7 +14,7 @@ async function getData(url: string): Promise<any> {
     throw new Error('Failed to fetch data');
   }
 
-  return res.json();
+  return await res.json();
 }
 
 async function page(): Promise<JSX.Element> {

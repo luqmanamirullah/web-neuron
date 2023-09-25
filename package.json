@@ -22,5 +22,8 @@
     "url": "https://git.neuron.id/products/website-neuron.git"
   },
   "author": "neuronworks",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.2.0"
+  }
 }
