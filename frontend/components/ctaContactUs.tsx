@@ -10,7 +10,7 @@ const CtaContactUs: React.FC = () => {
   return (
     <section className="w-full lg:h-screen max-h-[800px] h-full py-10 lg:px-20 md:px-10 sm:px-2 px-2 inline-flex justify-center items-center ">
       {/* Containter */}
-      <div className="relative  max-w-4xl xl:w-4/5  md:w-[90%] w-full rounded h-fit md:py-16 py-8 inline-flex justify-center items-center bg-techBorder2 bg-center bg-no-repeat md:bg-[length:90%_100%] bg-[length:100%_100%]">
+      <div className="relative  max-w-4xl 2xl:w-4/5  md:w-[90%] w-full rounded h-fit md:py-16 py-8 inline-flex justify-center items-center bg-techBorder2 bg-center bg-no-repeat md:bg-[length:90%_100%] bg-[length:100%_100%]">
         {/* Content */}
         <div className="w-4/5  flex flex-col gap-2 justify-center items-center text-center z-10">
           <h1 className="lg:text-desktop-display md:text-desktop-headline text-mobile-headline font-bold ">
