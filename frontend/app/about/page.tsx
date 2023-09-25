@@ -8,6 +8,7 @@ import Hero from '@/components/about/hero';
 import Values from '@/components/about/values';
 import StrategicPlan from '@/components/about/strategicPlan';
 import HugeImage from '@/components/about/hugeImage';
+import { About } from '@/interface';
 
 async function getData(url: string): Promise<any> {
   const res = await fetch(url + '?_=' + new Date().getTime());
@@ -21,20 +22,21 @@ async function getData(url: string): Promise<any> {
 }
 
 async function page(): Promise<JSX.Element> {
-  const aboutData = await getData('http://127.0.0.1:8000/api/about');
+  const aboutData: About = await getData('http://127.0.0.1:8000/api/about');
+
   return (
     <>
       {/* Section: HERO */}
-      <Hero aboutData={aboutData.data} />
+      <Hero aboutData={aboutData} />
 
       {/* Section: HUGE IMAGE */}
       <HugeImage imageUrl={aboutData.data.activity_image} />
 
       {/* Section: VISION & MISSIONS */}
-      <VisionAndMissions aboutData={aboutData.data} />
+      <VisionAndMissions aboutData={aboutData} />
 
       {/* Section: VALUES */}
-      <Values aboutData={aboutData.data} />
+      <Values aboutData={aboutData} />
 
       {/* Section: DIRECTORS */}
       <section className="md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 md:mx-xl xs:mx-xs">
@@ -43,7 +45,7 @@ async function page(): Promise<JSX.Element> {
           heading={aboutData.data.director_subtitle}
           subheading={aboutData.data.director_title}
         />
-        <Directors aboutData={aboutData.data} />
+        <Directors aboutData={aboutData} />
       </section>
 
       {/* Section: STRATEGIC PLAN */}
@@ -54,7 +56,7 @@ async function page(): Promise<JSX.Element> {
           subheading={aboutData.data.strategic_title}
         />
 
-        <StrategicPlan aboutData={aboutData.data} />
+        <StrategicPlan aboutData={aboutData} />
       </section>
     </>
   );
