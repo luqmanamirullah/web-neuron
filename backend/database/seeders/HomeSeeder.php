@@ -30,7 +30,7 @@ class HomeSeeder extends Seeder
             'about_experience' => '15+',
             'about_desc' => 'Evolve with Neuronworks',
             'about_title' => 'Seamlessly achieving digital transformation.',
-            'about_ilustration' => 'http://127.0.0.1:8000/LottieFiles/Tech_Brain.lottie',
+            'about_ilustration' => 'http://127.0.0.1:8000/LottieFiles/Tech_Brain.json',
             'neuron_program_id' => '1',
             'cta_contact_id' => '1',
             'title_service' => 'Experience Top-Tier Solutions',

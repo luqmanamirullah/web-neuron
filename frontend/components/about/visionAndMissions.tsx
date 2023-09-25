@@ -1,38 +1,39 @@
-import Image from 'next/image';
+import { type About } from '@/interface';
 import Heading from '../../components/heading';
+import VisionImage from '../svg/visionImage';
 
 interface Props {
-  aboutData: any;
+  aboutData: About;
 }
 
-const VisionAndMissions: React.FC<Props> = ({ aboutData }) => {
+const VisionAndMissions = ({ aboutData }: Props) => {
   return (
     <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
       {/* Missions */}
       <div className="flex flex-col md:gap-10 xs:gap-4">
-        <Image
-          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
-          width={700}
-          height={700}
-          src={aboutData.mission_image}
-          alt="Neuron Picture"
+        <VisionImage
+          flipImage={false}
+          imageId="missionImage"
+          imageUrl={aboutData.data.mission_image}
+          className="lg:h-[43.8125rem] xs:h-auto w-full object-cover"
         />
 
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            alignCenter={false}
             darkBg={false}
-            heading={aboutData.mission_subtitle}
-            subheading={aboutData.mission_title}
+            heading={aboutData.data.mission_subtitle}
+            subheading={aboutData.data.mission_title}
           />
 
           {/* Body */}
           <div className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            <p>{aboutData.mission_desc}</p>
+            <p>{aboutData.data.mission_desc}</p>
             <br />
             <ul className="ml-6 list-disc">
-              {aboutData.mission_lists.map((item: any, index: number) => {
-                return <li key={index}>{item}</li>;
+              {aboutData.data.mission_lists.map((item: any) => {
+                return <li>{item}</li>;
               })}
             </ul>
           </div>
@@ -44,23 +45,23 @@ const VisionAndMissions: React.FC<Props> = ({ aboutData }) => {
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
+            alignCenter={false}
             darkBg={false}
-            heading={aboutData.vision_subtitle}
-            subheading={aboutData.vision_title}
+            heading={aboutData.data.vision_subtitle}
+            subheading={aboutData.data.vision_title}
           />
 
           {/* Body */}
           <p className="md:text-desktop-body-large xs:text-mobile-body font-medium">
-            {aboutData.vision_desc}
+            {aboutData.data.vision_desc}
           </p>
         </div>
 
-        <Image
-          className="md:h-[43.8125rem] xs:h-[22.5625rem] w-full object-cover"
-          width={668}
-          height={701}
-          src={aboutData.vision_image}
-          alt="Neuron Picture"
+        <VisionImage
+          flipImage={true}
+          imageId="visionImage"
+          imageUrl={aboutData.data.vision_image}
+          className="lg:h-[43.8125rem] scale-x-[-1] xs:h-auto w-full object-cover"
         />
       </div>
     </section>

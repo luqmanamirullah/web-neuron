@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CtaContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MethadologyController;
@@ -79,3 +80,9 @@ Route::get('/blog-pages', [BlogController::class, 'getBlogPages']);
 
 //Latest Blog
 Route::get('/blog-latest', [BlogController::class, 'getLatestBlog']);
+
+// Career Page
+Route::get('/career-page', [CareerController::class, 'getCareerPage']);
+
+// Career
+Route::get('/career', [CareerController::class, 'getCareer']);

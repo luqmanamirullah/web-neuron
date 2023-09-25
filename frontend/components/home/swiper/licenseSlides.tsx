@@ -31,7 +31,7 @@ const LicenseSlides: React.FC<Props> = ({ licenseData }) => {
                 className="lg:h-[10rem] xs:h-[6.25rem] lg:w-auto xs:w-[8rem] object-contain"
                 width={500}
                 height={500}
-                alt='our license'
+                alt="our license"
                 src={item.image}
               />
             </SwiperSlide>

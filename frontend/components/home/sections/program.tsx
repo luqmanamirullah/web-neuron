@@ -1,12 +1,12 @@
 import Button from '@/components/button';
 import Section from '@/components/section';
-import { type Program } from '@/interface';
+import { type ProgramHome } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import React from 'react';
 import YoutubeEmbed from '../youtubeEmbed';
 
 interface Props {
-  program: Program;
+  program: ProgramHome;
 }
 
 const ProgramSection: React.FC<Props> = ({ program }) => {

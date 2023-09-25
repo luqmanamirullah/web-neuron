@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { type About } from '@/interface';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SvgIcon from '@mui/material/SvgIcon';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface Props {
-  aboutData: any;
+  aboutData: About;
 }
 
 const Directors = ({ aboutData }: Props) => {
@@ -16,12 +17,14 @@ const Directors = ({ aboutData }: Props) => {
   return (
     <div className="w-full flex md:flex-row xs:flex-col md:gap-6 xs:gap-2">
       {/* Director Card */}
-      {aboutData.director_lists.map((item: any, index: number) => {
+      {aboutData.data.director_lists.map((item: any, index: number) => {
         return (
           <div
             key={index}
             className="relative rounded overflow-hidden"
-            onMouseEnter={() => setExpand(index)}
+            onMouseEnter={() => {
+              setExpand(index);
+            }}
           >
             <Image
               className={

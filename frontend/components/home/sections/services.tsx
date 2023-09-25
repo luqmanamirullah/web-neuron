@@ -1,12 +1,12 @@
 import Button from '@/components/button';
 import Section from '@/components/section';
-import { type Service } from '@/interface';
+import { type ServiceHome } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import React from 'react';
 import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
-  service: Service;
+  service: ServiceHome;
   topServiceData: any;
 }
 

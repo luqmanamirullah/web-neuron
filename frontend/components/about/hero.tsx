@@ -1,14 +1,14 @@
-import React from 'react';
-import AboutHero from '../svg/aboutHero';
-import MaskedImageTR from '../svg/maskedImageTR';
-import MaskedImageBL from '../svg/maskedImageBL';
-import AboutHeroSquares from '../svg/aboutHeroSquares';
-import AboutHeroLines from '../svg/aboutHeroLines';
-import AboutHeroCircle from '../svg/aboutHeroCircles';
+import { type About } from '@/interface';
 import AboutBigLine from '../svg/aboutBigLine';
+import AboutHero from '../svg/aboutHero';
+import AboutHeroCircle from '../svg/aboutHeroCircles';
+import AboutHeroLines from '../svg/aboutHeroLines';
+import AboutHeroSquares from '../svg/aboutHeroSquares';
+import MaskedImageBL from '../svg/maskedImageBL';
+import MaskedImageTR from '../svg/maskedImageTR';
 
 interface Props {
-  aboutData: any;
+  aboutData: About;
 }
 
 function Hero({ aboutData }: Props) {
@@ -16,18 +16,18 @@ function Hero({ aboutData }: Props) {
     <section className="h-screen relative md:mx-xl xs:mx-xs flex md:justify-between xs:justify-normal xs:gap-8 items-center md:flex-row xs:flex-col">
       <div className="md:mt-10 xs:mt-20 z-[2]">
         <h1 className="md:max-w-[48.625rem] mb-xs font-bold md:text-desktop-display xs:text-mobile-headline">
-          {aboutData.hero_title}
+          {aboutData.data.hero_title}
         </h1>
 
         <p className="md:max-w-[34.5625rem] md:text-desktop-body-large xs:text-mobile-body">
-          {aboutData.hero_desc}
+          {aboutData.data.hero_desc}
         </p>
       </div>
 
       <AboutBigLine className="absolute top-0 md:left-[50%] md:mx-0 xs:mx-auto" />
       <div className="relative md:mr-0 xs:mr-4 md:ml-0 xs:ml-12 w-fit h-fit">
         <AboutHero
-          imageUrl={aboutData.hero_image}
+          imageUrl={aboutData.data.hero_image}
           className="md:w-[20rem] xs:w-full md:max-h-full xs:max-h-[20.94381rem] relative z-[2]"
         />
 
