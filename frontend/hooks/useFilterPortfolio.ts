@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { type Option } from '@/components/select';
 import { type Sorts } from '@/data/sortby';
 import generateSelectOptions from '@/utils/generateSelectOptions';
@@ -39,7 +38,7 @@ function useFilterPortfolio(initialYear: number): FilterPortfolio {
 
   useEffect(() => {
     setStartRange(generateYears(initialYear));
-  }, []);
+  }, [initialYear]);
 
   useEffect(() => {
     setStartOptions(generateSelectOptions(startRange));
@@ -47,7 +46,7 @@ function useFilterPortfolio(initialYear: number): FilterPortfolio {
 
   useEffect(() => {
     setEndOptions(generateSelectOptions(endRange));
-  }, [endOptions]);
+  }, [endRange]);
 
   return {
     page,
