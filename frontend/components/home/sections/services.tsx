@@ -10,7 +10,7 @@ interface Props {
 
 const ServicesSection: React.FC<Props> = ({ homeData }) => {
   return (
-    <Section className="lg:py-10 py-8 ">
+    <Section className="lg:py-10 py-8 max-h-fit ">
       {/* Heading */}
       <div className="mb-6">
         <h5 className="lg:text-desktop-title xs:text-mobile-title font-bold text-sys-light-primary">

@@ -16,7 +16,7 @@ const ServiceSlides: React.FC = () => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
 
   return (
-    <div className="flex flex-col items-center w-full xl:h-[34rem] lg:h-96">
+    <div className="flex flex-col items-center w-full xl:h-[34rem] lg:h-fit">
       <Swiper
         breakpoints={{
           0: {

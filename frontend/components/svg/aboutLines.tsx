@@ -5,7 +5,7 @@ interface Props {
   className: string;
 }
 
-const TechLines: React.FC<Props> = ({ className }) => {
+const AboutLines: React.FC<Props> = ({ className }) => {
   return (
     <svg
       className={twMerge('w-[19.60038rem] h-[22.61406rem]', className)}
@@ -22,4 +22,4 @@ const TechLines: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default TechLines;
+export default AboutLines;
