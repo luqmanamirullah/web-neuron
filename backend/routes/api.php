@@ -41,7 +41,10 @@ Route::get('/portofolio', [PortofolioController::class, 'getPortofolio']);
 Route::get('/success-portofolio', [PortofolioController::class, 'getSuccessPortofolio']);
 
 // latest portofolio
-Route::get('/portfolios/latest', [PortofolioController::class, 'getLatestPortfolios']);
+Route::get('/portofolios/latest', [PortofolioController::class, 'getLatestPortfolios']);
+
+// Detail portofolio
+Route::get('/portofolio/{id}', [PortofolioController::class, 'getPortfolioById']);
 
 // Methodology
 Route::get('/methodology', [MethadologyController::class, 'getMethadology']);
