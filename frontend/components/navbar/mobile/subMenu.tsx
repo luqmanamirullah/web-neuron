@@ -38,7 +38,7 @@ const SubMenu: React.FC<Props> = ({ item, isShow, setIsShow }) => {
           className="z-10 w-full sm:w-72 md:w-96  will-change-[opacity, transform] text-sys-light-onSurface font-semibold hover:text-sys-light-primary cursor-pointer group "
           style={{ ...style }}
         >
-          <Link href={item.link}>
+          <Link href={item.link} passHref={true}>
             <div className="flex items-center gap-1 group-hover:gap-2">
               <h1 className="delay-100">{item.label}</h1>
               <SvgIcon

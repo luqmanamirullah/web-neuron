@@ -4,11 +4,11 @@ import React from 'react';
 
 import Button from '@/components/button';
 
-import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
-
 import Dropdown from '@/components/navbar/desktop/dropdown';
 import cn from '@/utils/cn';
+import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import Link from 'next/link';
+
 interface Props {
   item: Menu[];
   router: AppRouterInstance;
@@ -30,7 +30,7 @@ const MenuDesktop: React.FC<Props> = ({ item, router, currPath }) => {
                   : 'before:w-0 font-medium',
               )}
             >
-              <Link href={menu.link ?? '/'}>
+              <Link href={menu.link ?? '/'} passHref={true}>
                 <span>{menu.label}</span>
               </Link>
             </li>

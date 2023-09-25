@@ -124,7 +124,7 @@ const MenuMobile: React.FC<Props> = ({ router, item, currPath }) => {
                   setHamburgerAction('showMenu');
                 }}
               >
-                <Link href={item.link}>
+                <Link href={item.link} passHref={true}>
                   <span>{item.label}</span>
                 </Link>
               </animated.li>
