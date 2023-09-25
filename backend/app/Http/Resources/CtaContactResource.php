@@ -18,7 +18,6 @@ class CtaContactResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'desc' => $this->desc,
-            'link' => $this->link,
         ];
     }
 }

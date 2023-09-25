@@ -50,6 +50,8 @@ class DatabaseSeeder extends Seeder
             DirectorListSeeder::class,
             ManagementStrategySeeder::class,
             ManagementStrategyListSeeder::class,
+            ArticlePageSeeder::class,
+            CareerPageSeeder::class,
         ]);
     }
 }

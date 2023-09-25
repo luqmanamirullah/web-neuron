@@ -1,0 +1,23 @@
+.partner-slides {
+  width: 100% !important;
+}
+
+.partner-slides .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.partner-slides .swiper-slide {
+  width: fit-content !important;
+  height: fit-content !important;
+  padding: 0.5rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+@media (min-width: 1000px) {
+  .partner-slides .swiper-slide {
+    padding: 1.5rem 2.5rem !important;
+  }
+
+}

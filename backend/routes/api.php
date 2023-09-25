@@ -2,8 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CtaContactController;
@@ -66,3 +68,21 @@ Route::get('/cta-contacts', [CtaContactController::class, 'getCtaContacts']);
 
 // About
 Route::get('/about', [AboutController::class, 'getAbout']);
+
+// Blog
+Route::get('/blog', [BlogController::class, 'getBlog']);
+
+// Detail Blog
+Route::get('/blog/{id}', [BlogController::class, 'getBlogById']);
+
+// Blog page
+Route::get('/blog-pages', [BlogController::class, 'getBlogPages']);
+
+//Latest Blog
+Route::get('/blog-latest', [BlogController::class, 'getLatestBlog']);
+
+// Career Page
+Route::get('/career-page', [CareerController::class, 'getCareerPage']);
+
+// Career
+Route::get('/career', [CareerController::class, 'getCareer']);
