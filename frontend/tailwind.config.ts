@@ -12,7 +12,8 @@ const config: Config = {
       sm: '360px',
       md: '768px',
       lg: '1024px',
-      xl: '1400px',
+      xl: '1200px',
+      '2xl': '1440px',
     },
     fontSize: {
       'desktop-display': ['3.25rem', { lineHeight: '3.6875rem' }],
@@ -33,6 +34,7 @@ const config: Config = {
       ],
       'mobile-display': [`2.25rem`, { lineHeight: '2.75rem' }],
       'mobile-headline': [`1.5625rem`, { lineHeight: '2rem' }],
+      'mobile-title-large': ['1.125rem', { lineHeight: '1.625rem' }],
       'mobile-title': ['1rem', { lineHeight: '1.5rem' }],
       'mobile-body-large': ['1rem', { lineHeight: '1.5rem' }],
       'mobile-body': [
@@ -336,6 +338,9 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         highlightGradient: 'linear-gradient(90deg, #F00 50%, #0B0E14 50%)',
         techBorder2: "url('/assets/images/border_1.png')",
+        techPattern1: "url('/assets/images/home/pattern_1.png')",
+        techPattern2: "url('/assets/images/home/pattern_2.png')",
+        shadow1: "url('/assets/images/shadow_1.png')",
       },
       animation: {
         'auto-scroll': 'scroll 30s linear infinite',
