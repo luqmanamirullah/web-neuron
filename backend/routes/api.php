@@ -40,6 +40,10 @@ Route::get('/top-services', [ServiceController::class, 'getTopServices']);
 // Start Year End Year Portfolio
 Route::get('/start-end-year', [PortofolioController::class, 'getStartEndYear']);
 
+Route::get('/portofolio/category', [PortofolioController::class, 'getCategory']);
+
+
+
 // Portofolio
 Route::get('/portofolio', [PortofolioController::class, 'getPortofolio']);
 

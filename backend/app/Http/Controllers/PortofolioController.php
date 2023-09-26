@@ -343,6 +343,19 @@ class PortofolioController extends Controller
         ]);
     }
 
+    public function getCategory()
+    {
+        $category = Portofolio::select('category')->distinct()->get();
+
+
+        $category = Portofolio::select('category')->distinct()->get()->map(function ($item) {
+            return $item->category;
+        });
+
+        return response()->json($category);
+
+    }
+
     public function getPortofolio(Request $request)
     {
         $request->validate([

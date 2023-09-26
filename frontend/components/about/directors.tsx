@@ -17,7 +17,7 @@ const Directors: React.FC<Props> = ({ aboutData }) => {
   return (
     <div className="w-full flex md:flex-row xs:flex-col md:gap-6 xs:gap-2">
       {/* Director Card */}
-      {aboutData.data.director_lists.map((item: any, index: number) => {
+      {aboutData.director_lists.map((item: any, index: number) => {
         return (
           <div
             key={index}

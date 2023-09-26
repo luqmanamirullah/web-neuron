@@ -1,7 +1,6 @@
-function generate(from: number): number[] {
-  const currYear = new Date().getFullYear();
-  return Array.from(new Array(currYear - from + 1), (val, index) => {
-    return currYear - index;
+function generate(from: number, lastYear: number): number[] {
+  return Array.from(new Array(lastYear - from + 1), (val, index) => {
+    return lastYear - index;
   });
 }
 

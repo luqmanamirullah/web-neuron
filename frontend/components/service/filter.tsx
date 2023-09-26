@@ -8,7 +8,7 @@ import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
 import { SvgIcon } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import NeuronSelect, { type Option } from '../select';
-import SortBy from './swiper/sortBySlides';
+import Category from './swiper/categorySlides';
 
 interface Props {
   pages: number;
@@ -20,9 +20,13 @@ interface Props {
   handleFromChange: (e: any) => void;
   handleUntilChange: (e: any) => void;
   handleDeleteFilter: () => void;
+  handleSortByChange: (e: any) => void;
+  sortByOptions: Option[];
   startOptions: Option[];
   endOptions: Option[];
   endStickyRef: React.RefObject<HTMLDivElement>;
+  category: Option;
+  setCategory: (category: Option) => void;
 }
 
 const Filter: React.FC<Props> = ({
@@ -35,9 +39,13 @@ const Filter: React.FC<Props> = ({
   handleFromChange,
   handleUntilChange,
   sortBy,
+  sortByOptions,
+  handleSortByChange,
   setSortBy,
   handleDeleteFilter,
   endStickyRef,
+  category,
+  setCategory,
 }) => {
   // state
   const [mobileFilterActive, setMobileFilterActive] = useState<boolean>(false);
@@ -85,11 +93,26 @@ const Filter: React.FC<Props> = ({
               />
             </div>
           </div>
+          {/* Sort By */}
+          <div className="white-space-nowrap md:flex hidden items-center gap-s">
+            <h1 className="whitespace-nowrap text-mobile-title lg:text-desktop-title font-bold">
+              Sort By
+            </h1>
+            <div className="flex gap-2 min-w-[6rem] ">
+              <NeuronSelect
+                handleChange={handleSortByChange}
+                defaultValue={{ value: '', label: 'Date Asc' }}
+                options={[...sortByOptions]}
+                name="sortBy"
+              />
+            </div>
+          </div>
+          {/* Category */}
           <div className="md:flex hidden gap-s items-center overflow-x-hidden ">
             <h1 className="min-w-fit whitespace-nowrap text-mobile-title lg:text-desktop-title font-bold">
               Sort By
             </h1>
-            <SortBy setSortBy={setSortBy} sortBy={sortBy} />
+            <Category category={category} setCategory={setCategory} />
           </div>
           <div
             className="inline-flex md:hidden items-center gap-s"
@@ -161,8 +184,8 @@ const Filter: React.FC<Props> = ({
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full">
-              <h1 className="text-mobile-title font-semibold">Sort By</h1>
-              <SortBy setSortBy={setSortBy} sortBy={sortBy} />
+              <h1 className="text-mobile-title font-semibold">Category</h1>
+              <Category category={category} setCategory={setCategory} />
             </div>
           </div>
           <div className="flex items-center justify-center w-full absolute bottom-0 left-0 mb-10">

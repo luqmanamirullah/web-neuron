@@ -17,7 +17,7 @@ const StrategicPlan: React.FC<Props> = ({ aboutData }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      {aboutData.data.management_strategies.map((item: any, index: number) => (
+      {aboutData.management_strategies.map((item: any, index: number) => (
         <Plan
           index={index}
           isActive={isActive}

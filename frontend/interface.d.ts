@@ -171,7 +171,6 @@ export interface Portfolio extends SuccessPortfolio {
 }
 
 export interface About {
-  data: {
     hero_title: string;
     hero_desc: string;
     hero_image: string;
@@ -208,7 +207,6 @@ export interface About {
         desc: string;
       }>;
     }>;
-  };
 }
 
 export interface Technologies {
