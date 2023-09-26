@@ -11,7 +11,7 @@ interface Props {
   aboutData: About;
 }
 
-const Directors = ({ aboutData }: Props) => {
+const Directors: React.FC<Props> = ({ aboutData }) => {
   const [isExpand, setExpand] = useState<number>(0);
 
   return (

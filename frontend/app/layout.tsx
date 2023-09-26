@@ -2,6 +2,7 @@ import getCtaContact from '@/api/getCtaContact';
 import CtaContactUs from '@/components/ctaContactUs';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar/navbar';
+import QueryProvider from '@/components/queryProvider';
 import type { Metadata } from 'next';
 import { inter, raleway } from './fonts';
 import './globals.css';
@@ -25,14 +26,16 @@ export default async function RootLayout({
   return (
     <html lang="en" className={raleway.variable + ' ' + inter.variable}>
       <body>
-        <Navbar />
-        <main className="overflow-x-hidden w-full max-w-[1440px] 2xl:mx-auto relative">
-          {children}
-        </main>
-        <footer className="w-full  max-w-[1440px] 2xl:mx-auto">
-          <CtaContactUs contact={contact} />
-          <Footer />
-        </footer>
+        <QueryProvider>
+          <Navbar />
+          <main className="overflow-x-hidden w-full max-w-[1440px] 2xl:mx-auto relative">
+            {children}
+          </main>
+          <footer className="w-full  max-w-[1440px] 2xl:mx-auto">
+            <CtaContactUs contact={contact} />
+            <Footer />
+          </footer>
+        </QueryProvider>
       </body>
     </html>
   );

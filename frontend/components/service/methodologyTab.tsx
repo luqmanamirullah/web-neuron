@@ -1,12 +1,16 @@
 'use client';
 import Image from 'next/image';
 
-import methodologies from '@/data/methodologies';
+import { type Methodology } from '@/interface';
 import { useState } from 'react';
 import NeuronTab from '../tabs/tab';
 import CustomTabPanel from '../tabs/tabPane';
 
-const MethodologyTabs: React.FC = () => {
+interface Props {
+  methodologies: Methodology[];
+}
+
+const MethodologyTabs: React.FC<Props> = ({ methodologies }) => {
   const [value, setValue] = useState<number>(0);
   const handleChangeService: any = (
     e: React.SyntheticEvent,
@@ -14,7 +18,7 @@ const MethodologyTabs: React.FC = () => {
   ) => {
     setValue(newValue);
   };
-  const tabs = methodologies.map((method) => method.name);
+  const tabs = methodologies.map((method) => method.category_name);
 
   return (
     <NeuronTab
@@ -29,15 +33,15 @@ const MethodologyTabs: React.FC = () => {
           id="methodology"
           index={index}
           value={value}
-          key={method.name}
-          className="mt-8 h-fit w-full"
+          key={method.category_name}
+          className="mt-8 h-fit w-full inlin-flex justify-center items-center"
         >
           <Image
-            src={method.method}
-            alt={method.name}
+            src={method.flow_image}
+            alt={method.category_title}
             width={100}
             height={100}
-            className="h-auto w-full "
+            className=" lg:h-screen lg:w-auto w-full h-auto mx-auto "
           />
         </CustomTabPanel>
       ))}

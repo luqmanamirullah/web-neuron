@@ -60,7 +60,7 @@ const PortfolioSection: React.FC<Props> = ({ portfolio, portfolioData }) => {
                       withIcon={true}
                       icon={<ArrowOutwardRounded />}
                       onClick={() => {
-                        route.push(`/portfolio/${item.id}`);
+                        route.push(`/service/${item.id}`);
                       }}
                     />
                   </div>

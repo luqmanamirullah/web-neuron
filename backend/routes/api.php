@@ -37,6 +37,9 @@ Route::get('/service-pages', [ServiceController::class, 'getServicePages']);
 // Top Service
 Route::get('/top-services', [ServiceController::class, 'getTopServices']);
 
+// Start Year End Year Portfolio
+Route::get('/start-end-year', [PortofolioController::class, 'getStartEndYear']);
+
 // Portofolio
 Route::get('/portofolio', [PortofolioController::class, 'getPortofolio']);
 

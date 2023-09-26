@@ -1,0 +1,22 @@
+.license-slides {
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+.license-slides .swiper-slide {
+  width: fit-content !important;
+  height: fit-content !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin-right: 1rem !important;
+}
+
+.license-slides .swiper-slide:last-child {
+  margin-right: 0 !important;
+}
+
+@media (min-width: 1000px) {
+  .license-slides .swiper-slide {
+    margin-right: 4rem !important;
+  }
+}

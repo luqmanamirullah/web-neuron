@@ -10,11 +10,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './testimonialSlides.css';
 
-import { type Testimonial } from '@/interface';
+import { type TestimonialHome } from '@/interface';
 import { EffectCreative, Navigation, Pagination } from 'swiper/modules';
 
 interface Props {
-  testimonials: Testimonial[];
+  testimonials: TestimonialHome[];
 }
 
 const TestimonialSlides: React.FC<Props> = ({ testimonials }) => {

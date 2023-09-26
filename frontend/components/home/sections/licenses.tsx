@@ -1,11 +1,11 @@
 import Heading from '@/components/heading';
 import Section from '@/components/section';
-import { type License } from '@/interface';
+import { type LicenseHome } from '@/interface';
 import React from 'react';
 import LicenseSlides from '../swiper/licenseSlides';
 
 interface Props {
-  license: License;
+  license: LicenseHome;
 }
 
 const LicensesSection: React.FC<Props> = ({ license }) => {

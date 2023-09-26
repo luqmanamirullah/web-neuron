@@ -1,12 +1,12 @@
 import Heading from '@/components/heading';
 import Section from '@/components/section';
-import { type Partner, type Partners } from '@/interface';
+import { type PartnerHome, type Partners } from '@/interface';
 import divideData from '@/utils/devideData';
 import React from 'react';
 import PartnerSlides from '../swiper/partnerSlides';
 
 interface Props {
-  partner: Partner;
+  partner: PartnerHome;
 }
 
 const PartnersSection: React.FC<Props> = ({ partner }) => {

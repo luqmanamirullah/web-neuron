@@ -7,12 +7,12 @@ interface Props {
   strategyIndex: number;
 }
 
-const StrategicPlanList = ({
+const StrategicPlanList: React.FC<Props> = ({
   springConfig,
   strategyData,
   strategyIndex,
   active,
-}: Props) => {
+}) => {
   return (
     <animated.div
       style={springConfig}

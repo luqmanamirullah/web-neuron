@@ -1,0 +1,25 @@
+.slide-up {
+  animation: slide-up 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(110%);
+  }
+
+  25% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(0%);
+  }
+
+  75% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(110%);
+  }
+}

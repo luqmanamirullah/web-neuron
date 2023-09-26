@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PortofolioResource;
+use App\Http\Resources\SuccessPortofolioResource;
+use App\Models\Deliverable;
 use App\Models\Handle;
 use App\Models\Portofolio;
 use App\Models\Technology;
-use App\Models\Deliverable;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
-use App\Models\PortofolioTechnology;
-use App\Http\Resources\PortofolioResource;
-use App\Http\Resources\SuccessPortofolioResource;
+use Illuminate\Validation\Rule;
 
 class PortofolioController extends Controller
 {
@@ -115,7 +114,7 @@ class PortofolioController extends Controller
             'image' => url($profilePicturePath),
             'successProject' => $successProject,
         ]);
-        
+
         $portofolio->save();
 
         // Menyimpan teknologi terkait dengan portofolio
@@ -158,7 +157,7 @@ class PortofolioController extends Controller
             'true' => 'Yes',
             'false' => 'No',
         ];
-        $selectedTechnologies = $portofolio->technologies->pluck('id')->toArray();        
+        $selectedTechnologies = $portofolio->technologies->pluck('id')->toArray();
         return view('cms.Portofolio.edit', compact('portofolio', 'technologies', 'selectedTechnologies', 'successProjectOption'));
     }
 
@@ -333,6 +332,17 @@ class PortofolioController extends Controller
 
     // API
 
+    public function getStartEndYear()
+    {
+        $startYear = Portofolio::orderBy('created_at', 'asc')->first()->created_at->format('Y');
+        $endYear = Portofolio::orderBy('created_at', 'desc')->first()->created_at->format('Y');
+
+        return response()->json([
+            'start_year' => $startYear,
+            'end_year' => $endYear,
+        ]);
+    }
+
     public function getPortofolio(Request $request)
     {
         $request->validate([
@@ -344,11 +354,12 @@ class PortofolioController extends Controller
             'filter_by' => 'nullable|in:asc,desc',
         ]);
 
+
         $category = $request->input('category');
         $startYear = $request->input('start_year');
         $endYear = $request->input('end_year');
-        $page = $request->input('page', 1); 
-        $sortBy = $request->input('sort_by', 'date'); 
+        $page = $request->input('page', 1);
+        $sortBy = $request->input('sort_by', 'date');
         $filterBy = $request->input('filter_by', 'asc');
 
         // Buat kueri berdasarkan sort_by dan filter_by
@@ -401,9 +412,9 @@ class PortofolioController extends Controller
     public function getSuccessPortofolio()
     {
         $successPortofolio = Portofolio::where('successProject', 'true')
-        ->limit(3) // Batasi hanya mengambil 3 data teratas
-        ->orderBy('id', 'desc') // Urutkan berdasarkan ID secara descending (untuk mengambil yang paling atas)
-        ->get();
+            ->limit(3) // Batasi hanya mengambil 3 data teratas
+            ->orderBy('id', 'desc') // Urutkan berdasarkan ID secara descending (untuk mengambil yang paling atas)
+            ->get();
 
         return SuccessPortofolioResource::collection($successPortofolio);
     }

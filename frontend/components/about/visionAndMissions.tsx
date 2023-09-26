@@ -1,21 +1,22 @@
 import { type About } from '@/interface';
 import Heading from '../../components/heading';
+import Section from '../section';
 import VisionImage from '../svg/visionImage';
 
 interface Props {
   aboutData: About;
 }
 
-const VisionAndMissions = ({ aboutData }: Props) => {
+const VisionAndMissions: React.FC<Props> = ({ aboutData }) => {
   return (
-    <section className="md:mx-xl xs:mx-xs flex md:flex-row xs:flex-col-reverse md:gap-6 xs:gap-10">
+    <Section className="max-h-fit flex md:flex-row flex-col-reverse md:gap-6 gap-10">
       {/* Missions */}
-      <div className="flex flex-col md:gap-10 xs:gap-4">
+      <div className="flex flex-col md:gap-10 gap-4">
         <VisionImage
           flipImage={false}
           imageId="missionImage"
           imageUrl={aboutData.data.mission_image}
-          className="lg:h-[43.8125rem] xs:h-auto w-full object-cover"
+          className="lg:h-[43.8125rem] h-auto w-full object-cover"
         />
 
         {/* Content */}
@@ -28,12 +29,12 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           />
 
           {/* Body */}
-          <div className="md:text-desktop-body-large xs:text-mobile-body font-medium">
+          <div className="md:text-desktop-body-large text-mobile-body font-medium">
             <p>{aboutData.data.mission_desc}</p>
             <br />
             <ul className="ml-6 list-disc">
-              {aboutData.data.mission_lists.map((item: any) => {
-                return <li>{item}</li>;
+              {aboutData.data.mission_lists.map((item: any, index: number) => {
+                return <li key={index}>{item}</li>;
               })}
             </ul>
           </div>
@@ -41,7 +42,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
       </div>
 
       {/* Vision */}
-      <div className="flex md:flex-col xs:flex-col-reverse md:gap-10 xs:gap-4">
+      <div className="flex md:flex-col flex-col-reverse md:gap-10 gap-4">
         {/* Content */}
         <div className="flex flex-col gap-2">
           <Heading
@@ -52,7 +53,7 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           />
 
           {/* Body */}
-          <p className="md:text-desktop-body-large xs:text-mobile-body font-medium">
+          <p className="md:text-desktop-body-large text-mobile-body font-medium">
             {aboutData.data.vision_desc}
           </p>
         </div>
@@ -61,10 +62,10 @@ const VisionAndMissions = ({ aboutData }: Props) => {
           flipImage={true}
           imageId="visionImage"
           imageUrl={aboutData.data.vision_image}
-          className="lg:h-[43.8125rem] scale-x-[-1] xs:h-auto w-full object-cover"
+          className="lg:h-[43.8125rem] scale-x-[-1] h-auto w-full object-cover"
         />
       </div>
-    </section>
+    </Section>
   );
 };
 

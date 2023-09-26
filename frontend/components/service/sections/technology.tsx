@@ -1,3 +1,5 @@
+import getTechnologies from '@/api/getTechnologies';
+import Section from '@/components/section';
 import React from 'react';
 import TechnologyTabs from '../technologyTab';
 
@@ -6,9 +8,10 @@ interface Props {
   title: string;
 }
 
-const Technology: React.FC<Props> = ({ title, subtitle }) => {
+const Technology: React.FC<Props> = async ({ title, subtitle }) => {
+  const technologies = await getTechnologies();
   return (
-    <section id="techStack" className="lg:p-10 md:p-8 p-4 text-black  ">
+    <Section id="techStack" className="max-h-fit text-black  ">
       <div className="flex flex-col justify-center items-center text-center md:w-4/5 w-full mx-auto">
         <h1 className="md:text-desktop-headline text-mobile-title  font-bold text-core-primary ">
           {title}
@@ -20,9 +23,9 @@ const Technology: React.FC<Props> = ({ title, subtitle }) => {
       {/* Tabs */}
       <div className="w-full 2xl:max-h-[800px]   h-fit flex flex-col items-center justify-center gap-lg">
         {/* Tab Nav */}
-        <TechnologyTabs />
+        <TechnologyTabs technologies={technologies} />
       </div>
-    </section>
+    </Section>
   );
 };
 

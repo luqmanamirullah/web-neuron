@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Technology;
-use Illuminate\Http\Request;
-use App\Models\TechnologyCategory;
 use App\Http\Resources\TechnologyResource;
+use App\Models\Technology;
+use App\Models\TechnologyCategory;
+use Illuminate\Http\Request;
 
 class TechnologyController extends Controller
 {
@@ -52,7 +52,7 @@ class TechnologyController extends Controller
         ]);
 
         $technologies->technology_category_id = $request->technology_category_id;
-        
+
         $technologies->save();
 
         // Redirect kembali ke halaman technology dengan pesan sukses
@@ -121,8 +121,9 @@ class TechnologyController extends Controller
 
     public function getTechnologies(Request $request)
     {
-        $technologies = Technology::all();
-
+        // get tehcnologies group by technology category name
+        $technologies = Technology::with('technologyCategory')->get()->groupBy('technologyCategory.name');
+        // dd($technologies->toArray());
         if ($technologies->isEmpty()) {
             return response()->json([
                 'success' => false,
@@ -130,7 +131,16 @@ class TechnologyController extends Controller
             ], 404);
         }
 
-        return TechnologyResource::collection($technologies);
+        $formattedTechnologies = [];
+
+        foreach ($technologies as $category => $items) {
+            $formattedTechnologies[] = [
+                'category' => $category,
+                'technologies' => TechnologyResource::collection($items),
+            ];
+        }
+
+        return response()->json($formattedTechnologies);
     }
 
     public function getTechnologiesByCategory(Request $request)

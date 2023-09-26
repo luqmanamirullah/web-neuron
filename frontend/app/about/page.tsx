@@ -5,6 +5,7 @@ import StrategicPlan from '@/components/about/strategicPlan';
 import Values from '@/components/about/values';
 import VisionAndMissions from '@/components/about/visionAndMissions';
 import Heading from '@/components/heading';
+import Section from '@/components/section';
 import { type About } from '@/interface';
 
 async function getData(url: string): Promise<any> {
@@ -36,7 +37,7 @@ async function page(): Promise<JSX.Element> {
       <Values aboutData={aboutData} />
 
       {/* Section: DIRECTORS */}
-      <section className="md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 md:mx-xl xs:mx-xs">
+      <Section className="max-h-fit md:h-screen xs:h-fit mt-28 flex flex-col md:gap-8 xs:gap-4 ">
         <Heading
           alignCenter={false}
           darkBg={false}
@@ -44,10 +45,10 @@ async function page(): Promise<JSX.Element> {
           subheading={aboutData.data.director_title}
         />
         <Directors aboutData={aboutData} />
-      </section>
+      </Section>
 
       {/* Section: STRATEGIC PLAN */}
-      <section className="bg-[#101415] w-full md:mt-0 xs:mt-28 md:px-10 xs:px-2 md:py-10 xs:p-6 flex flex-col md:gap-8 xs:gap-4">
+      <Section className="bg-[#101415] w-full md:mt-0 xs:mt-28 flex flex-col md:gap-8 xs:gap-4 py-10">
         <Heading
           alignCenter={false}
           darkBg={true}
@@ -56,7 +57,7 @@ async function page(): Promise<JSX.Element> {
         />
 
         <StrategicPlan aboutData={aboutData} />
-      </section>
+      </Section>
     </>
   );
 }

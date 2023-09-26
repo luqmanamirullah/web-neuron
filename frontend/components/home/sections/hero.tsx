@@ -2,7 +2,7 @@
 
 import Button from '@/components/button';
 import Section from '@/components/section';
-import { type Hero, type Testimonial } from '@/interface';
+import { type HeroHome, type TestimonialHome } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
 import { useRouter } from 'next/navigation';
@@ -11,8 +11,8 @@ import HeroDisplay from '../heroDisplay';
 import TestimonialSlides from '../swiper/testimonialSlides';
 
 interface Props {
-  hero: Hero;
-  testimonials: Testimonial[];
+  hero: HeroHome;
+  testimonials: TestimonialHome[];
 }
 
 const HeroSection: React.FC<Props> = ({ hero, testimonials }) => {

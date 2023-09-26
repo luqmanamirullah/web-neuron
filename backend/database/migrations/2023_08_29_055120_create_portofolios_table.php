@@ -16,6 +16,7 @@ class CreatePortofoliosTable extends Migration
         Schema::create('portofolios', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // $table->unsignedBigInteger('service_id');
             $table->enum('category', ['Web App', 'Mobile App', 'Workflow Management System', 'System Integrator', 'Business Intelligence', 'CRM App']);
             $table->string('customer_name');
             $table->text('desc');

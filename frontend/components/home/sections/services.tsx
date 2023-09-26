@@ -1,13 +1,13 @@
 import Button from '@/components/button';
 import Section from '@/components/section';
-import { type ServiceHome } from '@/interface';
+import { type ServiceHome, type TopServices } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import React from 'react';
 import ServiceSlides from '../swiper/serviceSlides';
 
 interface Props {
   service: ServiceHome;
-  topServiceData: any;
+  topServiceData: TopServices[];
 }
 
 const ServicesSection: React.FC<Props> = ({ service, topServiceData }) => {

@@ -1,10 +1,10 @@
 'use client';
-import { services } from '@/data/services';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { SvgIcon } from '@mui/material';
 import Image from 'next/image';
 import MaskTechCard from '../svg/maskTechCard';
 
+import { type Services } from '@/interface';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,11 @@ import NeuronTab from '../tabs/tab';
 import CustomTabPanel from '../tabs/tabPane';
 import KeyFeatureSlides from './swiper/keyFeatureSlides';
 
-const ServiceTabs: React.FC = () => {
+interface Props {
+  services: Services[];
+}
+
+const ServiceTabs: React.FC<Props> = ({ services }) => {
   const route = useRouter();
   const [value, setValue] = useState<number>(0);
   const handleChangeService: any = (
@@ -36,7 +40,7 @@ const ServiceTabs: React.FC = () => {
         setValue(serviceIndex);
       }
     }
-  }, [serviceName]);
+  }, [serviceName, services]);
   return (
     <NeuronTab
       value={value}
@@ -85,8 +89,8 @@ const ServiceTabs: React.FC = () => {
                           .slice(0, 8)
                           .map((tech, i) => (
                             <Image
-                              src={tech.icon}
-                              alt={tech.name}
+                              src={tech.icon ?? ''}
+                              alt={tech.name ?? 'tech_stack'}
                               width={40}
                               height={40}
                               key={i}
@@ -94,8 +98,8 @@ const ServiceTabs: React.FC = () => {
                           ))
                       : service.technologies.map((tech, i) => (
                           <Image
-                            src={tech.icon}
-                            alt={tech.name}
+                            src={tech.icon ?? ''}
+                            alt={tech.name ?? 'tech_stack'}
                             width={40}
                             height={40}
                             key={i}
@@ -122,7 +126,7 @@ const ServiceTabs: React.FC = () => {
                   </div>
 
                   <KeyFeatureSlides
-                    item={service.keyFeature}
+                    item={service.serviceKeys}
                     index={service.id}
                   />
                 </div>
@@ -131,7 +135,7 @@ const ServiceTabs: React.FC = () => {
 
             {/* Service Illustration */}
             <MaskTechCard
-              imageUrl={service.img}
+              imageUrl={service.image}
               className="lg:mt-8 md:mt-4 mt-2 md:w-2/5 lg:max-h-[26rem] lg:max-w-[30rem] md:max-h-96 md:h-auto   w-full h-auto rounded"
             />
           </div>

@@ -6,18 +6,20 @@ import 'swiper/css';
 import './serviceSlides.css';
 
 import Button from '@/components/button';
+import { type TopServices } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { FreeMode } from 'swiper/modules';
 
 interface Props {
-  topServiceData: any;
+  topServiceData: TopServices[];
 }
 
 const ServiceSlides: React.FC<Props> = ({ topServiceData }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
-
+  const route = useRouter();
   return (
     <div className="flex flex-col items-center w-full xl:h-[34rem] lg:h-fit">
       <Swiper
@@ -55,6 +57,9 @@ const ServiceSlides: React.FC<Props> = ({ topServiceData }) => {
                   size={largeScreen ? 'md' : 'sm'}
                   withIcon={true}
                   icon={<ArrowOutwardRounded />}
+                  onClick={() => {
+                    route.push(`/service?name=${item.name}`);
+                  }}
                 />
               </div>
 
@@ -82,6 +87,9 @@ const ServiceSlides: React.FC<Props> = ({ topServiceData }) => {
         size="sm"
         withIcon={true}
         icon={<ArrowOutwardRounded />}
+        onClick={() => {
+          route.push('/service');
+        }}
       />
     </div>
   );

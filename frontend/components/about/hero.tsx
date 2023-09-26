@@ -1,4 +1,5 @@
 import { type About } from '@/interface';
+import Section from '../section';
 import AboutBigLine from '../svg/aboutBigLine';
 import AboutHero from '../svg/aboutHero';
 import AboutHeroCircle from '../svg/aboutHeroCircles';
@@ -11,10 +12,10 @@ interface Props {
   aboutData: About;
 }
 
-function Hero({ aboutData }: Props) {
+function Hero({ aboutData }: Props): JSX.Element {
   return (
-    <section className="h-screen relative md:mx-xl xs:mx-xs flex md:justify-between xs:justify-normal xs:gap-8 items-center md:flex-row xs:flex-col">
-      <div className="md:mt-10 xs:mt-20 z-[2]">
+    <Section className="max-h-fit lg:pt-40 pt-10 md:h-screen h-fit relative  flex md:justify-between xs:justify-normal xs:gap-8 items-start md:flex-row xs:flex-col">
+      <div className="mt-10 z-[2]">
         <h1 className="md:max-w-[48.625rem] mb-xs font-bold md:text-desktop-display xs:text-mobile-headline">
           {aboutData.data.hero_title}
         </h1>
@@ -25,10 +26,10 @@ function Hero({ aboutData }: Props) {
       </div>
 
       <AboutBigLine className="absolute top-0 md:left-[50%] md:mx-0 xs:mx-auto" />
-      <div className="relative md:mr-0 xs:mr-4 md:ml-0 xs:ml-12 w-fit h-fit">
+      <div className="relative md:mr-0 xs:mr-4 md:ml-0 xs:ml-12 w-fit h-fit my-auto">
         <AboutHero
           imageUrl={aboutData.data.hero_image}
-          className="md:w-[20rem] xs:w-full md:max-h-full xs:max-h-[20.94381rem] relative z-[2]"
+          className="md:w-[20rem] xs:w-full md:max-h-full xs:max-h-[20.94381rem] my-auto relative z-[2]"
         />
 
         <div className="absolute top-7 -left-[3rem]">
@@ -46,7 +47,7 @@ function Hero({ aboutData }: Props) {
         </div>
         <MaskedImageBL className="absolute -bottom-4 -left-4" />
       </div>
-    </section>
+    </Section>
   );
 }
 

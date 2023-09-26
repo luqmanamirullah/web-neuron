@@ -144,6 +144,20 @@ export interface MethodologyService {
   methodology_subtitle: string;
 }
 
+export interface Services extends TopServices {
+  created_at: string;
+  updated_at: string;
+  technologies: Technology[];
+  serviceKeys: string[];
+}
+
+export interface TopServices {
+  id: number;
+  name: string;
+  desc: string;
+  image: string;
+}
+
 export interface Portfolio extends SuccessPortfolio {
   id: number;
   category: string;
@@ -154,4 +168,70 @@ export interface Portfolio extends SuccessPortfolio {
   created_at: string;
   updated_at: string;
   handles: string[] | [];
+}
+
+export interface About {
+  data: {
+    hero_title: string;
+    hero_desc: string;
+    hero_image: string;
+    activity_image: string;
+    vision_title: string;
+    vision_subtitle: string;
+    vision_desc: string;
+    vision_image: string;
+    mission_image: string;
+    mission_title: string;
+    mission_subtitle: string;
+    mission_desc: string;
+    mission_lists: [string];
+    value_title: string;
+    value_subtitle: string;
+    value_lists: Array<{ id: number; title: string; desc: string }>;
+    director_title: string;
+    director_subtitle: string;
+    director_lists: Array<{
+      id: number;
+      image: string;
+      name: string;
+      position: string;
+      link: string;
+    }>;
+    strategic_title: string;
+    strategic_subtitle: string;
+    management_strategies: Array<{
+      id: number;
+      title: string;
+      management_strategy_lists: Array<{
+        id: number;
+        title: string;
+        desc: string;
+      }>;
+    }>;
+  };
+}
+
+export interface Technologies {
+  category: string;
+  technologies: Technology[];
+}
+
+export interface Methodology {
+  id: number;
+  category_title: string;
+  category_name: string;
+  flow_image: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Article {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+  author: string;
+  articles_categories: string;
+  created_at: string;
+  updated_at: string;
 }

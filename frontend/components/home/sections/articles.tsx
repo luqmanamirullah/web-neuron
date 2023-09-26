@@ -1,15 +1,16 @@
 import Button from '@/components/button';
 import Section from '@/components/section';
-import { type Article } from '@/interface';
+import { type Article, type ArticleHome } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import React from 'react';
 import ArticleSlides from '../swiper/articleSlides';
 
 interface Props {
-  article: Article;
+  article: ArticleHome;
+  articleData: Article[];
 }
 
-const ArticlesSection: React.FC<Props> = ({ article }) => {
+const ArticlesSection: React.FC<Props> = ({ article, articleData }) => {
   return (
     <Section className="lg:mt-28 xs:mt-14 ">
       {/* Heading */}
@@ -33,7 +34,7 @@ const ArticlesSection: React.FC<Props> = ({ article }) => {
         </div>
       </div>
 
-      <ArticleSlides />
+      <ArticleSlides latestArticle={articleData} />
     </Section>
   );
 };

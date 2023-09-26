@@ -7,13 +7,18 @@ import 'swiper/css';
 import './articleSlides.css';
 
 import Button from '@/components/button';
-import { articles } from '@/data/articles';
+import { type Article } from '@/interface';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import { SvgIcon, useMediaQuery } from '@mui/material';
+import { format } from 'date-fns';
 import Image from 'next/image';
 import { FreeMode } from 'swiper/modules';
 
-const ArticleSlides: React.FC = () => {
+interface Props {
+  latestArticle: Article[];
+}
+
+const ArticleSlides: React.FC<Props> = ({ latestArticle }) => {
   const largeScreen = useMediaQuery('(min-width:1000px)');
   const mediumScreen = useMediaQuery('(min-width:768px)');
 
@@ -24,21 +29,21 @@ const ArticleSlides: React.FC = () => {
         slidesPerView={mediumScreen ? 3 : 'auto'}
         freeMode={true}
         modules={[FreeMode]}
-        className="article-slides"
+        className="article-slides !px-4"
       >
-        {articles.map((item, index) => {
+        {latestArticle.map((item, index) => {
           if (index < 6) {
             return (
               <SwiperSlide
                 key={index}
-                className="!flex !flex-col lg:!gap-8 xs:!gap-4 !relative group"
+                className="!flex !flex-col lg:!gap-8 xs:!gap-4 !relative group "
               >
                 <Image
                   className="w-full rounded-[0.3125rem]"
                   width={500}
                   height={500}
                   alt={item.title}
-                  src={item.imageUrl}
+                  src={item.image}
                 />
 
                 {/* Content */}
@@ -47,7 +52,7 @@ const ArticleSlides: React.FC = () => {
                     {item.title}
                   </h4>
                   <p className="lg:text-mobile-body xs:text-mobile-body line-clamp-3 text-sys-light-onSurfaceVariant transition-colors group-hover:text-sys-light-primary">
-                    {item.desc}
+                    {item.description}
                   </p>
                 </div>
 
@@ -75,7 +80,10 @@ const ArticleSlides: React.FC = () => {
                   <div className="flex items-baseline">
                     <span className="border-[1px] block w-full h-fit flex-1 border-[rgba(116,119,127,0.5)] transition-colors group-hover:border-sys-light-primary"></span>
                     <p className="lg:text-desktop-label xs:text-mobile-label text-sys-light-onSurfaceVariant ml-6 transition-colors group-hover:text-sys-light-primary">
-                      {item.date}
+                      {/* format data into like 09 Sep 2023 */}
+                      {item.created_at === item.updated_at
+                        ? format(new Date(item.created_at), 'dd MMM yyyy')
+                        : format(new Date(item.updated_at), 'dd MMM yyyy')}
                     </p>
                   </div>
                   <span className="border-[1px] block w-full border-[rgba(116,119,127,0.5)] transition-colors group-hover:border-sys-light-primary"></span>
