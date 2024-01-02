@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  laravel:
+    build:
+      args:
+        - user=neuron
+        - uid=1000
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    image: web-neuron-backend
+    container_name: web-neuron-backend
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./backend:/var/www
+    networks:
+      - web-neuron
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql
+    container_name: web-neuron-mysql
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev #only necessary if you're using a reverse proxy
+      SERVICE_NAME: mysql #only necessary if you're using a reverse proxy
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - web-neuron
+
+  nginx:
+    image: nginx:alpine
+    container_name: web-neuron-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./backend:/var/www
+      - ./backend/docker/nginx:/etc/nginx/conf.d
+    networks:
+      - web-neuron
+    depends_on:
+      - laravel
+
+  react:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    image: web-neuron-frontend
+    container_name: web-neuron-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - web-neuron
+    depends_on:
+      - laravel
+
+networks:
+  web-neuron:
+    driver: bridge

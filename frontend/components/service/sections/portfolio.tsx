@@ -8,6 +8,8 @@ import { Pagination, useMediaQuery } from '@mui/material';
 import React, { useRef } from 'react';
 import Filter from '../filter';
 import PortfolioCard from '../portfolioCard';
+import { useQuery } from '@tanstack/react-query';
+import api from '@/utils/api';
 // interface Props {}
 
 interface Option {
@@ -19,9 +21,9 @@ interface Option {
 
 const Portfolio: React.FC = () => {
   // data
-  const initialYear = 2008;
   const { pages, currPage, data } = all;
 
+  const {data: startEndYear, isLoading, isError }: {startEndYear: {start_year: string, end_year: string}} = useQuery(['startEndYear'],async () => await api.get('/start-end-year').then(res => res.data));
   // Ref
   const portfolioRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +42,8 @@ const Portfolio: React.FC = () => {
     page,
     setEndYear,
     setSortBy,
-  } = useFilterPortfolio(initialYear);
+    sortByOptions
+  } = useFilterPortfolio(parseInt(startEndYear.start_year), parseInt(startEndYear.end_year));
 
   // Method
   const handleFromChange: any = (change: Option) => {
@@ -59,6 +62,9 @@ const Portfolio: React.FC = () => {
     setSortBy(undefined);
   };
 
+  const handleSortByChange = (e: any) => {
+    setSortBy(e.target.value);
+  };
   // Hooks
   const isMedium = useMediaQuery('(min-width: 768px)');
 
@@ -70,6 +76,7 @@ const Portfolio: React.FC = () => {
         subheading={'Our Work'}
       />
       <Filter
+        sortByOptions={sortByOptions}
         currPage={currPage}
         pages={pages}
         endOptions={endOptions}
